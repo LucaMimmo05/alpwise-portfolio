@@ -3,6 +3,29 @@ import type { IconName } from '@/components/alpwise';
 // Contenuti della landing. I valori `null` sono ancora da fornire: la pagina li mostra come segnaposto tratteggiati.
 // Clienti, numeri e citazioni devono essere reali (CLAUDE.md): non riempirli con esempi.
 
+// Dominio pubblico: `NEXT_PUBLIC_SITE_URL` se impostato, altrimenti il dominio di produzione che Vercel espone in build.
+const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? (productionHost ? `https://${productionHost}` : 'http://localhost:3000')
+).replace(/\/$/, '');
+
+// Dati usati da metadata, sitemap, dati strutturati (JSON-LD) e llms.txt.
+export const site = {
+  name: 'Alpwise Studio',
+  title: 'Alpwise Studio · Siti, software su misura e AI a Gallarate',
+  description: 'Siti vetrina, software su misura, AI e automazioni per le PMI. Tre sviluppatori a Gallarate (VA), in provincia di Varese: dalla prima chiamata alla messa online parli con chi scrive il codice.',
+  locale: 'it_IT',
+  locality: 'Gallarate',
+  province: 'VA',
+  region: 'Lombardia',
+  postalCode: '21013',
+  country: 'IT',
+  geo: { lat: 45.66, lng: 8.79 },
+  areaServed: ['Gallarate', 'Provincia di Varese', 'Lombardia', 'Italia'], // aggiungi le città servite davvero (es. Busto Arsizio, Varese, Milano)
+  languages: ['it'],
+  sameAs: [] as string[], // profili ufficiali (LinkedIn, GitHub…): aggiungili quando sono pubblici
+};
+
 export const contact = {
   email: 'alpwisestudio@gmail.com' as string | null,
   phone: null as string | null,
