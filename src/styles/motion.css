@@ -22,8 +22,7 @@
 .al-rot{display:inline-block}
 
 /* Orizzonte che sorge: layer più alto del 25%, a riposo già in posizione */
-.al-hz{position:absolute;left:0;right:0;top:0;height:125%;background:var(--horizon-arc),var(--horizon);transform:translateY(-20%);z-index:-1;pointer-events:none}
-.al-hz-night{background:var(--horizon-arc),var(--black)}
+.al-hz{position:absolute;left:0;right:0;top:0;height:125%;background:var(--horizon);transform:translateY(-20%);z-index:-1;pointer-events:none}
 .al-stage{position:relative;isolation:isolate;overflow:hidden}
 .al-stage>:not(.al-hz):not(.al-cols){position:relative;z-index:1}
 

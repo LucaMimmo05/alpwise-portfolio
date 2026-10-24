@@ -18,7 +18,7 @@ export function Hero() {
           Siti vetrina, software su misura, AI e automazioni. Tre sviluppatori ai piedi delle Prealpi, un solo interlocutore.
         </p>
         <div className="al-hero-ed-actions" data-m="fade-up" style={d(950)}>
-          <Button size="lg" href="#contatti">Inizia un progetto</Button>
+          <Button size="lg" href="/contatti">Inizia un progetto</Button>
           <Button size="lg" variant="outline" href="#lavori">Guarda i lavori</Button>
         </div>
       </div>

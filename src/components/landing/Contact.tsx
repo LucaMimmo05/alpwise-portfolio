@@ -2,13 +2,13 @@
 
 import { useState, type FormEvent } from 'react';
 import { Button, Checkbox, Field, Input, Mono, Toast } from '@/components/alpwise';
-import { Scene, Words } from '@/components/motion';
+import { Scene } from '@/components/motion';
 import { contact } from '@/content/site';
 
 type Errors = Partial<Record<'name' | 'email' | 'privacy', string>>;
 type Status = 'idle' | 'sending' | 'sent' | 'error' | 'off';
 
-/** Contatti: dati dello studio a sinistra, modulo a destra. Invia a /api/contact. */
+/** Pagina Contatti, sotto l'apertura: recapiti a sinistra, modulo a destra. Invia a /api/contact. */
 export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>('idle');
@@ -34,9 +34,7 @@ export function Contact() {
     <Scene as="section" id="contatti" className="al-section al-anchor">
       <div className="al-container al-contact">
         <div className="al-contact-info">
-          <Mono style={{ color: 'var(--text-subtle)' }}>Contatti/</Mono>
-          <h2><Words>Raccontaci il tuo progetto</Words></h2>
-          <p>Due righe bastano. Ti rispondiamo entro un giorno lavorativo, per email o con una chiamata.</p>
+          <Mono style={{ color: 'var(--text-subtle)' }}>Recapiti/</Mono>
           <dl className="al-spec">
             {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd className={v ? undefined : 'al-ph'}>{v ?? 'Da inserire'}</dd></div>)}
           </dl>

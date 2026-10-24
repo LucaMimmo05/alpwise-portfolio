@@ -29,7 +29,7 @@ export function Services() {
             {services.map((x, i) => (
               <button key={x.id} ref={(el) => { tabs.current[i] = el; }} className="al-svc-tab" role="tab" id={`svc-t-${x.id}`}
                 aria-selected={i === active} aria-controls={`svc-p-${x.id}`} tabIndex={i === active ? 0 : -1}
-                onClick={() => setActive(i)} onKeyDown={(e) => onKey(e, i)}>
+                onMouseEnter={() => setActive(i)} onClick={() => setActive(i)} onKeyDown={(e) => onKey(e, i)}>
                 <Mono>{x.label}</Mono>
                 <span className="al-svc-tab-t">{x.title}</span>
                 <Sq>{i === active ? '−' : '+'}</Sq>
@@ -41,7 +41,7 @@ export function Services() {
             <p className="al-svc-lead">{s.lead}</p>
             <p>{s.text}</p>
             <Tree items={s.points} />
-            <div><Button href="#contatti" arrow>Richiedi un preventivo</Button></div>
+            <div><Button href="/contatti" arrow>Richiedi un preventivo</Button></div>
           </div>
         </div>
       </div>

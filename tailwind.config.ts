@@ -42,7 +42,7 @@ export default {
       maxWidth: { container: '1360px' },
       boxShadow: { overlay: 'var(--shadow-overlay)' },
       backgroundImage: {
-        horizon: 'var(--horizon-arc), var(--horizon)',
+        horizon: 'var(--horizon)',
       },
       zIndex: { nav: '40', modal: '50', toast: '60' },
     },

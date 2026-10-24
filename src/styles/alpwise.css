@@ -14,8 +14,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:400 16px/26px var(--fo
 .al-grid-on-horizon::before{background-image:linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px)}
 
 /* ── Horizon: dawn at altitude. Identical in both themes ── */
-.al-horizon{background:var(--horizon-arc),var(--horizon);color:var(--white)}
-.al-horizon-night{background:var(--horizon-arc),var(--black);color:var(--white)}
+.al-horizon{background:var(--horizon);color:var(--white)}
 
 /* ── Dashed rule ── */
 .al-rule{border:0;border-top:1px dashed var(--line-grid);margin:0}

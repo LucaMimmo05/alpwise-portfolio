@@ -99,7 +99,6 @@
   --radius-xs: 2px;
   --radius-sm: 4px;
   --horizon: linear-gradient(180deg, #000000 0%, #04142E 34%, #0B4FC4 62%, #4DA2FF 80%, #C6E0FF 94%, #FFFFFF 100%);
-  --horizon-arc: radial-gradient(120% 70% at 50% 108%, #FFFFFF 0%, #C6E0FF 18%, #4DA2FF 34%, #0B4FC4 52%, #04142E00 74%);
   --motion-fast: 120ms;
   --motion-base: 560ms;
   --motion-slow: 900ms;

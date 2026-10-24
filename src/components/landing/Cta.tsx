@@ -6,7 +6,7 @@ import { Columns, RotatingWord, Scene, Scramble, Words } from '@/components/moti
 import { d } from '@/components/motion/delay';
 import { contact, ctaWords } from '@/content/site';
 
-/** CTA finale: arco di luce sul nero, staccata dai bordi, con la parola che cambia e l'email da copiare. */
+/** CTA finale: orizzonte che sorge, staccata dai bordi, con la parola che cambia e l'email da copiare. */
 export function Cta() {
   const addr = useRef<HTMLSpanElement>(null);
   const [copied, setCopied] = useState<'Copia' | 'Copiata' | 'Selezionata'>('Copia');
@@ -22,7 +22,7 @@ export function Cta() {
   return (
     <div className="al-cta-wrap">
       <Scene as="section" className="al-cta-night al-stage" aria-labelledby="cta-t">
-        <div className="al-hz al-hz-night" data-m="sunrise" style={d(200)} aria-hidden="true" />
+        <div className="al-hz" data-m="sunrise" style={d(200)} aria-hidden="true" />
         <Columns onHorizon />
         <div className="al-container al-cta-grid">
           <Scramble text="Contatti/" />
@@ -35,7 +35,7 @@ export function Cta() {
               <span ref={addr} className={contact.email ? undefined : 'al-ph'}>{contact.email ?? 'Email da inserire'}</span>
               {contact.email && <button type="button" onClick={copy}>{copied}</button>}
             </span>
-            <div><Button href="#contatti" arrow>Inizia un progetto</Button></div>
+            <div><Button href="/contatti" arrow>Inizia un progetto</Button></div>
           </div>
         </div>
       </Scene>

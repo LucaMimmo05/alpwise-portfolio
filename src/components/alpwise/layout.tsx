@@ -13,7 +13,7 @@ export function Navbar({ items, cta, clear, openMenu, homeHref = '/', onMenu, cl
   const active = items.find((i) => i.label === open && i.menu);
   return (
     <header className={cx('al-nav', clear && 'al-nav-clear', className)}>
-      <a href={homeHref} aria-label="Alpwise Studio, home" style={{ display: 'inline-flex', color: 'inherit' }}><Logo size={22} /></a>
+      <a href={homeHref} aria-label="Alpwise Studio, home" style={{ display: 'inline-flex', color: 'inherit' }}><Logo size={32} lockup="nav" /></a>
       <nav aria-label="Principale">
         <ul className="al-nav-links">
           {items.map((it) => (
