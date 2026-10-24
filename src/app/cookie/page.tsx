@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
+import { JsonLd, pageLd } from '@/components/seo/JsonLd';
+import { pageMetadata } from '@/components/seo/meta';
 import { Table } from '@/components/alpwise';
 import { LegalPage, Val, type LegalSection } from '@/components/landing/LegalPage';
 import { contact, legal } from '@/content/site';
 
-export const metadata: Metadata = {
-  title: 'Cookie · Alpwise Studio',
-  description: 'Quali cookie usa il sito di Alpwise Studio.',
-};
+const seo = { path: '/cookie', title: 'Cookie', description: 'Quali cookie usa il sito di Alpwise Studio.' };
+export const metadata: Metadata = pageMetadata(seo);
 
 // Oggi il codice del sito non imposta cookie né usa localStorage. Se si aggiungono analytics, mappe o video
 // incorporati, va aggiornata la tabella e serve un banner di consenso prima di caricarli.
@@ -57,5 +57,10 @@ const sections: LegalSection[] = [
 ];
 
 export default function CookiePage() {
-  return <LegalPage label="Cookie/" title="Cookie" lead="Usiamo solo quello che serve a far funzionare il sito. Niente tracciamento e niente pubblicità." sections={sections} />;
+  return (
+    <>
+      <JsonLd data={pageLd({ ...seo, name: seo.title })} />
+      <LegalPage label="Cookie/" title="Cookie" lead="Usiamo solo quello che serve a far funzionare il sito. Niente tracciamento e niente pubblicità." sections={sections} />
+    </>
+  );
 }

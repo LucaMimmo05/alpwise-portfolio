@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import { JsonLd, pageLd } from '@/components/seo/JsonLd';
+import { pageMetadata } from '@/components/seo/meta';
 import { LegalPage, Val, type LegalSection } from '@/components/landing/LegalPage';
 import { contact, legal } from '@/content/site';
 
-export const metadata: Metadata = {
-  title: 'Privacy · Alpwise Studio',
-  description: 'Come Alpwise Studio tratta i dati personali raccolti dal sito.',
-};
+const seo = { path: '/privacy', title: 'Privacy', description: 'Come Alpwise Studio tratta i dati personali raccolti dal sito.' };
+export const metadata: Metadata = pageMetadata(seo);
 
 // Struttura secondo l'art. 13 del GDPR. I segnaposto vanno riempiti e il testo verificato da un consulente.
 const sections: LegalSection[] = [
@@ -88,5 +88,10 @@ const sections: LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalPage label="Privacy/" title="Come trattiamo i tuoi dati" lead="Raccogliamo solo i dati che servono per risponderti e far funzionare il sito. Qui trovi quali sono, perché li usiamo e come puoi controllarli." sections={sections} />;
+  return (
+    <>
+      <JsonLd data={pageLd({ ...seo, name: seo.title })} />
+      <LegalPage label="Privacy/" title="Come trattiamo i tuoi dati" lead="Raccogliamo solo i dati che servono per risponderti e far funzionare il sito. Qui trovi quali sono, perché li usiamo e come puoi controllarli." sections={sections} />
+    </>
+  );
 }
