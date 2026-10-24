@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { JsonLd, pageLd } from '@/components/seo/JsonLd';
 import { pageMetadata } from '@/components/seo/meta';
 import { Table } from '@/components/alpwise';
 import { LegalPage, Val, type LegalSection } from '@/components/landing/LegalPage';
-import { contact, legal } from '@/content/site';
+import { contact, features, legal } from '@/content/site';
 
 const seo = { path: '/cookie', title: 'Cookie', description: 'Quali cookie usa il sito di Alpwise Studio.' };
 export const metadata: Metadata = pageMetadata(seo);
@@ -57,6 +58,7 @@ const sections: LegalSection[] = [
 ];
 
 export default function CookiePage() {
+  if (!features.legal) notFound(); // bozza: nascosta finché i dati legali non sono verificati
   return (
     <>
       <JsonLd data={pageLd({ ...seo, name: seo.title })} />

@@ -1,4 +1,4 @@
-import { contact, sectors, services, site, siteUrl, steps } from '@/content/site';
+import { contact, features, sectors, services, site, siteUrl, steps } from '@/content/site';
 
 // /llms.txt: riassunto in Markdown per gli assistenti AI (https://llmstxt.org). Generato dagli stessi testi del sito.
 export const dynamic = 'force-static';
@@ -29,14 +29,13 @@ export function GET() {
     `- Tempi di risposta: ${contact.reply.toLowerCase()}`,
     ...(contact.email ? [`- Email: ${contact.email}`] : []),
     ...(contact.phone ? [`- Telefono: ${contact.phone}`] : []),
-    `- Modulo: ${siteUrl}/contatti`,
+    ...(features.contactForm ? [`- Modulo: ${siteUrl}/contatti`] : []),
     '',
     '## Pagine',
     '',
-    `- [Home](${siteUrl}/): servizi, settori, metodo e lavori`,
+    `- [Home](${siteUrl}/): servizi, settori, metodo${features.work ? ' e lavori' : ''}`,
     `- [Contatti](${siteUrl}/contatti): raccontaci il tuo progetto`,
-    `- [Privacy](${siteUrl}/privacy)`,
-    `- [Cookie](${siteUrl}/cookie)`,
+    ...(features.legal ? [`- [Privacy](${siteUrl}/privacy)`, `- [Cookie](${siteUrl}/cookie)`] : []),
     '',
   ];
   return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });

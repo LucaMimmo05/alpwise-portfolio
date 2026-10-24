@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { JsonLd, pageLd } from '@/components/seo/JsonLd';
 import { pageMetadata } from '@/components/seo/meta';
 import { LegalPage, Val, type LegalSection } from '@/components/landing/LegalPage';
-import { contact, legal } from '@/content/site';
+import { contact, features, legal } from '@/content/site';
 
 const seo = { path: '/privacy', title: 'Privacy', description: 'Come Alpwise Studio tratta i dati personali raccolti dal sito.' };
 export const metadata: Metadata = pageMetadata(seo);
@@ -88,6 +89,7 @@ const sections: LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
+  if (!features.legal) notFound(); // bozza: nascosta finché i dati legali non sono verificati
   return (
     <>
       <JsonLd data={pageLd({ ...seo, name: seo.title })} />
