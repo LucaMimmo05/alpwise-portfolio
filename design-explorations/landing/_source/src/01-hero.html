@@ -1,0 +1,148 @@
+<!-- title="Alpwise Hero" num="01" label="Hero" desc="Tre varianti animate della hero della landing Alpwise Studio." -->
+<style>
+.hero-x{position:relative;isolation:isolate;overflow:hidden}
+.hero-x>:not(.hz):not(.m-cols){position:relative;z-index:1}
+.on-hz{color:var(--white)}
+.on-hz .hz-kicker{color:rgba(255,255,255,.78)}
+
+/* A · Alba */
+.hero-a{background:var(--black)}
+.hero-a .al-hero-body{gap:0}
+.hero-a .hz-kicker{margin-bottom:var(--space-6)}
+
+/* B · Editoriale */
+.hero-b{background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+.hb-body{padding:var(--space-20) 24px var(--space-16);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.hb-body .al-mono{grid-column:1 / -1;color:var(--text-subtle)}
+.hb-body h1{grid-column:1 / span 11;font:400 104px/100px var(--font-sans);letter-spacing:-.045em;margin:0;text-wrap:balance}
+.hb-lead{grid-column:7 / span 5;margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:var(--text-muted)}
+.hb-actions{grid-column:7 / span 6;display:flex;gap:var(--space-2);flex-wrap:wrap}
+.hb-band{position:relative;height:240px;display:flex;align-items:flex-end}
+.hb-band .al-hero-foot{width:100%}
+@media (max-width:1023px){.hb-body h1{font-size:72px;line-height:70px}.hb-lead,.hb-actions{grid-column:1 / span 9}}
+@media (max-width:767px){.hb-body{padding:var(--space-12) 16px;display:block}.hb-body h1{font-size:52px;line-height:52px;margin-top:var(--space-4)}.hb-lead{margin:var(--space-6) 0}.hb-band{height:180px}}
+
+/* C · Parola che cambia */
+.hero-c{background:var(--black);min-height:720px;display:flex;flex-direction:column}
+.hc-body{flex:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;padding:var(--space-20) 24px 0;align-content:start}
+.hc-main{grid-column:1 / span 8}
+.hc-main h1{font:400 88px/88px var(--font-sans);letter-spacing:-.045em;margin:var(--space-6) 0 0;text-wrap:balance}
+.hc-main .m-hl{white-space:nowrap;display:inline-block}
+.hc-main .m-hl .m-w{padding-bottom:.06em;margin-bottom:-.06em;clip-path:inset(0)}
+.hc-main p{font:300 20px/30px var(--font-sans);margin:var(--space-6) 0 0;max-width:46ch;color:rgba(255,255,255,.86)}
+.hc-side{grid-column:10 / -1;padding-top:var(--space-12)}
+.hc-side .al-tree{color:rgba(255,255,255,.86)}
+.hc-side .al-tree li::before{color:rgba(255,255,255,.5)}
+.hc-side .al-tree-title{color:var(--white)}
+@media (max-width:1023px){.hc-main{grid-column:1 / -1}.hc-main h1{font-size:64px;line-height:64px}.hc-side{grid-column:1 / -1;padding-top:0}}
+@media (max-width:767px){.hc-body{padding:var(--space-12) 16px 0;display:block}.hc-main h1{font-size:46px;line-height:48px}.hc-side{margin-top:var(--space-8)}.hero-c{min-height:680px}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Alba">
+  <section class="al-hero hero-x hero-a on-hz" data-scene>
+    <div class="hz" data-m="sunrise" aria-hidden="true"></div>
+    <div class="m-cols m-cols-hz" aria-hidden="true" style="--delay:150ms"></div>
+    <div data-m="fade" style="--delay:900ms">{{NAV:clear}}</div>
+    <div class="al-hero-body">
+      <span class="al-mono hz-kicker" data-scramble data-delay="300">Studio digitale/ Gallarate, VA</span>
+      <h1 data-split="words" style="--delay:350ms">Software su misura, fatto in quota</h1>
+      <p data-m="fade-up" style="--delay:950ms">Siti vetrina, software su misura, AI e automazioni per le PMI. Parli direttamente con chi scrive il codice.</p>
+      <div class="al-hero-actions" data-m="fade-up" style="--delay:1100ms">
+        <a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a>
+        <a class="al-btn al-btn-light al-btn-lg" href="#">Guarda i lavori</a>
+      </div>
+    </div>
+    <div class="al-hero-foot">
+      <span class="al-mono" data-scramble data-delay="1300">Siti vetrina/</span>
+      <span class="al-mono" data-scramble data-delay="1420">Software su misura/</span>
+      <span class="al-mono" data-scramble data-delay="1540">AI e automazioni/</span>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Alba: la hero del design system, con l'orizzonte che sorge</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>0 ms: il cielo sale di 20% in 1,8 s</li><li>150 ms: le 12 colonne si disegnano dall'alto</li>
+        <li>300 ms: etichetta mono in decodifica</li><li>350 ms: il titolo sale parola per parola</li>
+        <li>950 ms: lead e bottoni in dissolvenza</li><li>1.300 ms: etichette in basso decodificate</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>È la più fedele al design system e la più sicura. Il movimento racconta il marchio (l'alba in quota) senza aggiungere motivi grafici.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Editoriale">
+  <section class="hero-x hero-b" data-scene>
+    <div class="m-cols" aria-hidden="true"></div>
+    <div data-m="fade" style="--delay:700ms">{{NAV}}</div>
+    <div class="hb-body">
+      <span class="al-mono" data-scramble data-delay="200">Studio digitale/ Gallarate, VA</span>
+      <h1 data-split="words" style="--delay:250ms">Software su misura, fatto in quota</h1>
+      <p class="hb-lead" data-m="fade-up" style="--delay:800ms">Siti vetrina, software su misura, AI e automazioni per le PMI. Parli direttamente con chi scrive il codice.</p>
+      <div class="hb-actions" data-m="fade-up" style="--delay:950ms">
+        <a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a>
+        <a class="al-btn al-btn-outline al-btn-lg" href="#">Guarda i lavori</a>
+      </div>
+    </div>
+    <div class="hb-band al-horizon al-grid al-grid-on-horizon" data-m="band" style="--delay:450ms">
+      <div class="al-hero-foot">
+        <span class="al-mono" data-scramble data-delay="1300">Siti vetrina/</span>
+        <span class="al-mono" data-scramble data-delay="1420">Software su misura/</span>
+        <span class="al-mono" data-scramble data-delay="1540">AI e automazioni/</span>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Editoriale: titolo a sinistra sul fondo del tema, orizzonte come fascia</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>0 ms: colonne della griglia</li><li>250 ms: titolo parola per parola</li>
+        <li>450 ms: la fascia dell'orizzonte si apre dal basso in 1,2 s</li><li>800 ms: lead e bottoni</li><li>1.300 ms: etichette decodificate</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Più leggibile e più "studio": il titolo vive nel tema (Scuro o Chiaro) e l'orizzonte resta la firma in basso. In Chiaro è la variante più luminosa. Testo bianco mai sull'orizzonte: lì solo etichette mono nere.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Parola che cambia">
+  <section class="hero-x hero-c on-hz" data-scene>
+    <div class="hz" data-m="sunrise" aria-hidden="true"></div>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div data-m="fade" style="--delay:900ms">{{NAV:clear}}</div>
+    <div class="hc-body">
+      <div class="hc-main">
+        <span class="al-mono hz-kicker" data-scramble data-delay="200">45.66°N 8.79°E/ Gallarate, VA</span>
+        <h1 data-split="words" style="--delay:300ms;--hl-delay:900ms">Software su misura per <span class="m-hl" aria-hidden="true"><span class="m-w"><span class="rot" data-rotate="la tua azienda|il tuo studio|la tua officina|il tuo negozio" data-every="2600" style="display:inline-block">la tua azienda</span></span></span><span class="sr-only">la tua azienda</span></h1>
+        <p data-m="fade-up" style="--delay:1000ms">Siti vetrina, software su misura, AI e automazioni. Tre sviluppatori ai piedi delle Prealpi, un solo interlocutore.</p>
+        <div class="al-hero-actions" data-m="fade-up" style="--delay:1150ms;justify-content:flex-start">
+          <a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a>
+          <a class="al-btn al-btn-light al-btn-lg" href="#">Guarda i lavori</a>
+        </div>
+      </div>
+      <div class="hc-side">
+        <div class="al-mono al-tree-title" data-split="chars" style="--delay:1200ms">Servizi/</div>
+        <ul class="al-tree">
+          <li><span data-split="chars" style="--delay:1400ms">Siti vetrina</span></li>
+          <li><span data-split="chars" style="--delay:1700ms">Software e SaaS B2B</span></li>
+          <li><span data-split="chars" style="--delay:2150ms">AI e automazioni</span><span class="m-caret" aria-hidden="true"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="al-hero-foot">
+      <span class="al-mono">Siti vetrina/</span><span class="al-mono">Software su misura/</span><span class="al-mono">AI e automazioni/</span>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Parola che cambia: il titolo parla al settore di chi legge</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>300 ms: titolo parola per parola</li><li>900 ms: l'evidenziatore azzurro si stende sulla parola</li>
+        <li>ogni 2,6 s: la parola esce in alto ed entra dal basso</li><li>1.200 ms: l'elenco servizi si digita in mono</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più viva. Le coordinate e l'elenco digitato danno il tono tecnico. Da valutare: la rotazione è un movimento continuo, quindi si ferma con riduci movimento e i lettori di schermo leggono solo la prima parola.</p></div>
+    </div>
+  </div>
+</div>

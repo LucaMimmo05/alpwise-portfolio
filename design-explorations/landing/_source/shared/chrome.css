@@ -1,0 +1,29 @@
+/* ── Cornice dell'esplorazione: barra varianti + note. Solo token del design system. ── */
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+.x-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:var(--z-modal);display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:var(--z-toast);background:var(--bg)}
+.x-title{display:flex;gap:10px;align-items:baseline;color:var(--text-subtle);min-width:0}
+.x-title b{font:400 15px/20px var(--font-sans);color:var(--text);letter-spacing:-.01em}
+.x-seg{display:flex;border:1px solid var(--line);border-radius:var(--radius-xs);overflow:hidden}
+.x-seg button{font:400 11px/16px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;background:transparent;color:var(--text-muted);border:0;border-right:1px solid var(--line);padding:7px 11px;cursor:pointer;transition:background-color var(--m-fast),color var(--m-fast)}
+.x-seg button:last-child{border-right:0}
+.x-seg button:hover{color:var(--text)}
+.x-seg button[aria-selected="true"],.x-seg button[aria-pressed="true"]{background:var(--primary);color:var(--on-primary)}
+.x-tools{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.x-variant[hidden]{display:none!important}
+
+.x-notes{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;padding-block:var(--space-16);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:var(--surface-sunken);border-top:1px dashed var(--line-grid);color:var(--text-muted);font-size:15px;line-height:24px}
+.x-notes>.al-mono{grid-column:1 / span 3;color:var(--text-subtle)}
+.x-notes>div{grid-column:4 / -1;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.x-notes h3{font:400 24px/30px var(--font-sans);letter-spacing:-.015em;color:var(--text);margin:0 0 8px;grid-column:1 / -1}
+.x-notes p{margin:0}
+@media (max-width:767px){.x-notes{display:block}.x-notes>.al-mono{display:block;margin-bottom:16px}}
+
+/* segnaposto: contenuto reale da inserire (clienti, citazioni, contatti) */
+.ph{outline:1px dashed var(--line-strong);outline-offset:3px;color:var(--text-subtle)}
+
+/* gutter sicuro per le sezioni */
+.al-section{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:768px){.al-section{padding-left:max(var(--space-8),env(safe-area-inset-left,0px));padding-right:max(var(--space-8),env(safe-area-inset-right,0px))}}
+.al-container{width:100%}

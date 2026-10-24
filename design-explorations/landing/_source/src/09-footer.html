@@ -1,0 +1,86 @@
+<!-- title="Alpwise Footer" num="09" label="Footer" desc="Due varianti animate del footer: wordmark grande e compatto." -->
+<style>
+.al-footer .al-mono{color:inherit}
+.ft-word{overflow:hidden;display:block;margin-top:var(--space-16);color:var(--white)}
+.ft-word>span{display:block}
+:is(.play,.armed) .ft-word>span{animation:m-rise 1400ms var(--m-ease) both;animation-delay:300ms}
+.ft-top{display:inline-flex;align-items:center;gap:var(--space-2);color:var(--grey-300);text-decoration:none}
+.ft-top:hover{color:var(--white)}
+
+/* B · Compatto */
+.ft-b{background:var(--black);color:var(--grey-300);border-top:1px solid var(--ink-700);padding-block:var(--space-8);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ft-b-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-6)}
+.ft-b nav ul{display:flex;flex-wrap:wrap;gap:var(--space-6);list-style:none;margin:0;padding:0}
+.ft-b nav a{color:var(--grey-300);text-decoration:none;font-size:14px}
+.ft-b nav a:hover{color:var(--white)}
+.ft-b .ft-logo{color:var(--white);display:inline-flex}
+.ft-b-bottom{margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px dashed var(--ink-600);display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);color:#7D8693}
+.ft-b :focus-visible{outline-color:var(--sky-400)}
+.ft-live::before{content:"";display:inline-block;width:6px;height:6px;background:var(--success);margin-right:8px;vertical-align:1px}
+.ft-live.off::before{background:var(--grey-400)}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Wordmark">
+  <div style="height:var(--space-32)" aria-hidden="true"></div>
+  <footer class="al-footer" data-scene>
+    <div class="al-footer-inner al-container">
+      <div class="al-footer-grid" data-m="stagger" style="--delay:100ms">
+        <div><p style="margin:0;max-width:34ch;color:var(--white);font-size:18px;line-height:26px;font-weight:300">Siti, software e automazioni per le PMI. Da Gallarate, ai piedi delle Prealpi.</p></div>
+        <div><div class="al-mono al-tree-title">Servizi/</div><ul class="al-tree"><li><a href="#">Siti vetrina</a></li><li><a href="#">Software su misura</a></li><li><a href="#">AI e automazioni</a></li></ul></div>
+        <div><div class="al-mono al-tree-title">Studio/</div><ul class="al-tree"><li><a href="#">Per chi lavoriamo</a></li><li><a href="#">Metodo</a></li><li><a href="#">Lavori</a></li><li><a href="#">Contatti</a></li></ul></div>
+        <div><div class="al-mono al-tree-title">Legale/</div><ul class="al-tree"><li><a href="#">Privacy</a></li><li><a href="#">Cookie</a></li></ul></div>
+      </div>
+      <span class="ft-word"><span>{{LOGO:0}}</span></span>
+      <div class="al-footer-bottom"><span class="al-mono">© 2026 Alpwise Studio · P.IVA <span class="ph" style="color:inherit">da inserire</span></span><a class="ft-top al-mono" href="#" id="ft-up">Torna su ↑</a></div>
+    </div>
+  </footer>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Wordmark: il componente Footer, con il logo che sale</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Le colonne salgono in sequenza</li><li>Il wordmark a tutta larghezza sale da una maschera in 1,4 s</li><li>Sempre su nero, in entrambi i temi</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Chiusura forte, molto riconoscibile. Il wordmark resta bianco, mai azzurro.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Compatto">
+  <div style="height:var(--space-32)" aria-hidden="true"></div>
+  <footer class="ft-b" data-scene>
+    <div class="al-container">
+      <div class="ft-b-row" data-m="fade-up">
+        <a href="#" class="ft-logo" aria-label="Alpwise Studio, home">{{LOGO:26}}</a>
+        <nav aria-label="Footer"><ul><li><a href="#">Servizi</a></li><li><a href="#">Per chi</a></li><li><a href="#">Metodo</a></li><li><a href="#">Lavori</a></li><li><a href="#">Contatti</a></li></ul></nav>
+      </div>
+      <div class="ft-b-bottom" data-m="fade" style="--delay:250ms">
+        <span class="al-mono">© 2026 Alpwise Studio · Gallarate, VA</span>
+        <span class="al-mono ft-live" id="ft-live" aria-live="off"></span>
+        <span class="al-mono"><a href="#" style="color:inherit">Privacy</a> · <a href="#" style="color:inherit">Cookie</a></span>
+      </div>
+    </div>
+  </footer>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Compatto: una riga, più l'ora in studio</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Solo una dissolvenza: il footer non deve fare spettacolo</li><li>Stato scritto: "In studio adesso" o "Studio chiuso", con l'ora di Gallarate</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Se la CTA sopra è già forte. L'orario di studio (9–18, lun–ven) è un'ipotesi da confermare.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  document.getElementById('ft-up').onclick = (e) => { e.preventDefault(); scrollTo({ top: 0, behavior: M.reduced() ? 'auto' : 'smooth' }); };
+  const el = document.getElementById('ft-live');
+  const tick = () => {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit', weekday: 'short', hourCycle: 'h23' }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const h = +p.hour, wk = !['sab', 'dom'].includes(p.weekday.replace('.', ''));
+    const open = wk && h >= 9 && h < 18;
+    el.classList.toggle('off', !open);
+    el.textContent = `${open ? 'In studio adesso' : 'Studio chiuso'} · ${p.hour}:${p.minute}`;
+  };
+  tick(); setInterval(tick, 30000);
+})();
+</script>

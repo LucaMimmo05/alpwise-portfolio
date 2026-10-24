@@ -1,0 +1,137 @@
+<!-- title="Alpwise Clienti" num="06" label="Clienti" desc="Tre varianti animate della sezione testimonianze, con segnaposto per citazioni reali." -->
+<style>
+.cl-a .al-quote blockquote{font-size:44px;line-height:52px}
+@media (max-width:767px){.cl-a .al-quote blockquote{font-size:26px;line-height:33px}}
+
+/* B · Rotazione */
+.cl-rot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.cl-rot>.al-mono{grid-column:1 / span 3;color:var(--text-subtle);padding-top:10px}
+.cl-stage{grid-column:4 / -1;display:grid}
+.cl-slide{grid-area:1 / 1;margin:0;display:flex;flex-direction:column;gap:var(--space-8);visibility:hidden}
+.cl-slide.on{visibility:visible}
+.cl-slide blockquote{margin:0;font:400 36px/44px var(--font-sans);letter-spacing:-.025em;color:var(--text);text-wrap:pretty;max-width:28ch}
+.cl-slide figcaption{display:flex;gap:var(--space-2);align-items:center;color:var(--text-subtle)}
+.cl-slide figcaption b{font:500 14px/20px var(--font-sans);color:var(--text)}
+.cl-slide.in blockquote,.cl-slide.in figcaption{animation:m-fade-up 700ms var(--m-ease) both}
+.cl-slide.in figcaption{animation-delay:150ms}
+.cl-slide.out{visibility:visible;opacity:0;transition:opacity 300ms}
+.cl-ctl{grid-column:4 / -1;display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-12)}
+.cl-ctl .al-data{color:var(--text-subtle);min-width:5ch}
+.cl-prog{flex:1;height:1px;background:var(--line);position:relative;overflow:hidden}
+.cl-prog i{position:absolute;inset:0;background:var(--primary);transform-origin:left;transform:scaleX(0)}
+.cl-prog i.run{animation:m-draw-x 7000ms linear both}
+.cl-rot.paused .cl-prog i{animation-play-state:paused}
+@media (max-width:767px){.cl-rot{display:block}.cl-slide blockquote{font-size:26px;line-height:33px;margin-top:12px}}
+@media (prefers-reduced-motion:reduce){.cl-prog{visibility:hidden}.cl-slide.in *{animation:none}}
+
+/* C · Griglia */
+.cl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cl-cell{background:var(--surface);margin:0;padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-12);min-height:320px}
+.cl-cell blockquote{margin:0;font:400 20px/28px var(--font-sans);letter-spacing:-.01em;color:var(--text)}
+.cl-cell figcaption{margin-top:auto;display:flex;flex-direction:column;gap:2px;color:var(--text-subtle)}
+.cl-cell figcaption b{font:500 14px/20px var(--font-sans);color:var(--text)}
+@media (max-width:860px){.cl-grid{grid-template-columns:1fr}.cl-cell{min-height:0}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Citazione">
+  <section class="al-section cl-a" data-scene>
+    <div class="al-container">
+      <figure class="al-quote">
+        <span class="al-mono" data-scramble>Clienti/</span>
+        <blockquote data-split="read" style="--delay:200ms" class="ph">Qui va una citazione reale di un cliente. Due o tre frasi su com'era prima e cosa è cambiato dopo il progetto, con le sue parole.</blockquote>
+        <figcaption data-m="fade-up" style="--delay:1700ms"><span class="al-sq" aria-hidden="true">·</span><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption>
+      </figure>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Citazione: una sola voce, grande</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Stessa lettura della sezione Studio: le parole si accendono in sequenza</li><li>La firma entra quando la frase è finita</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Basta una citazione vera e forte. Il componente Testimonial è già pronto.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Rotazione">
+  <section class="al-section" data-scene id="cl-b">
+    <div class="al-container">
+      <div class="cl-rot" id="cl-rot">
+        <span class="al-mono" data-scramble>Clienti/</span>
+        <div class="cl-stage" aria-live="polite">
+          <figure class="cl-slide on"><blockquote class="ph">Prima citazione reale: cosa è cambiato nel lavoro di tutti i giorni.</blockquote><figcaption><span class="al-sq" aria-hidden="true">·</span><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption></figure>
+          <figure class="cl-slide"><blockquote class="ph">Seconda citazione reale: com'è stato lavorare con noi tre.</blockquote><figcaption><span class="al-sq" aria-hidden="true">·</span><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption></figure>
+          <figure class="cl-slide"><blockquote class="ph">Terza citazione reale: un risultato concreto, detto dal cliente.</blockquote><figcaption><span class="al-sq" aria-hidden="true">·</span><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption></figure>
+        </div>
+        <div class="cl-ctl">
+          <span class="al-data" id="cl-n">1 / 3</span>
+          <span class="cl-prog" aria-hidden="true"><i></i></span>
+          <button class="al-icon-btn" type="button" id="cl-pause" aria-label="Metti in pausa">‖</button>
+          <button class="al-icon-btn" type="button" id="cl-prev" aria-label="Citazione precedente">←</button>
+          <button class="al-icon-btn" type="button" id="cl-next" aria-label="Citazione successiva">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Rotazione: tre voci, una alla volta</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>La citazione esce in dissolvenza, la nuova sale in 700 ms</li><li>Il filo azzurro conta 7 s prima della successiva</li><li>Pausa con il bottone o passandoci sopra; si ferma da sola con riduci movimento</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Quando avrete tre o più citazioni vere. Occupa lo spazio di una sola.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Griglia">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Clienti/</span>
+        <h2 data-split="words" style="--delay:150ms">Lo dicono loro</h2>
+      </div>
+      <div class="cl-grid" data-m="stagger" style="--delay:400ms">
+        <figure class="cl-cell"><blockquote class="ph">Citazione reale breve, massimo tre righe.</blockquote><figcaption><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption></figure>
+        <figure class="cl-cell"><blockquote class="ph">Citazione reale breve, massimo tre righe.</blockquote><figcaption><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption></figure>
+        <figure class="cl-cell"><blockquote class="ph">Citazione reale breve, massimo tre righe.</blockquote><figcaption><b class="ph">Nome Cognome</b><span class="al-mono-sm">Ruolo, Azienda</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Griglia: tre citazioni brevi affiancate</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Titolo parola per parola, poi le celle in sequenza</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Tutto visibile senza interazione, la più accessibile. Funziona con citazioni corte.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const root = document.getElementById('cl-rot'), slides = [...root.querySelectorAll('.cl-slide')], bar = root.querySelector('.cl-prog i');
+  const n = document.getElementById('cl-n'), pb = document.getElementById('cl-pause');
+  let k = 0, paused = M.reduced(), hover = false;
+  const run = () => { bar.classList.remove('run'); void bar.offsetWidth; if (!M.reduced()) bar.classList.add('run'); };
+  const show = (i) => {
+    const prev = slides[k]; k = (i + slides.length) % slides.length;
+    slides.forEach((s) => s.classList.remove('on', 'in'));
+    if (prev !== slides[k]) { prev.classList.add('out'); setTimeout(() => prev.classList.remove('out'), 300); }
+    slides[k].classList.add('on'); void slides[k].offsetWidth; slides[k].classList.add('in');
+    n.textContent = `${k + 1} / ${slides.length}`; run();
+  };
+  bar.addEventListener('animationend', () => { if (!paused && !hover) show(k + 1); });
+  const sync = () => root.classList.toggle('paused', paused || hover);
+  root.onmouseenter = () => { hover = true; sync(); }; root.onmouseleave = () => { hover = false; sync(); };
+  root.addEventListener('focusin', () => { hover = true; sync(); }); root.addEventListener('focusout', () => { hover = false; sync(); });
+  pb.onclick = () => { paused = !paused; pb.textContent = paused ? '▶' : '‖'; pb.setAttribute('aria-label', paused ? 'Riprendi' : 'Metti in pausa'); sync(); };
+  document.getElementById('cl-prev').onclick = () => show(k - 1);
+  document.getElementById('cl-next').onclick = () => show(k + 1);
+  if (M.reduced()) { pb.hidden = true; sync(); }
+  M.on('#cl-b', { play() { show(0); } });
+})();
+</script>

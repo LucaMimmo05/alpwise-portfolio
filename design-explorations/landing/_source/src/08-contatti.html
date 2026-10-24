@@ -1,0 +1,193 @@
+<!-- title="Alpwise Contatti" num="08" label="Contatti" desc="Tre varianti animate della sezione contatti: modulo, passo per passo e contatti diretti." -->
+<style>
+.ct-toast{animation:m-fade-up var(--m-base) var(--m-ease) both}
+.al-contact-info .al-spec div{position:relative;border-bottom:0}
+.al-contact-info .al-spec div::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px dashed var(--line-grid);transform-origin:left}
+:is(.play,.armed) .al-contact-info .al-spec div::after{animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:calc(600ms + var(--i,0) * 120ms)}
+
+/* B · Passo per passo */
+.ct-b{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.ct-b-l{grid-column:1 / span 4;display:flex;flex-direction:column;gap:var(--space-6)}
+.ct-b-l .al-mono{color:var(--text-subtle)}
+.ct-b-l h2{font:400 52px/56px var(--font-sans);letter-spacing:-.035em;margin:0;color:var(--text);text-wrap:balance}
+.ct-steps{display:flex;gap:var(--space-2);align-items:center}
+.ct-steps i{width:32px;height:2px;background:var(--line-strong);transition:background-color 300ms}
+.ct-steps i.on{background:var(--primary)}
+.ct-b-r{grid-column:6 / -1;border:1px solid var(--line);background:var(--surface);padding:var(--space-8);min-height:420px;display:flex;flex-direction:column}
+.ct-step{display:flex;flex-direction:column;gap:var(--space-6);flex:1}
+.ct-step[hidden]{display:none}
+.ct-step.in>*{animation:m-fade-up var(--m-base) var(--m-ease) both}.ct-step.in>:nth-child(2){animation-delay:70ms}.ct-step.in>:nth-child(3){animation-delay:140ms}
+.ct-step h3{font:400 30px/34px var(--font-sans);letter-spacing:-.025em;margin:0;color:var(--text)}
+.ct-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ct-choice{position:relative;background:var(--surface);padding:var(--space-4);cursor:pointer;display:flex;flex-direction:column;gap:var(--space-2);color:var(--text);transition:background-color var(--m-fast)}
+.ct-choice:hover{background:var(--surface-raised)}
+.ct-choice input{position:absolute;opacity:0}
+.ct-choice .al-mono{color:var(--text-subtle)}
+.ct-choice:has(input:checked){background:var(--primary);color:var(--on-primary)}
+.ct-choice:has(input:checked) .al-mono{color:var(--on-primary)}
+.ct-choice:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:-2px}
+.ct-nav{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:var(--space-6)}
+@media (max-width:860px){.ct-b{display:block}.ct-b-l h2{font-size:36px;line-height:40px}.ct-b-r{margin-top:var(--space-8);padding:var(--space-6);min-height:0}.ct-choices{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.ct-step.in>*,.ct-toast{animation:none}}
+
+/* C · Diretto */
+.ct-c-rows{border-top:1px solid var(--line)}
+.ct-c-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:baseline;padding:28px 0;position:relative}
+.ct-c-row::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px solid var(--line);transform-origin:left}
+:is(.play,.armed) .ct-c-row::after{animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 140ms)}
+.ct-c-row>.al-mono{grid-column:1 / span 3;color:var(--text-subtle)}
+.ct-c-row .v{grid-column:4 / span 7;font:400 52px/56px var(--font-sans);letter-spacing:-.035em;color:var(--text);text-decoration:none;background:linear-gradient(var(--primary),var(--primary)) no-repeat left bottom / 0% 2px;transition:background-size 400ms var(--m-ease);justify-self:start;overflow-wrap:anywhere}
+.ct-c-row a.v:hover{background-size:100% 2px}
+.ct-c-row .n{grid-column:11 / -1;justify-self:end;color:var(--text-subtle)}
+@media (max-width:860px){.ct-c-row{display:block}.ct-c-row .v{display:inline-block;font-size:30px;line-height:36px;margin:8px 0}.ct-c-row .n{display:block}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Modulo">
+  <section class="al-section" data-scene>
+    <div class="al-container al-contact">
+      <div class="al-contact-info">
+        <span class="al-mono" data-scramble style="color:var(--text-subtle)">Contatti/</span>
+        <h2 data-split="words" style="--delay:150ms">Raccontaci il tuo progetto</h2>
+        <p data-m="fade-up" style="--delay:550ms">Due righe bastano. Ti rispondiamo entro un giorno lavorativo, per email o con una chiamata.</p>
+        <dl class="al-spec" data-m="stagger" style="--delay:600ms">
+          <div><dt>Email</dt><dd class="ph">ciao@dominio.it</dd></div>
+          <div><dt>Telefono</dt><dd class="ph">+39 000 000 0000</dd></div>
+          <div><dt>Sede</dt><dd>Gallarate, VA</dd></div>
+          <div><dt>Risposta</dt><dd>Entro un giorno lavorativo</dd></div>
+        </dl>
+      </div>
+      <div class="al-contact-form" data-m="fade-up" style="--delay:400ms">
+        <form class="al-form" id="ct-form" novalidate>
+          <div class="al-form-row" data-m="stagger" style="--delay:500ms">
+            <div class="al-fld"><label class="al-label" for="ct-name">Nome <span class="al-req">Obbligatorio</span></label><input class="al-input" id="ct-name" name="name" autocomplete="name" placeholder="Mario Rossi" required aria-describedby="ct-name-e"><span class="al-error" id="ct-name-e" role="alert" hidden>Scrivi il tuo nome</span></div>
+            <div class="al-fld"><label class="al-label" for="ct-email">Email <span class="al-req">Obbligatorio</span></label><input class="al-input" id="ct-email" name="email" type="email" autocomplete="email" placeholder="mario@azienda.it" required aria-describedby="ct-email-e"><span class="al-error" id="ct-email-e" role="alert" hidden>Manca la parte dopo la @, es. mario@azienda.it</span></div>
+          </div>
+          <div class="al-fld"><label class="al-label" for="ct-svc">Di cosa hai bisogno?</label><select class="al-input" id="ct-svc" name="service"><option>Sito vetrina</option><option>Software o SaaS su misura</option><option>AI e automazioni</option><option>Non lo so ancora</option></select></div>
+          <div class="al-fld"><label class="al-label" for="ct-msg">Il progetto in due righe</label><textarea class="al-input" id="ct-msg" name="message" aria-describedby="ct-msg-h"></textarea><span class="al-hint" id="ct-msg-h">Obiettivo e tempi bastano.</span></div>
+          <label class="al-check"><input type="checkbox" id="ct-priv" required><span class="al-box">{{ICON:check:11}}</span>Ho letto l'informativa privacy.</label>
+          <div><button class="al-btn al-btn-primary" type="submit">Invia richiesta <span class="al-arr" aria-hidden="true">→</span></button></div>
+        </form>
+        <div class="al-toast al-toast-success ct-toast" id="ct-ok" role="status" hidden><span class="al-sq" aria-hidden="true">✓</span><div><strong>Messaggio inviato</strong>Ti rispondiamo entro un giorno lavorativo.</div><span></span></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Modulo: il componente Contact, con validazione e conferma</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Righe dei contatti tracciate in sequenza</li><li>Il riquadro del modulo sale, poi i campi</li><li>Invio: il modulo lascia il posto al toast "Messaggio inviato"</li><li>Prova a inviare vuoto: errori scritti a parole</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più completa e già pronta in <span class="al-mono-sm">sections.tsx</span>. Email e telefono sono segnaposto.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Passo per passo">
+  <section class="al-section" data-scene id="ct-b">
+    <div class="al-container ct-b">
+      <div class="ct-b-l">
+        <span class="al-mono" data-scramble>Contatti/</span>
+        <h2 data-split="words" style="--delay:150ms">Tre domande e ci sentiamo</h2>
+        <div class="ct-steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+        <span class="al-mono" id="ct-n" aria-live="polite">Passo 1/3</span>
+      </div>
+      <form class="ct-b-r" id="ct-wiz" data-m="fade-up" style="--delay:350ms" novalidate>
+        <fieldset class="ct-step in" style="border:0;margin:0;padding:0"><legend class="sr-only">Di cosa hai bisogno?</legend>
+          <h3 aria-hidden="true">Di cosa hai bisogno?</h3>
+          <div class="ct-choices">
+            <label class="ct-choice"><input type="radio" name="need" value="web" checked><span class="al-mono">Web/</span>Un sito vetrina</label>
+            <label class="ct-choice"><input type="radio" name="need" value="sw"><span class="al-mono">Software/</span>Software su misura</label>
+            <label class="ct-choice"><input type="radio" name="need" value="ai"><span class="al-mono">AI/</span>AI e automazioni</label>
+            <label class="ct-choice"><input type="radio" name="need" value="?"><span class="al-mono">Boh/</span>Non lo so ancora</label>
+          </div>
+        </fieldset>
+        <div class="ct-step" hidden>
+          <h3>Il progetto in due righe</h3>
+          <div class="al-fld"><label class="al-label" for="ct-b-msg">Cosa ti rallenta oggi?</label><textarea class="al-input" id="ct-b-msg"></textarea><span class="al-hint">Obiettivo e tempi bastano.</span></div>
+        </div>
+        <div class="ct-step" hidden>
+          <h3>Come ti ricontattiamo?</h3>
+          <div class="al-form-row">
+            <div class="al-fld"><label class="al-label" for="ct-b-name">Nome</label><input class="al-input" id="ct-b-name" autocomplete="name" placeholder="Mario Rossi"></div>
+            <div class="al-fld"><label class="al-label" for="ct-b-email">Email</label><input class="al-input" id="ct-b-email" type="email" autocomplete="email" placeholder="mario@azienda.it"></div>
+          </div>
+          <label class="al-check"><input type="checkbox" id="ct-b-priv"><span class="al-box">{{ICON:check:11}}</span>Ho letto l'informativa privacy.</label>
+        </div>
+        <div class="ct-step" hidden><div class="al-toast al-toast-success" role="status"><span class="al-sq" aria-hidden="true">✓</span><div><strong>Messaggio inviato</strong>Ti rispondiamo entro un giorno lavorativo.</div><span></span></div></div>
+        <div class="ct-nav"><button class="al-btn al-btn-ghost" type="button" id="ct-back">← Indietro</button><button class="al-btn al-btn-primary" type="submit" id="ct-fwd">Avanti <span class="al-arr" aria-hidden="true">→</span></button></div>
+      </form>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Passo per passo: una domanda alla volta</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Ogni passo entra a cascata: titolo, campi, aiuto</li><li>Le tre lineette si accendono di azzurro, lo stato è scritto: "Passo 2/3"</li><li>La scelta selezionata si riempie di azzurro con testo nero</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Il primo passo è un clic, quindi si comincia più volentieri. Contro: un passaggio in più rispetto al modulo unico.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Diretto">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Contatti/</span>
+        <h2 data-split="words" style="--delay:150ms">Scrivici, chiamaci o passa a trovarci</h2>
+      </div>
+      <div class="ct-c-rows" data-m="stagger" style="--delay:400ms">
+        <div class="ct-c-row"><span class="al-mono">Scrivici/</span><a class="v" href="#"><span class="ph">ciao@dominio.it</span></a><span class="n al-mono-sm">Risposta entro un giorno lavorativo</span></div>
+        <div class="ct-c-row"><span class="al-mono">Chiamaci/</span><a class="v" href="#"><span class="ph">+39 000 000 0000</span></a><span class="n al-mono-sm" id="ct-now"></span></div>
+        <div class="ct-c-row"><span class="al-mono">Sede/</span><span class="v">Gallarate, VA</span><span class="n al-mono-sm">45.66°N 8.79°E</span></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Diretto: niente modulo, solo contatti grandi</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Le righe salgono e si tracciano in sequenza</li><li>Hover: una linea azzurra di 2 px si stende sotto il contatto</li><li>Accanto al telefono l'ora attuale a Gallarate</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più sincera per uno studio di tre persone. Si abbina bene alla CTA Alba, che porta già al modulo su un'altra pagina.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  // A: validazione e toast
+  const f = document.getElementById('ct-form');
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = f.querySelector('#ct-name'), m = f.querySelector('#ct-email');
+    const bad = [[n, !n.value.trim()], [m, !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.value)]];
+    bad.forEach(([el, b]) => { el.setAttribute('aria-invalid', b); document.getElementById(el.id + '-e').hidden = !b; });
+    if (bad.some(([, b]) => b)) { bad.find(([, b]) => b)[0].focus(); return; }
+    f.hidden = true; document.getElementById('ct-ok').hidden = false;
+  });
+  M.on('#a [data-scene]', { stop() { f.hidden = false; f.reset(); document.getElementById('ct-ok').hidden = true; } });
+
+  // B: wizard
+  const w = document.getElementById('ct-wiz'), steps = [...w.querySelectorAll('.ct-step')], bars = [...document.querySelectorAll('.ct-steps i')];
+  const lab = document.getElementById('ct-n'), back = document.getElementById('ct-back'), fwd = document.getElementById('ct-fwd');
+  let k = 0;
+  const go = (i) => {
+    k = i; steps.forEach((s, j) => { s.hidden = j !== i; s.classList.remove('in'); });
+    void steps[i].offsetWidth; steps[i].classList.add('in');
+    bars.forEach((b, j) => b.classList.toggle('on', j <= Math.min(i, 2)));
+    lab.textContent = i < 3 ? `Passo ${i + 1}/3` : 'Inviato/';
+    back.style.visibility = i > 0 && i < 3 ? 'visible' : 'hidden';
+    fwd.hidden = i === 3; fwd.firstChild.textContent = i === 2 ? 'Invia richiesta ' : 'Avanti ';
+    if (i > 0) steps[i].querySelector('input,textarea')?.focus();
+  };
+  w.addEventListener('submit', (e) => { e.preventDefault(); go(Math.min(k + 1, 3)); });
+  back.onclick = () => go(Math.max(k - 1, 0));
+  M.on('#ct-b', { stop() { w.reset(); go(0); } });
+  go(0);
+
+  // C: ora a Gallarate
+  const now = document.getElementById('ct-now');
+  const tick = () => { const t = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit' }).format(new Date()); now.textContent = `A Gallarate sono le ${t}`; };
+  tick(); setInterval(tick, 30000);
+})();
+</script>

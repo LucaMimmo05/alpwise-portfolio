@@ -1,0 +1,153 @@
+<!-- title="Alpwise Per chi" num="04" label="Per chi lavoriamo" desc="Tre varianti animate della sezione sui settori e i problemi che lo studio risolve." -->
+<style>
+/* A · Settori */
+.pc-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.pc-cell{background:var(--surface);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);min-height:400px}
+.pc-cell>.al-mono{color:var(--text-subtle)}
+.pc-cell h3{font:400 30px/34px var(--font-sans);letter-spacing:-.025em;color:var(--text);margin:var(--space-12) 0 0;text-wrap:balance}
+.pc-cell p{margin:0;color:var(--text-muted);font-size:15px;line-height:24px}
+.pc-cell .pc-fit{margin-top:auto;padding-top:var(--space-6);border-top:1px dashed var(--line-grid)}
+.pc-cell .pc-fit .al-mono{color:var(--text-subtle);display:block;margin-bottom:var(--space-2)}
+@media (max-width:960px){.pc-cells{grid-template-columns:1fr}.pc-cell{min-height:0}}
+
+/* B · Se ti riconosci */
+.pc-rows{border-top:1px solid var(--line)}
+.pc-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center;padding:28px 0;position:relative}
+.pc-row::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px solid var(--line);transform-origin:left}
+.pc-row .q{grid-column:1 / span 6;font:400 30px/36px var(--font-sans);letter-spacing:-.025em;color:var(--text);margin:0;text-wrap:balance}
+.pc-row .ar{grid-column:7 / span 1;height:1px;background:var(--line-strong);position:relative;transform-origin:left}
+.pc-row .ar::after{content:"";position:absolute;right:-1px;top:-4px;width:9px;height:9px;border-top:1px solid var(--line-strong);border-right:1px solid var(--line-strong);transform:rotate(45deg)}
+.pc-row .s{grid-column:8 / -1;display:flex;flex-direction:column;gap:var(--space-2)}
+.pc-row .s .al-mono{color:var(--text-subtle)}
+.pc-row .s b{font:400 20px/28px var(--font-sans);color:var(--text)}
+.pc-row .s span:last-child{color:var(--text-muted);font-size:15px;line-height:24px}
+.pc-row:hover .ar,.pc-row:hover .ar::after{background-color:var(--primary);border-color:var(--primary)}
+.pc-row:hover .ar::after{background:none}
+:is(.play,.armed) .pc-row::after{animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 160ms)}
+:is(.play,.armed) .pc-row .ar{animation:m-draw-x 600ms var(--m-ease-io) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 160ms + 350ms)}
+@media (max-width:860px){.pc-row{display:block}.pc-row .q{font-size:24px;line-height:30px}.pc-row .ar{display:block;width:48px;margin:var(--space-4) 0}}
+
+/* C · Trova il tuo caso */
+.pc-c{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.pc-pick{grid-column:1 / span 5;display:flex;flex-direction:column;gap:var(--space-6)}
+.pc-pick .al-mono{color:var(--text-subtle)}
+.pc-opts{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.pc-opt{font:400 15px/20px var(--font-sans);background:transparent;color:var(--text-muted);border:1px solid var(--line-strong);border-radius:var(--radius-xs);padding:10px 14px;cursor:pointer;transition:background-color var(--m-fast),color var(--m-fast),border-color var(--m-fast)}
+.pc-opt:hover{border-color:var(--text);color:var(--text)}
+.pc-opt[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.pc-out{grid-column:7 / -1;border:1px solid var(--line);background:var(--surface);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4);min-height:340px}
+.pc-out .al-mono{color:var(--text-subtle)}
+.pc-out h3{font:400 36px/40px var(--font-sans);letter-spacing:-.03em;margin:0;color:var(--text);text-wrap:balance}
+.pc-out p{margin:0;color:var(--text-muted)}
+.pc-out .al-btn{align-self:flex-start;margin-top:auto}
+.pc-out.in>*{animation:m-fade-up var(--m-base) var(--m-ease) both}
+.pc-out.in>:nth-child(2){animation-delay:60ms}.pc-out.in>:nth-child(3){animation-delay:120ms}.pc-out.in>:nth-child(4){animation-delay:180ms}
+@media (max-width:860px){.pc-c{display:block}.pc-out{margin-top:var(--space-8);min-height:0;padding:var(--space-6)}.pc-out h3{font-size:28px;line-height:32px}}
+@media (prefers-reduced-motion:reduce){.pc-out.in>*{animation:none}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Settori">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Per chi/</span>
+        <h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2>
+        <p data-m="fade-up" style="--delay:600ms">Negozi, studi professionali, aziende B2B. Dimensioni diverse, stesso bisogno: strumenti chiari che fanno risparmiare tempo.</p>
+      </div>
+      <div class="pc-cells" data-m="stagger" style="--delay:700ms">
+        <article class="pc-cell"><span class="al-mono">Attività locali/</span><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-fit"><span class="al-mono">Di solito serve/</span><ul class="al-tree"><li>Sito vetrina</li><li>Scheda Google e SEO locale</li></ul></div></article>
+        <article class="pc-cell"><span class="al-mono">Studi professionali/</span><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-fit"><span class="al-mono">Di solito serve/</span><ul class="al-tree"><li>Area clienti</li><li>Estrazione dati da documenti</li></ul></div></article>
+        <article class="pc-cell"><span class="al-mono">PMI e B2B/</span><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-fit"><span class="al-mono">Di solito serve/</span><ul class="al-tree"><li>Gestionale su misura</li><li>Integrazioni e automazioni</li></ul></div></article>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Settori: tre tipi di cliente, con cosa serve di solito</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Titolo parola per parola, lead in dissolvenza</li><li>Le tre celle salgono in sequenza, 90 ms l'una</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Sostituisce i clienti che ancora non ci sono: il visitatore si riconosce nel settore. I settori sono una proposta, da confermare con voi.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Se ti riconosci">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Per chi/</span>
+        <h2 data-split="words" style="--delay:150ms">Se ti riconosci, possiamo aiutarti</h2>
+      </div>
+      <div class="pc-rows" data-m="stagger" style="--delay:450ms">
+        <div class="pc-row"><p class="q">"Il nostro sito è vecchio, o non l'abbiamo proprio."</p><span class="ar" aria-hidden="true"></span><div class="s"><span class="al-mono">Web/</span><b>Sito vetrina</b><span>Veloce, chiaro, facile da trovare su Google.</span></div></div>
+        <div class="pc-row"><p class="q">"Lavoriamo su fogli Excel ed email che nessuno ritrova."</p><span class="ar" aria-hidden="true"></span><div class="s"><span class="al-mono">Software/</span><b>Gestionale su misura</b><span>Un solo posto per dati, clienti e ordini.</span></div></div>
+        <div class="pc-row"><p class="q">"Passiamo ore a copiare dati da PDF e documenti."</p><span class="ar" aria-hidden="true"></span><div class="s"><span class="al-mono">AI/</span><b>Automazione dei documenti</b><span>I dati arrivano dove servono, senza ricopiarli.</span></div></div>
+        <div class="pc-row"><p class="q">"I clienti ci chiamano per sapere a che punto è la pratica."</p><span class="ar" aria-hidden="true"></span><div class="s"><span class="al-mono">Software/</span><b>Area clienti</b><span>Lo stato lo vedono da soli, quando vogliono.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Se ti riconosci: problemi detti come li direbbe il cliente</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Ogni riga sale e la sua linea si traccia</li><li>La freccia tra problema e soluzione si allunga 350 ms dopo</li><li>Hover: la freccia diventa azzurra</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più persuasiva senza clienti né numeri. Le frasi tra virgolette sono problemi tipici, non citazioni di qualcuno.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Trova il tuo caso">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Per chi/</span>
+        <h2 data-split="words" style="--delay:150ms">Cosa ti rallenta oggi?</h2>
+      </div>
+      <div class="pc-c" data-m="fade-up" style="--delay:450ms">
+        <div class="pc-pick">
+          <span class="al-mono" id="pc-l">Scegli il caso più vicino al tuo/</span>
+          <div class="pc-opts" role="group" aria-labelledby="pc-l">
+            <button class="pc-opt" type="button" aria-pressed="true" data-k="0">Non ho un sito</button>
+            <button class="pc-opt" type="button" aria-pressed="false" data-k="1">Troppi fogli Excel</button>
+            <button class="pc-opt" type="button" aria-pressed="false" data-k="2">Copio dati a mano</button>
+            <button class="pc-opt" type="button" aria-pressed="false" data-k="3">I clienti mi chiamano per ogni cosa</button>
+          </div>
+        </div>
+        <div class="pc-out in" aria-live="polite">
+          <span class="al-mono">Web/</span>
+          <h3>Un sito vetrina chiaro</h3>
+          <p>Chi sei, cosa fai, dove sei e come contattarti. Veloce da caricare e facile da trovare su Google.</p>
+          <a class="al-btn al-btn-primary" href="#">Parliamone <span class="al-arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Trova il tuo caso: scegli il problema, vedi la soluzione</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Il bottone scelto diventa azzurro, con stato scritto per i lettori di schermo</li><li>Il pannello si riscrive a cascata in 240 ms</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Coinvolge e porta dritto al contatto. Il caso scelto può precompilare il campo "Di cosa hai bisogno?" del modulo.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const data = [
+    ['Web/', 'Un sito vetrina chiaro', 'Chi sei, cosa fai, dove sei e come contattarti. Veloce da caricare e facile da trovare su Google.'],
+    ['Software/', 'Un gestionale su misura', 'Un solo posto per dati, clienti e ordini, costruito sul modo in cui lavori già.'],
+    ['AI/', 'Automazione dei documenti', 'Leggiamo PDF, email e moduli e portiamo i dati dove servono, senza ricopiarli.'],
+    ['Software/', "Un'area clienti", 'I tuoi clienti vedono lo stato delle pratiche e scaricano i documenti da soli.'],
+  ];
+  const out = document.querySelector('.pc-out'), opts = [...document.querySelectorAll('.pc-opt')];
+  opts.forEach((o) => (o.onclick = () => {
+    opts.forEach((x) => x.setAttribute('aria-pressed', String(x === o)));
+    const [l, h, p] = data[+o.dataset.k];
+    out.children[0].textContent = l; out.children[1].textContent = h; out.children[2].textContent = p;
+    out.classList.remove('in'); void out.offsetWidth; out.classList.add('in');
+  }));
+})();
+</script>

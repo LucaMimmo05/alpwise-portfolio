@@ -1,0 +1,164 @@
+<!-- title="Alpwise Lavori" num="06" label="Lavori" desc="Tre varianti animate della sezione lavori e case study, con segnaposto per i clienti reali." -->
+<style>
+.lv-vis{position:relative;isolation:isolate;overflow:hidden;background:var(--black);color:var(--white)}
+.lv-vis>:not(.hz):not(.m-cols){position:relative;z-index:1}
+
+/* A · Case study */
+.lv-a .al-case-vis{background:var(--black)}
+.lv-a .al-spec div{position:relative;border-bottom:0}
+.lv-a .al-spec div::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px dashed var(--line-grid);transform-origin:left}
+:is(.play,.armed) .lv-a .al-spec div::after{animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:calc(700ms + var(--i,0) * 120ms)}
+.lv-a .al-case{transition:border-color var(--m-fast)}
+.lv-a .al-case:hover{border-color:var(--line-strong)}
+
+/* B · Indice con anteprima */
+.lv-list{border-top:1px solid var(--line);position:relative}
+.lv-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--text-muted)}
+.lv-row .c{grid-column:1 / span 5;font:400 32px/36px var(--font-sans);letter-spacing:-.025em;color:var(--text);transition:transform 320ms var(--m-ease)}
+.lv-row .s{grid-column:6 / span 4}
+.lv-row .y{grid-column:10 / span 2;color:var(--text-subtle)}
+.lv-row .al-sq{grid-column:12;justify-self:end;width:24px;height:24px;font-size:14px;transition:background-color var(--m-fast),color var(--m-fast)}
+.lv-row:hover .c{transform:translateX(12px)}
+.lv-row:hover .al-sq{background:var(--primary);color:var(--on-primary)}
+.lv-row:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.lv-list:has(.lv-row:hover) .lv-row:not(:hover) .c{color:var(--text-subtle)}
+.lv-peek{position:fixed;left:0;top:0;width:320px;height:200px;pointer-events:none;z-index:var(--z-nav);opacity:0;transform:scale(.92);transition:opacity 200ms,transform 300ms var(--m-ease);display:flex;flex-direction:column;justify-content:space-between;padding:14px}
+.lv-peek.on{opacity:1;transform:none}
+.lv-peek .al-mono{color:var(--white)}
+.lv-peek .hz{transform:translateY(-20%)}
+@media (hover:none),(max-width:860px){.lv-peek{display:none}}
+@media (max-width:860px){.lv-row{display:flex;flex-wrap:wrap;gap:4px 16px}.lv-row .c{flex-basis:100%;font-size:24px;line-height:30px}.lv-row .al-sq{display:none}}
+
+/* C · Scorrimento */
+.lv-track{display:grid;grid-auto-flow:column;grid-auto-columns:min(560px,82vw);gap:1px;background:var(--line);border:1px solid var(--line);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab}
+.lv-track::-webkit-scrollbar{display:none}
+.lv-track.drag{cursor:grabbing;scroll-snap-type:none}
+.lv-card{scroll-snap-align:start;background:var(--surface);display:flex;flex-direction:column;text-decoration:none;color:var(--text-muted);user-select:none}
+.lv-card .lv-vis{height:300px;display:flex;justify-content:space-between;align-items:flex-start;padding:16px}
+.lv-card .hz{transition:transform 900ms var(--m-ease)}
+.lv-card:hover .hz{transform:translateY(-14%)}
+.lv-card .b{padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)}
+.lv-card h3{font:400 26px/32px var(--font-sans);letter-spacing:-.02em;color:var(--text);margin:0}
+.lv-card .al-mono{color:var(--text-subtle)}
+.lv-ctl{display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-4)}
+.lv-ctl .al-data{color:var(--text-subtle)}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Case study">
+  <section class="al-section lv-a" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Lavori/</span>
+        <h2 data-split="words" style="--delay:150ms">Problemi veri, risolti con software su misura</h2>
+      </div>
+      <article class="al-case" data-m="fade-up" style="--delay:350ms">
+        <div class="al-case-vis lv-vis">
+          <div class="hz" data-m="sunrise" style="--delay:400ms" aria-hidden="true"></div>
+          <div class="m-cols m-cols-hz" aria-hidden="true" style="--delay:400ms"></div>
+          <div style="display:flex;justify-content:space-between"><span class="al-mono">Case study/</span><span class="al-mono">gg.mm.aaaa</span></div>
+        </div>
+        <div class="al-case-body">
+          <span class="al-mono ph">Nome cliente da inserire</span>
+          <h3 data-split="words" style="--delay:600ms">Titolo del progetto: il risultato in una frase</h3>
+          <p data-m="fade-up" style="--delay:800ms" class="ph">Due righe reali: il problema di partenza e cosa è cambiato dopo. Nessun numero inventato.</p>
+          <dl class="al-spec" data-m="stagger" style="--delay:700ms">
+            <div><dt>Settore</dt><dd class="ph">Da inserire</dd></div>
+            <div><dt>Servizio</dt><dd>Software su misura</dd></div>
+            <div><dt>Stack</dt><dd class="ph">Da inserire</dd></div>
+          </dl>
+          <a class="al-link" href="#">└─ Leggi il case study</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Case study: un progetto in evidenza, il componente CaseStudy</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>La card sale, poi sul visual sorge l'orizzonte</li><li>Le righe della scheda si tracciano una alla volta</li><li>Se c'è uno screenshot reale, sostituisce l'orizzonte e sale con lo stesso movimento</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Se all'inizio avete uno o due progetti forti. I bordi tratteggiati segnano i contenuti da inserire: servono cliente, risultato e stack reali.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Indice">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Lavori/</span>
+        <h2 data-split="words" style="--delay:150ms">Progetti recenti</h2>
+      </div>
+      <div class="lv-list" data-m="stagger" style="--delay:350ms">
+        <a class="lv-row" href="#"><span class="c ph">Cliente 1</span><span class="s">Sito vetrina</span><span class="y al-data">aaaa</span><span class="al-sq">→</span></a>
+        <a class="lv-row" href="#"><span class="c ph">Cliente 2</span><span class="s">Gestionale su misura</span><span class="y al-data">aaaa</span><span class="al-sq">→</span></a>
+        <a class="lv-row" href="#"><span class="c ph">Cliente 3</span><span class="s">Automazione documenti</span><span class="y al-data">aaaa</span><span class="al-sq">→</span></a>
+        <a class="lv-row" href="#"><span class="c ph">Cliente 4</span><span class="s">Area clienti</span><span class="y al-data">aaaa</span><span class="al-sq">→</span></a>
+      </div>
+    </div>
+  </section>
+  <div class="lv-peek lv-vis" aria-hidden="true"><div class="hz"></div><span class="al-mono">Case study/</span><span class="al-mono" id="lv-peek-t">Cliente</span></div>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Indice: elenco di progetti con anteprima che segue il cursore</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Le righe salgono in sequenza</li><li>Hover: le altre righe si spengono, il nome scorre di 12 px</li><li>Un'anteprima segue il cursore con un leggero ritardo</li><li>Solo con mouse: su touch l'anteprima non c'è</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Scala bene da 3 a 20 progetti e resta sobria. L'anteprima mostrerà lo screenshot vero del progetto.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Scorrimento">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Lavori/</span>
+        <h2 data-split="words" style="--delay:150ms">Progetti recenti</h2>
+      </div>
+      <div class="lv-track" data-m="stagger" style="--delay:350ms" tabindex="0" role="region" aria-label="Progetti, scorri in orizzontale">
+        <a class="lv-card" href="#" draggable="false"><div class="lv-vis"><div class="hz"></div><span class="al-mono">Sito vetrina/</span><span class="al-mono">aaaa</span></div><div class="b"><span class="al-mono ph">Cliente 1</span><h3>Titolo del progetto</h3></div></a>
+        <a class="lv-card" href="#" draggable="false"><div class="lv-vis"><div class="hz"></div><span class="al-mono">Software/</span><span class="al-mono">aaaa</span></div><div class="b"><span class="al-mono ph">Cliente 2</span><h3>Titolo del progetto</h3></div></a>
+        <a class="lv-card" href="#" draggable="false"><div class="lv-vis"><div class="hz"></div><span class="al-mono">AI/</span><span class="al-mono">aaaa</span></div><div class="b"><span class="al-mono ph">Cliente 3</span><h3>Titolo del progetto</h3></div></a>
+      </div>
+      <div class="lv-ctl"><span class="al-data" id="lv-count" aria-live="polite">1 / 3</span><div style="display:flex;gap:var(--space-2)"><button class="al-icon-btn" type="button" id="lv-prev" aria-label="Progetto precedente">←</button><button class="al-icon-btn" type="button" id="lv-next" aria-label="Progetto successivo">→</button></div></div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Scorrimento: card orizzontali da trascinare</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Le card entrano in sequenza</li><li>Trascina col mouse o scorri col dito, aggancio a ogni card</li><li>Hover: l'orizzonte della card sale ancora un poco</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Molto visiva, adatta quando avrete screenshot belli. Occhio: l'orizzonte va usato al massimo tre volte per pagina, quindi con screenshot reali va tolto dalle card.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  // B: anteprima che segue il cursore
+  const peek = document.querySelector('.lv-peek'), pt = document.getElementById('lv-peek-t');
+  let x = 0, y = 0, tx = 0, ty = 0, raf;
+  const loop = () => { x += (tx - x) * 0.18; y += (ty - y) * 0.18; peek.style.translate = `${x + 24}px ${y - 100}px`; raf = requestAnimationFrame(loop); };
+  document.querySelectorAll('.lv-row').forEach((r) => {
+    r.onmouseenter = (e) => { pt.textContent = r.querySelector('.s').textContent + '/'; if (!peek.classList.contains('on')) { x = tx = e.clientX; y = ty = e.clientY; } peek.classList.add('on'); cancelAnimationFrame(raf); loop(); };
+    r.onmousemove = (e) => { tx = e.clientX; ty = e.clientY; if (M.reduced()) { x = tx; y = ty; } };
+    r.onmouseleave = () => { peek.classList.remove('on'); };
+  });
+  // C: drag, contatore, frecce
+  const tr = document.querySelector('.lv-track'), cards = [...tr.children], cnt = document.getElementById('lv-count');
+  let down = false, sx = 0, sl = 0, moved = false;
+  tr.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = tr.scrollLeft; });
+  addEventListener('pointermove', (e) => { if (!down) return; const d = e.clientX - sx; if (Math.abs(d) > 4) { moved = true; tr.classList.add('drag'); } tr.scrollLeft = sl - d; });
+  addEventListener('pointerup', () => { if (!down) return; down = false; tr.classList.remove('drag'); });
+  tr.addEventListener('click', (e) => { if (moved) e.preventDefault(); }, true);
+  const idx = () => Math.round(tr.scrollLeft / (cards[0].offsetWidth + 1));
+  tr.addEventListener('scroll', () => { cnt.textContent = `${Math.min(idx(), cards.length - 1) + 1} / ${cards.length}`; });
+  const go = (d) => cards[Math.max(0, Math.min(cards.length - 1, idx() + d))].scrollIntoView({ behavior: M.reduced() ? 'auto' : 'smooth', inline: 'start', block: 'nearest' });
+  document.getElementById('lv-prev').onclick = () => go(-1);
+  document.getElementById('lv-next').onclick = () => go(1);
+})();
+</script>

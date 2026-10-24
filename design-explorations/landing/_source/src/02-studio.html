@@ -1,0 +1,118 @@
+<!-- title="Alpwise Studio intro" num="02" label="Studio" desc="Tre varianti animate della sezione di presentazione dello studio." -->
+<style>
+/* A · Lettura */
+.st-a .st-read{grid-column:4 / -1;font:400 44px/52px var(--font-sans);letter-spacing:-.03em;margin:0;max-width:24ch;text-wrap:pretty;color:var(--text)}
+.st-a .al-head{margin-bottom:0}
+.st-a .st-foot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:var(--space-16)}
+.st-a .st-foot>div{grid-column:4 / -1;display:flex;gap:var(--space-2);flex-wrap:wrap}
+@media (max-width:767px){.st-a .st-read{font-size:28px;line-height:36px}.st-a .st-foot{display:block}}
+
+/* B · Principi */
+.st-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.st-cell{background:var(--surface);padding:var(--space-6);min-height:260px;display:flex;flex-direction:column;gap:var(--space-3);position:relative}
+.st-cell .al-mono{color:var(--text-subtle);margin-bottom:auto}
+.st-cell h3{font:400 24px/30px var(--font-sans);letter-spacing:-.015em;color:var(--text);margin:var(--space-12) 0 0}
+.st-cell p{margin:0;color:var(--text-muted);font-size:15px;line-height:24px}
+.st-cell .st-top{position:absolute;left:-1px;right:-1px;top:-1px;height:1px;background:var(--line-strong)}
+.st-cell:hover .st-top{background:var(--primary)}
+@media (max-width:860px){.st-cells{grid-template-columns:1fr}.st-cell{min-height:0}}
+
+/* C · Scheda */
+.st-c{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.st-c-l{grid-column:1 / span 5;display:flex;flex-direction:column;gap:var(--space-6)}
+.st-c-l .al-mono{color:var(--text-subtle)}
+.st-c-l h2{font:400 52px/56px var(--font-sans);letter-spacing:-.035em;color:var(--text);margin:0;text-wrap:balance}
+.st-c-l p{margin:0;font:300 18px/28px var(--font-sans);color:var(--text-muted);max-width:44ch}
+.st-c-r{grid-column:7 / -1}
+.st-spec{margin:0}
+.st-spec>div{display:grid;grid-template-columns:160px 1fr;gap:12px;padding:18px 0;position:relative}
+.st-spec>div::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px dashed var(--line-grid);transform-origin:left}
+.st-spec>div:first-child::before{content:"";position:absolute;left:0;right:0;top:0;border-top:1px dashed var(--line-grid)}
+.st-spec dt{font:400 11px/28px var(--font-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--text-subtle)}
+.st-spec dd{margin:0;color:var(--text);font:400 24px/28px var(--font-sans);letter-spacing:-.015em}
+.st-spec dd.al-data{font:400 18px/28px var(--font-mono)}
+:is(.play,.armed) .st-spec>div::after{animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:calc(var(--i,0) * 120ms + 200ms)}
+@media (max-width:860px){.st-c{display:block}.st-c-l h2{font-size:36px;line-height:40px}.st-c-r{margin-top:var(--space-12)}.st-spec>div{grid-template-columns:1fr;gap:2px}.st-spec dd{font-size:20px}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Lettura">
+  <section class="al-section st-a" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Studio/</span>
+        <p class="st-read" data-split="read" style="--delay:250ms">Siamo tre sviluppatori a Gallarate, ai piedi delle Prealpi varesine. Costruiamo siti, software e automazioni per le PMI. Niente intermediari: dalla prima chiamata alla messa online parli con chi scrive il codice.</p>
+      </div>
+      <div class="st-foot"><div data-m="fade-up" style="--delay:2400ms">
+        <a class="al-btn al-btn-outline" href="#">Come lavoriamo <span class="al-arr" aria-hidden="true">→</span></a>
+      </div></div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Lettura: il testo si accende mentre lo leggi</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Le parole partono in text-subtle e passano a text, una ogni 55 ms</li><li>Sul sito vero: legata allo scroll, avanza solo se scorri</li><li>Nessuno spostamento: solo colore, quindi zero salti di layout</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Una sola frase grande, molto editoriale. Funziona se il testo è breve e vero. A riposo il testo è tutto in pieno contrasto.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Principi">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Studio/</span>
+        <h2 data-split="words" style="--delay:150ms"><span class="al-chip" data-m="pop" style="--delay:700ms">{{ICON:bolt}}</span>Le PMI hanno bisogno di software veloce, chiaro e su misura</h2>
+        <p data-m="fade-up" style="--delay:700ms">Siamo tre sviluppatori a Gallarate. Lavoriamo con poche aziende alla volta, così ognuna ha la nostra attenzione.</p>
+      </div>
+      <div class="st-cells" data-m="stagger" style="--delay:900ms">
+        <article class="st-cell"><span class="st-top" aria-hidden="true"></span><span class="al-mono">Diretti/</span><h3>Parli con chi sviluppa</h3><p>Nessun account manager in mezzo. Le domande arrivano a chi scrive il codice.</p></article>
+        <article class="st-cell"><span class="st-top" aria-hidden="true"></span><span class="al-mono">Concreti/</span><h3>Preventivi chiari</h3><p>Scriviamo cosa è incluso, con quali tecnologie e in che tempi. Niente sorprese a fine progetto.</p></article>
+        <article class="st-cell"><span class="st-top" aria-hidden="true"></span><span class="al-mono">Onesti/</span><h3>Solo quello che serve</h3><p>Se una cosa non è il nostro lavoro, te lo diciamo. Se basta meno, ti proponiamo meno.</p></article>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Principi: titolo con chip e tre celle</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Titolo parola per parola</li><li>Il chip azzurro entra con un piccolo scatto di scala</li><li>Le celle salgono in sequenza, 90 ms l'una</li><li>Hover: il filo in alto della cella diventa azzurro</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Spiega perché sceglierti, non solo chi sei. Da verificare: "poche aziende alla volta" va confermato con voi.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Scheda">
+  <section class="al-section" data-scene>
+    <div class="al-container st-c">
+      <div class="st-c-l">
+        <span class="al-mono" data-scramble>Studio/</span>
+        <h2 data-split="words" style="--delay:150ms">Uno studio piccolo, scelto apposta</h2>
+        <p data-m="fade-up" style="--delay:650ms">Tre sviluppatori, nessun intermediario. Seguiamo ogni progetto dall'idea alla manutenzione, e conosciamo il codice perché l'abbiamo scritto noi.</p>
+      </div>
+      <div class="st-c-r">
+        <dl class="st-spec" data-m="stagger" style="--delay:300ms">
+          <div><dt>Sede</dt><dd>Gallarate, VA</dd></div>
+          <div><dt>Coordinate</dt><dd class="al-data" data-scramble data-delay="500">45.66°N 8.79°E</dd></div>
+          <div><dt>Team</dt><dd>3 sviluppatori</dd></div>
+          <div><dt>Lavoriamo con</dt><dd>PMI e attività locali</dd></div>
+          <div><dt>Mestieri</dt><dd>Web, software, AI</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Scheda: lo studio come una scheda tecnica</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Le righe tratteggiate si tracciano da sinistra, 120 ms l'una</li><li>I valori salgono in sequenza</li><li>Le coordinate si decodificano come un dato</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più "da sviluppatori": dati veri, mono, struttura a vista. Ogni riga è un fatto verificabile, quindi regge senza clienti o numeri di marketing.</p></div>
+    </div>
+  </div>
+</div>

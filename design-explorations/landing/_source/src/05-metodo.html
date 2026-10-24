@@ -1,0 +1,157 @@
+<!-- title="Alpwise Metodo" num="05" label="Metodo" desc="Tre varianti animate della sezione sul metodo di lavoro in quattro passi." -->
+<style>
+/* A · Linea */
+.me-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}
+.me-line .rail{position:absolute;left:0;right:0;top:11px;height:1px;background:var(--line-strong);transform-origin:left}
+.me-step{position:relative;padding-right:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)}
+.me-node{position:relative;z-index:1;width:24px;height:24px;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line-strong);border-radius:var(--radius-xs);font:400 11px/1 var(--font-mono);color:var(--text-muted);margin-bottom:var(--space-6);transition:background-color 300ms,color 300ms,border-color 300ms}
+.me-step.on .me-node{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.me-step .al-mono{color:var(--text-subtle)}
+.me-step h3{font:400 28px/32px var(--font-sans);letter-spacing:-.02em;margin:0;color:var(--text)}
+.me-step p{margin:0;color:var(--text-muted);font-size:15px;line-height:24px;max-width:32ch}
+:is(.play,.armed) .me-line .rail{animation:m-draw-x 2400ms var(--m-ease-io) both;animation-delay:300ms}
+:is(.play,.armed) .me-step>:not(.me-node){animation:m-fade-up var(--m-base) var(--m-ease) both;animation-delay:calc(450ms + var(--i,0) * 600ms)}
+@media (max-width:860px){.me-line{grid-template-columns:1fr;gap:var(--space-8);padding-left:40px}.me-line .rail{left:11px;right:auto;top:0;bottom:0;width:1px;height:auto;transform-origin:top}:is(.play,.armed) .me-line .rail{animation-name:m-draw-y}.me-node{position:absolute;left:-40px;top:0}}
+
+/* B · Sentiero */
+.me-trail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:end}
+.me-tstep{position:relative;padding:var(--space-6) var(--space-6) 0 0;margin-bottom:calc(var(--i,0) * 72px)}
+.me-tstep .seg-x{position:absolute;left:0;right:0;top:0;border-top:1px solid var(--text);transform-origin:left}
+.me-tstep .seg-y{position:absolute;left:0;top:0;width:1px;height:72px;background:var(--text);transform-origin:bottom}
+.me-tstep:first-child .seg-y{display:none}
+.me-tstep .pin{position:absolute;left:-4px;top:-4px;width:9px;height:9px;background:var(--primary)}
+.me-tstep .al-mono{color:var(--text-subtle)}
+.me-tstep h3{font:400 28px/32px var(--font-sans);letter-spacing:-.02em;margin:var(--space-2) 0 var(--space-3);color:var(--text)}
+.me-tstep p{margin:0;color:var(--text-muted);font-size:15px;line-height:24px;padding-bottom:var(--space-6)}
+.me-base{border-top:1px dashed var(--line-grid);display:flex;justify-content:space-between;padding-top:var(--space-3);color:var(--text-subtle);margin-top:var(--space-8)}
+:is(.play,.armed) .me-tstep .seg-y{animation:m-draw-y 360ms var(--m-ease-io) both;animation-delay:calc(var(--i,0) * 700ms - 360ms + 300ms);transform-origin:bottom}
+:is(.play,.armed) .me-tstep .seg-x{animation:m-draw-x 600ms var(--m-ease-io) both;animation-delay:calc(var(--i,0) * 700ms + 300ms)}
+:is(.play,.armed) .me-tstep .pin{animation:m-pop 400ms var(--m-ease) both;animation-delay:calc(var(--i,0) * 700ms + 250ms)}
+:is(.play,.armed) .me-tstep>:is(.al-mono,h3,p){animation:m-fade-up var(--m-base) var(--m-ease) both;animation-delay:calc(var(--i,0) * 700ms + 500ms)}
+@media (max-width:860px){.me-trail{grid-template-columns:1fr}.me-tstep{margin-bottom:0;margin-left:calc(var(--i,0) * 16px)}.me-tstep .seg-y{display:none}}
+
+/* C · Sequenza */
+.me-seq{border-top:1px solid var(--line)}
+.me-row{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px 24px;padding:24px 0;border-bottom:1px solid var(--line);cursor:pointer;position:relative}
+.me-row:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.me-row .al-mono{grid-column:1 / span 3;color:var(--text-subtle);padding-top:12px}
+.me-row .h{display:block;grid-column:4 / span 5;font:400 36px/40px var(--font-sans);letter-spacing:-.03em;margin:0;color:var(--text-subtle);transition:color 300ms}
+.me-row[aria-expanded="true"] .h{color:var(--text)}
+.me-row .body{grid-column:9 / -1;color:var(--text-muted);font-size:15px;line-height:24px;display:grid;grid-template-rows:0fr;transition:grid-template-rows 500ms var(--m-ease),opacity 400ms;opacity:0}
+.me-row .body>span{overflow:hidden;display:block}
+.me-row[aria-expanded="true"] .body{grid-template-rows:1fr;opacity:1}
+.me-row .prog{position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--primary);transform:scaleX(0);transform-origin:left}
+.me-row[aria-expanded="true"] .prog{animation:m-draw-x var(--dur,5000ms) linear both}
+.me-seq.paused .prog{animation-play-state:paused!important}
+.me-ctl{display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-4);color:var(--text-subtle)}
+@media (max-width:860px){.me-row{display:block}.me-row .al-mono{display:block;padding:0 0 6px}.me-row .h{display:block;font-size:26px;line-height:30px}.me-row .body>span{padding-top:8px}}
+@media (prefers-reduced-motion:reduce){.me-row .prog{display:none}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Linea">
+  <section class="al-section" data-scene id="me-a">
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Metodo/</span>
+        <h2 data-split="words" style="--delay:150ms">Dal problema al software, in quattro passi</h2>
+      </div>
+      <div class="me-line">
+        <span class="rail" aria-hidden="true"></span>
+        <div class="me-step" style="--i:0"><span class="me-node">01</span><span class="al-mono">Ascolto/</span><h3>Capiamo il problema</h3><p>Una chiamata per capire come lavori oggi e cosa ti rallenta. Senza impegno.</p></div>
+        <div class="me-step" style="--i:1"><span class="me-node">02</span><span class="al-mono">Proposta/</span><h3>Preventivo scritto</h3><p>Cosa facciamo, con quali tecnologie, in che tempi. E cosa resta fuori.</p></div>
+        <div class="me-step" style="--i:2"><span class="me-node">03</span><span class="al-mono">Sviluppo/</span><h3>Rilasci frequenti</h3><p>Vedi il lavoro crescere mentre lo costruiamo e correggi la rotta presto.</p></div>
+        <div class="me-step" style="--i:3"><span class="me-node">04</span><span class="al-mono">Online/</span><h3>Messa online e cura</h3><p>Pubblichiamo, ti mostriamo come usarlo e restiamo il tuo riferimento.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Linea: una linea del tempo che si accende passo dopo passo</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>La linea si traccia in 2,4 s da sinistra</li><li>Quando la raggiunge, ogni nodo diventa azzurro</li><li>Il testo del passo sale subito dopo, ogni 600 ms</li><li>Su mobile la linea è verticale</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Chiara e prevedibile. La numerazione qui ha senso perché è davvero una sequenza.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Sentiero">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Metodo/</span>
+        <h2 data-split="words" style="--delay:150ms">Si sale un passo alla volta</h2>
+        <p data-m="fade-up" style="--delay:500ms">Quattro tappe, dalla prima chiamata alla messa online. Sai sempre a che punto siamo.</p>
+      </div>
+      <div class="me-trail">
+        <div class="me-tstep" style="--i:0"><span class="seg-y"></span><span class="seg-x"></span><span class="pin"></span><span class="al-mono">Tappa 1/</span><h3>Ascolto</h3><p>Una chiamata per capire come lavori e cosa ti rallenta.</p></div>
+        <div class="me-tstep" style="--i:1"><span class="seg-y"></span><span class="seg-x"></span><span class="pin"></span><span class="al-mono">Tappa 2/</span><h3>Proposta</h3><p>Preventivo scritto: cosa, come, quando.</p></div>
+        <div class="me-tstep" style="--i:2"><span class="seg-y"></span><span class="seg-x"></span><span class="pin"></span><span class="al-mono">Tappa 3/</span><h3>Sviluppo</h3><p>Rilasci frequenti, vedi il lavoro crescere.</p></div>
+        <div class="me-tstep" style="--i:3"><span class="seg-y"></span><span class="seg-x"></span><span class="pin"></span><span class="al-mono">Tappa 4/</span><h3>In vetta</h3><p>Messa online, formazione e manutenzione.</p></div>
+      </div>
+      <div class="me-base al-mono" data-m="fade" style="--delay:3000ms"><span>Partenza/ prima chiamata</span><span>Arrivo/ online</span></div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Sentiero: i passi come un profilo che sale di quota</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Il tracciato si disegna a gradini: verticale, poi orizzontale</li><li>Un quadratino azzurro segna ogni tappa</li><li>700 ms per tappa, circa 3 s in tutto</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Riprende "fatto in quota" e dà personalità alla sezione. Il rischio: il design system vieta motivi grafici extra. Qui è solo una linea a 1 px che porta informazione, ma va approvata.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Sequenza">
+  <section class="al-section" data-scene id="me-c">
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Metodo/</span>
+        <h2 data-split="words" style="--delay:150ms">Dal problema al software, in quattro passi</h2>
+      </div>
+      <div class="me-seq" data-m="stagger" style="--delay:400ms">
+        <button class="me-row" type="button" aria-expanded="true"><span class="al-mono">01 · Ascolto/</span><span class="h">Capiamo il problema</span><span class="body"><span>Una chiamata per capire come lavori oggi e cosa ti rallenta. Senza impegno e senza slide.</span></span><span class="prog" aria-hidden="true"></span></button>
+        <button class="me-row" type="button" aria-expanded="false"><span class="al-mono">02 · Proposta/</span><span class="h">Preventivo scritto</span><span class="body"><span>Cosa facciamo, con quali tecnologie, in che tempi. E cosa resta fuori, scritto.</span></span><span class="prog" aria-hidden="true"></span></button>
+        <button class="me-row" type="button" aria-expanded="false"><span class="al-mono">03 · Sviluppo/</span><span class="h">Rilasci frequenti</span><span class="body"><span>Vedi il lavoro crescere mentre lo costruiamo. Se qualcosa non torna, lo cambiamo subito.</span></span><span class="prog" aria-hidden="true"></span></button>
+        <button class="me-row" type="button" aria-expanded="false"><span class="al-mono">04 · Online/</span><span class="h">Messa online e cura</span><span class="body"><span>Pubblichiamo, ti mostriamo come usarlo e restiamo il tuo riferimento per manutenzione e nuove funzioni.</span></span><span class="prog" aria-hidden="true"></span></button>
+      </div>
+      <div class="me-ctl"><span class="al-mono" id="me-state" aria-live="polite">Avanza da solo/ ogni 5 s</span><button class="al-btn al-btn-ghost al-btn-sm" type="button" id="me-pause">Metti in pausa</button></div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Sequenza: un passo aperto alla volta, avanza da solo</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Il passo attivo si apre in altezza in 500 ms</li><li>Un filo azzurro sotto la riga conta 5 s, poi passa al successivo</li><li>Clic su una riga per sceglierla, pausa con il bottone o passandoci sopra</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Ottima su mobile e quando i testi sono lunghi. Il bottone di pausa serve per WCAG 2.2.2: il movimento automatico deve potersi fermare.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  // A: accende i nodi quando la linea li raggiunge
+  let ta = [];
+  M.on('#me-a', {
+    play(s) { ta.forEach(clearTimeout); const st = [...s.querySelectorAll('.me-step')]; st.forEach((x) => x.classList.toggle('on', M.reduced())); if (!M.reduced()) st.forEach((x, i) => ta.push(setTimeout(() => x.classList.add('on'), 300 + i * 600))); },
+    stop(s) { ta.forEach(clearTimeout); s.querySelectorAll('.me-step').forEach((x) => x.classList.add('on')); },
+  });
+  document.querySelectorAll('#me-a .me-step').forEach((x) => x.classList.add('on'));
+
+  // C: avanzamento automatico con pausa
+  const seq = document.querySelector('.me-seq'), rows = [...seq.querySelectorAll('.me-row')];
+  const btn = document.getElementById('me-pause'), state = document.getElementById('me-state');
+  let k = 0, paused = false, hover = false, t;
+  const open = (i) => { k = i; rows.forEach((r, j) => r.setAttribute('aria-expanded', String(j === i))); rows[i].querySelector('.prog').style.animation = 'none'; void rows[i].offsetWidth; rows[i].querySelector('.prog').style.animation = ''; };
+  rows.forEach((r, i) => { r.onclick = () => open(i); r.querySelector('.prog').addEventListener('animationend', () => { if (!paused && !hover) open((i + 1) % rows.length); }); });
+  const sync = () => { const p = paused || hover; seq.classList.toggle('paused', p); };
+  seq.onmouseenter = () => { hover = true; sync(); }; seq.onmouseleave = () => { hover = false; sync(); };
+  btn.onclick = () => { paused = !paused; btn.textContent = paused ? 'Riprendi' : 'Metti in pausa'; state.textContent = paused ? 'In pausa/' : 'Avanza da solo/ ogni 5 s'; sync(); };
+  if (M.reduced()) { paused = true; btn.hidden = true; state.textContent = 'Scegli un passo/'; sync(); }
+  M.on('#me-c', { play() { open(0); } });
+})();
+</script>

@@ -1,0 +1,65 @@
+/* ── Motion: proposta di token e classi m-* per la landing ──
+   Tutto è visibile a riposo. .armed = animazione in pausa al primo fotogramma (sotto la piega),
+   .play = in esecuzione. prefers-reduced-motion annulla tutto. */
+:root{
+  --m-fast:120ms;            /* hover, colore, bordo (già nel design system) */
+  --m-base:560ms;            /* fade, piccoli spostamenti */
+  --m-slow:900ms;            /* titoli, linee */
+  --m-epic:1800ms;           /* alba dell'orizzonte */
+  --m-ease:cubic-bezier(.2,.7,0,1);
+  --m-ease-io:cubic-bezier(.65,0,.35,1);
+  --m-stagger:45ms;
+}
+
+@keyframes m-rise{from{transform:translateY(108%)}to{transform:none}}
+@keyframes m-fade-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes m-fade{from{opacity:0}to{opacity:1}}
+@keyframes m-draw-x{from{transform:scaleX(0)}to{transform:none}}
+@keyframes m-draw-y{from{transform:scaleY(0)}to{transform:none}}
+@keyframes m-pop{from{opacity:0;transform:scale(.35)}to{opacity:1;transform:none}}
+@keyframes m-char{from{opacity:0}to{opacity:1}}
+@keyframes m-ink{from{color:var(--text-subtle)}to{color:var(--text)}}
+@keyframes m-sunrise{from{transform:translateY(0)}to{transform:translateY(-20%)}}
+@keyframes m-band{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes m-hl{0%{background-size:0% 100%;color:inherit}55%{color:inherit}56%{color:var(--on-primary)}100%{background-size:100% 100%;color:var(--on-primary)}}
+@keyframes m-blink{50%{opacity:0}}
+
+/* parole che salgono da una maschera */
+.m-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.m-wi{display:inline-block;will-change:transform}
+/* lettura: parole che si accendono, senza maschera */
+.m-r{transition:none}
+/* caratteri digitati */
+.m-c{display:inline}
+
+/* orizzonte che sorge: layer più alto del 25%, a riposo è già in posizione */
+.hz{position:absolute;left:0;right:0;top:0;height:125%;background:var(--horizon-arc),var(--horizon);transform:translateY(-20%);z-index:-1;pointer-events:none}
+.hz-night{background:var(--horizon-arc),var(--black)}
+/* 12 colonne hairline disegnate una per una */
+.m-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 90%);mask-image:linear-gradient(180deg,#000 0%,transparent 90%)}
+.m-cols>i{border-left:1px solid var(--line-grid);transform-origin:top}
+.m-cols-hz>i{border-left-color:rgba(255,255,255,.12)}
+
+/* ── regole di animazione (stesse per .armed e .play) ── */
+:is(.play,.armed) .m-wi{animation:m-rise var(--m-slow) var(--m-ease) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * var(--m-stagger))}
+:is(.play,.armed) .m-r{animation:m-ink 420ms linear both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 55ms)}
+:is(.play,.armed) .m-c{animation:m-char 60ms linear both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * var(--char,22ms))}
+:is(.play,.armed) [data-m="fade-up"]{animation:m-fade-up var(--m-base) var(--m-ease) both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) [data-m="fade"]{animation:m-fade var(--m-base) linear both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) [data-m="pop"]{animation:m-pop var(--m-base) var(--m-ease) both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) [data-m="draw-x"]{transform-origin:left;animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) [data-m="draw-y"]{transform-origin:top;animation:m-draw-y var(--m-slow) var(--m-ease-io) both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) [data-m="band"]{animation:m-band 1200ms var(--m-ease-io) both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) [data-m="stagger"]>*{animation:m-fade-up var(--m-base) var(--m-ease) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 90ms)}
+:is(.play,.armed) .hz[data-m="sunrise"]{animation:m-sunrise var(--m-epic) var(--m-ease) both;animation-delay:var(--delay,0ms)}
+:is(.play,.armed) .m-cols>i{animation:m-draw-y 1100ms var(--m-ease-io) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 40ms)}
+.m-hl{background:linear-gradient(var(--primary),var(--primary)) no-repeat left / 100% 100%;color:var(--on-primary);padding:0 .12em;border-radius:var(--radius-xs);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+:is(.play,.armed) .m-hl{animation:m-hl 700ms var(--m-ease-io) both;animation-delay:var(--hl-delay,700ms)}
+.armed,.armed *{animation-play-state:paused!important}
+
+.m-caret{display:inline-block;width:.6em;height:1.1em;vertical-align:-.2em;background:currentColor;margin-left:2px;animation:m-blink 1s steps(1) infinite}
+
+@media (prefers-reduced-motion:reduce){
+  :is(.play,.armed),:is(.play,.armed) *{animation:none!important}
+  .m-caret{animation:none}
+}

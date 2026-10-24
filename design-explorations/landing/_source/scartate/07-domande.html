@@ -1,0 +1,152 @@
+<!-- title="Alpwise Domande" num="07" label="Domande" desc="Tre varianti animate della sezione domande frequenti." -->
+<style>
+.fq-wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.fq-wrap>.al-acc,.fq-wrap>.fq-body{grid-column:4 / -1}
+.al-acc details>div{overflow:hidden}
+.al-acc summary{transition:color var(--m-fast)}
+.al-acc summary:hover{color:var(--text-muted)}
+.al-acc summary .al-sq{transition:background-color var(--m-fast),color var(--m-fast),transform 300ms var(--m-ease)}
+.al-acc details[open] summary .al-sq{transform:rotate(180deg)}
+@media (max-width:767px){.fq-wrap{display:block}}
+
+/* B · Due colonne */
+.fq-b{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;border-top:1px solid var(--line)}
+.fq-qs{grid-column:1 / span 6;display:flex;flex-direction:column}
+.fq-q{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);cursor:pointer;font:400 20px/28px var(--font-sans);color:var(--text-subtle);transition:color var(--m-fast)}
+.fq-q:hover{color:var(--text-muted)}
+.fq-q:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.fq-q[aria-selected="true"]{color:var(--text)}
+.fq-q[aria-selected="true"] .al-sq{background:var(--primary);color:var(--on-primary)}
+.fq-a{grid-column:8 / -1;padding-top:18px}
+.fq-a[hidden]{display:none}
+.fq-a .al-mono{color:var(--text-subtle)}
+.fq-a p{margin:var(--space-4) 0 0;font:300 22px/32px var(--font-sans);color:var(--text);text-wrap:pretty}
+.fq-a.in>*{animation:m-fade-up var(--m-base) var(--m-ease) both}.fq-a.in>p{animation-delay:80ms}
+@media (max-width:860px){.fq-b{display:block}.fq-a{padding-top:var(--space-8)}}
+@media (prefers-reduced-motion:reduce){.fq-a.in>*{animation:none}}
+
+/* C · Tutte aperte */
+.fq-list{grid-column:4 / -1;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fq-list>div{background:var(--surface);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)}
+.fq-list dt{font:400 22px/28px var(--font-sans);letter-spacing:-.015em;color:var(--text)}
+.fq-list dd{margin:0;color:var(--text-muted);font-size:15px;line-height:24px}
+@media (max-width:860px){.fq-list{grid-template-columns:1fr}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Accordion">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Domande/</span>
+        <h2 data-split="words" style="--delay:150ms">Prima di iniziare</h2>
+      </div>
+      <div class="fq-wrap">
+        <div class="al-acc fq-acc" data-m="stagger" style="--delay:350ms">
+          <details open><summary>Quanto costa un progetto?<span class="al-sq" aria-hidden="true">−</span></summary><div>Dipende da cosa serve. Dopo la prima chiamata ti mandiamo un preventivo scritto, con cosa è incluso e cosa no.</div></details>
+          <details><summary>Quanto tempo ci vuole?<span class="al-sq" aria-hidden="true">+</span></summary><div>Lo scriviamo nel preventivo, con le tappe intermedie. Un sito vetrina richiede meno tempo di un gestionale.</div></details>
+          <details><summary>Con chi parlo durante il progetto?<span class="al-sq" aria-hidden="true">+</span></summary><div>Con noi tre. Chi ti risponde è chi scrive il codice.</div></details>
+          <details><summary>Cosa succede dopo la messa online?<span class="al-sq" aria-hidden="true">+</span></summary><div><span class="ph">Da confermare:</span> possiamo seguire manutenzione, aggiornamenti e nuove funzioni.</div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Accordion: il componente Accordion, con apertura morbida</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Le domande salgono in sequenza</li><li>Apertura e chiusura in altezza, 360 ms</li><li>Il quadratino ruota e diventa azzurro</li><li>Resta un details nativo: funziona da tastiera e senza JavaScript</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La scelta standard, compatta. Le risposte sono bozze da validare.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Due colonne">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Domande/</span>
+        <h2 data-split="words" style="--delay:150ms">Prima di iniziare</h2>
+      </div>
+      <div class="fq-b" data-m="fade-up" style="--delay:350ms">
+        <div class="fq-qs" role="tablist" aria-label="Domande" aria-orientation="vertical">
+          <button class="fq-q" role="tab" aria-selected="true" aria-controls="fqa-1" id="fqq-1">Quanto costa un progetto?<span class="al-sq" aria-hidden="true">→</span></button>
+          <button class="fq-q" role="tab" aria-selected="false" aria-controls="fqa-2" id="fqq-2" tabindex="-1">Quanto tempo ci vuole?<span class="al-sq" aria-hidden="true">→</span></button>
+          <button class="fq-q" role="tab" aria-selected="false" aria-controls="fqa-3" id="fqq-3" tabindex="-1">Con chi parlo durante il progetto?<span class="al-sq" aria-hidden="true">→</span></button>
+          <button class="fq-q" role="tab" aria-selected="false" aria-controls="fqa-4" id="fqq-4" tabindex="-1">Cosa succede dopo la messa online?<span class="al-sq" aria-hidden="true">→</span></button>
+        </div>
+        <div class="fq-a" role="tabpanel" id="fqa-1" aria-labelledby="fqq-1"><span class="al-mono">Risposta/</span><p>Dipende da cosa serve. Dopo la prima chiamata ti mandiamo un preventivo scritto, con cosa è incluso e cosa no.</p></div>
+        <div class="fq-a" role="tabpanel" id="fqa-2" aria-labelledby="fqq-2" hidden><span class="al-mono">Risposta/</span><p>Lo scriviamo nel preventivo, con le tappe intermedie. Un sito vetrina richiede meno tempo di un gestionale.</p></div>
+        <div class="fq-a" role="tabpanel" id="fqa-3" aria-labelledby="fqq-3" hidden><span class="al-mono">Risposta/</span><p>Con noi tre. Chi ti risponde è chi scrive il codice.</p></div>
+        <div class="fq-a" role="tabpanel" id="fqa-4" aria-labelledby="fqq-4" hidden><span class="al-mono">Risposta/</span><p><span class="ph">Da confermare:</span> possiamo seguire manutenzione, aggiornamenti e nuove funzioni.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Due colonne: domande a sinistra, risposta grande a destra</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Al clic la risposta entra a cascata: etichetta, poi testo</li><li>Frecce su e giù tra le domande</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Le risposte hanno più peso, utile se sono il vero argomento di vendita. Su mobile la risposta finisce sotto l'elenco: meglio A.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Tutte aperte">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Domande/</span>
+        <h2 data-split="words" style="--delay:150ms">Prima di iniziare</h2>
+      </div>
+      <div class="fq-wrap">
+        <dl class="fq-list" data-m="stagger" style="--delay:350ms">
+          <div><dt>Quanto costa un progetto?</dt><dd>Dipende da cosa serve. Dopo la prima chiamata ti mandiamo un preventivo scritto, con cosa è incluso e cosa no.</dd></div>
+          <div><dt>Quanto tempo ci vuole?</dt><dd>Lo scriviamo nel preventivo, con le tappe intermedie.</dd></div>
+          <div><dt>Con chi parlo durante il progetto?</dt><dd>Con noi tre. Chi ti risponde è chi scrive il codice.</dd></div>
+          <div><dt>Cosa succede dopo la messa online?</dt><dd><span class="ph">Da confermare:</span> manutenzione, aggiornamenti e nuove funzioni.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Tutte aperte: domande e risposte in celle</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Le celle salgono in sequenza, nient'altro</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Con quattro domande brevi non serve nasconderle. Zero clic, tutto leggibile e indicizzabile.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  // A: altezza animata sui details nativi
+  document.querySelectorAll('.fq-acc details').forEach((d) => {
+    const s = d.querySelector('summary'), body = d.querySelector('div'), sq = s.querySelector('.al-sq');
+    s.addEventListener('click', (e) => {
+      if (M.reduced()) { setTimeout(() => (sq.textContent = d.open ? '−' : '+')); return; }
+      e.preventDefault();
+      if (d.open) {
+        sq.textContent = '+';
+        const a = body.animate([{ height: body.offsetHeight + 'px', opacity: 1 }, { height: '0px', opacity: 0 }], { duration: 300, easing: 'cubic-bezier(.65,0,.35,1)' });
+        d.style.setProperty('--x', 1); a.onfinish = () => { d.open = false; };
+        d.querySelector('summary .al-sq').style.transform = 'none';
+      } else {
+        d.open = true; sq.textContent = '−'; d.querySelector('summary .al-sq').style.transform = '';
+        body.animate([{ height: '0px', opacity: 0 }, { height: body.offsetHeight + 'px', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.2,.7,0,1)' });
+      }
+    });
+  });
+  // B: schede verticali
+  const qs = [...document.querySelectorAll('.fq-q')];
+  const sel = (q, f) => {
+    qs.forEach((x) => { const on = x === q; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; });
+    document.querySelectorAll('.fq-a').forEach((a) => { const on = a.id === q.getAttribute('aria-controls'); a.hidden = !on; a.classList.remove('in'); if (on) { void a.offsetWidth; a.classList.add('in'); } });
+    if (f) q.focus();
+  };
+  qs.forEach((q, i) => { q.onclick = () => sel(q); q.onkeydown = (e) => { const d = { ArrowDown: 1, ArrowUp: -1 }[e.key]; if (d) { e.preventDefault(); sel(qs[(i + d + qs.length) % qs.length], true); } }; });
+})();
+</script>

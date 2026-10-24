@@ -1,0 +1,144 @@
+<!-- title="Alpwise Servizi" num="03" label="Servizi" desc="Tre varianti animate della sezione servizi: indice, celle e schede." -->
+<style>
+/* A · Indice */
+.sv-a .al-service{position:relative;border-bottom:0;cursor:pointer;transition:background-color var(--m-fast)}
+.sv-a .al-service::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px solid var(--line);transform-origin:left}
+:is(.play,.armed) .sv-a .al-service::after{animation:m-draw-x var(--m-slow) var(--m-ease-io) both;animation-delay:calc(var(--delay,0ms) + var(--i,0) * 90ms)}
+.sv-a .al-service h3{transition:transform 320ms var(--m-ease)}
+.sv-a .al-service:hover h3{transform:translateX(12px)}
+.sv-a .al-service:hover .al-sq{background:var(--primary);color:var(--on-primary)}
+.sv-a .sv-go{position:absolute;right:0;top:34px}
+.sv-a .sv-go .al-sq{width:24px;height:24px;font-size:14px;transition:background-color var(--m-fast),color var(--m-fast)}
+
+/* B · Celle */
+.sv-cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.sv-cell{background:var(--surface);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);min-height:440px;text-decoration:none;color:var(--text-muted);transition:background-color var(--m-fast)}
+.sv-cell:hover{background:var(--surface-raised)}
+.sv-cell-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-16)}
+.sv-cell-top .al-mono{color:var(--text-subtle)}
+.sv-ico{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);color:var(--text);transition:background-color var(--m-fast),color var(--m-fast),border-color var(--m-fast)}
+.sv-cell:hover .sv-ico{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.sv-cell h3{font:400 30px/34px var(--font-sans);letter-spacing:-.025em;color:var(--text);margin:0;text-wrap:balance}
+.sv-cell p{margin:0;font-size:15px;line-height:24px}
+.sv-cell .al-tree{margin-top:auto;padding-top:var(--space-6);border-top:1px dashed var(--line-grid)}
+@media (max-width:960px){.sv-cells{grid-template-columns:1fr}.sv-cell{min-height:0}.sv-cell-top{margin-bottom:var(--space-8)}}
+
+/* C · Schede */
+.sv-c{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;border-top:1px solid var(--line)}
+.sv-tabs{grid-column:1 / span 6;display:flex;flex-direction:column}
+.sv-tab{all:unset;box-sizing:border-box;display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:16px;padding:28px 0;border-bottom:1px solid var(--line);cursor:pointer;color:var(--text-subtle);position:relative}
+.sv-tab:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.sv-tab .t{font:400 36px/40px var(--font-sans);letter-spacing:-.03em;transition:color var(--m-fast)}
+.sv-tab:hover .t{color:var(--text-muted)}
+.sv-tab[aria-selected="true"] .t{color:var(--text)}
+.sv-tab[aria-selected="true"] .al-sq{background:var(--primary);color:var(--on-primary)}
+.sv-tab .bar{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform 600ms var(--m-ease)}
+.sv-tab[aria-selected="true"] .bar{transform:none}
+.sv-panel{grid-column:8 / -1;padding-top:28px;display:flex;flex-direction:column;gap:var(--space-6)}
+.sv-panel[hidden]{display:none}
+.sv-panel .lead{margin:0;font:300 22px/32px var(--font-sans);color:var(--text);text-wrap:pretty}
+.sv-panel p{margin:0;color:var(--text-muted)}
+.sv-panel.in>*{animation:m-fade-up var(--m-base) var(--m-ease) both}
+.sv-panel.in>:nth-child(2){animation-delay:80ms}.sv-panel.in>:nth-child(3){animation-delay:160ms}.sv-panel.in>:nth-child(4){animation-delay:240ms}
+@media (max-width:860px){.sv-c{display:block}.sv-tab{grid-template-columns:72px 1fr auto}.sv-tab .t{font-size:26px;line-height:30px}.sv-panel{padding-top:var(--space-8)}}
+@media (prefers-reduced-motion:reduce){.sv-panel.in>*{animation:none}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Indice">
+  <section class="al-section sv-a" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Servizi/</span>
+        <h2 data-split="words" style="--delay:150ms">Tre mestieri, un solo team</h2>
+        <p data-m="fade-up" style="--delay:550ms">Dal sito della tua attività al gestionale interno. Lo stesso team segue design, sviluppo e manutenzione.</p>
+      </div>
+      <div class="al-services" data-m="stagger" style="--delay:500ms;border-top:1px solid var(--line)">
+        <article class="al-service"><span class="al-mono">Web/</span><h3>Siti vetrina</h3><p>Un sito chiaro che dice chi sei, cosa fai e come contattarti. Veloce da caricare e facile da trovare su Google.</p><ul class="al-tree al-svc-tree"><li>Design su misura</li><li>Testi e SEO locale</li><li>Hosting e manutenzione</li></ul><span class="sv-go"><span class="al-sq">→</span></span></article>
+        <article class="al-service"><span class="al-mono">Software/</span><h3>Software e SaaS su misura</h3><p>Quando fogli Excel ed email non bastano più. Partiamo dal tuo processo e costruiamo lo strumento che serve.</p><ul class="al-tree al-svc-tree"><li>Gestionali e portali</li><li>Aree clienti</li><li>React, Spring Boot</li></ul><span class="sv-go"><span class="al-sq">→</span></span></article>
+        <article class="al-service"><span class="al-mono">AI/</span><h3>AI e automazioni</h3><p>Togliamo i passaggi ripetitivi: documenti, email, preventivi. Usiamo l'AI dove fa risparmiare tempo davvero.</p><ul class="al-tree al-svc-tree"><li>Estrazione dati da documenti</li><li>Assistenti sui dati aziendali</li><li>Integrazioni tra strumenti</li></ul><span class="sv-go"><span class="al-sq">→</span></span></article>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Indice: righe a tutta larghezza, il componente Services</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Ogni riga sale e la sua linea si traccia da sinistra</li><li>Hover: il titolo scorre di 12 px, il quadratino diventa azzurro</li><li>Tutta la riga è cliccabile verso la pagina del servizio</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Massima leggibilità e già pronto in <span class="al-mono-sm">sections.tsx</span>. Ottimo se ogni servizio avrà una sua pagina.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Celle">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Servizi/</span>
+        <h2 data-split="words" style="--delay:150ms">Tre mestieri, un solo team</h2>
+      </div>
+      <div class="sv-cells" data-m="stagger" style="--delay:450ms">
+        <a class="sv-cell" href="#"><div class="sv-cell-top"><span class="al-mono">Web/</span><span class="sv-ico">{{ICON:globe}}</span></div><h3>Siti vetrina</h3><p>Un sito chiaro che dice chi sei, cosa fai e come contattarti.</p><ul class="al-tree"><li>Design su misura</li><li>Testi e SEO locale</li><li>Hosting e manutenzione</li></ul></a>
+        <a class="sv-cell" href="#"><div class="sv-cell-top"><span class="al-mono">Software/</span><span class="sv-ico">{{ICON:code}}</span></div><h3>Software e SaaS su misura</h3><p>Partiamo dal tuo processo e costruiamo lo strumento che serve.</p><ul class="al-tree"><li>Gestionali e portali</li><li>Aree clienti</li><li>React, Spring Boot</li></ul></a>
+        <a class="sv-cell" href="#"><div class="sv-cell-top"><span class="al-mono">AI/</span><span class="sv-ico">{{ICON:spark}}</span></div><h3>AI e automazioni</h3><p>Togliamo i passaggi ripetitivi: documenti, email, preventivi.</p><ul class="al-tree"><li>Estrazione dati da documenti</li><li>Assistenti sui dati aziendali</li><li>Integrazioni tra strumenti</li></ul></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Celle: tre colonne che condividono il bordo</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Le celle salgono una dopo l'altra</li><li>Hover: la cella si rialza di un tono, l'icona si riempie di azzurro</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Si legge in un colpo d'occhio, i tre mestieri sono alla pari. Su mobile diventa una colonna.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Schede">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head">
+        <span class="al-mono" data-scramble>Servizi/</span>
+        <h2 data-split="words" style="--delay:150ms">Tre mestieri, un solo team</h2>
+      </div>
+      <div class="sv-c" data-m="fade-up" style="--delay:450ms">
+        <div class="sv-tabs" role="tablist" aria-label="Servizi" aria-orientation="vertical">
+          <button class="sv-tab" role="tab" id="svt-1" aria-controls="svp-1" aria-selected="true"><span class="al-mono">Web/</span><span class="t">Siti vetrina</span><span class="al-sq">+</span><span class="bar"></span></button>
+          <button class="sv-tab" role="tab" id="svt-2" aria-controls="svp-2" aria-selected="false" tabindex="-1"><span class="al-mono">Software/</span><span class="t">Software su misura</span><span class="al-sq">+</span><span class="bar"></span></button>
+          <button class="sv-tab" role="tab" id="svt-3" aria-controls="svp-3" aria-selected="false" tabindex="-1"><span class="al-mono">AI/</span><span class="t">AI e automazioni</span><span class="al-sq">+</span><span class="bar"></span></button>
+        </div>
+        <div class="sv-panel" role="tabpanel" id="svp-1" aria-labelledby="svt-1"><p class="lead">Un sito chiaro che dice chi sei, cosa fai e come contattarti.</p><p>Veloce da caricare, facile da trovare su Google, semplice da aggiornare. Pensato per attività locali e studi professionali.</p><ul class="al-tree"><li>Design su misura</li><li>Testi e SEO locale</li><li>Hosting e manutenzione</li></ul><div><a class="al-btn al-btn-primary" href="#">Richiedi un preventivo <span class="al-arr" aria-hidden="true">→</span></a></div></div>
+        <div class="sv-panel" role="tabpanel" id="svp-2" aria-labelledby="svt-2" hidden><p class="lead">Quando fogli Excel ed email non bastano più.</p><p>Partiamo dal tuo processo e costruiamo lo strumento che serve: un gestionale, un portale per i clienti, un SaaS B2B.</p><ul class="al-tree"><li>Gestionali e portali</li><li>Aree clienti</li><li>React, Spring Boot</li></ul><div><a class="al-btn al-btn-primary" href="#">Richiedi un preventivo <span class="al-arr" aria-hidden="true">→</span></a></div></div>
+        <div class="sv-panel" role="tabpanel" id="svp-3" aria-labelledby="svt-3" hidden><p class="lead">Meno lavoro ripetitivo, più tempo per il resto.</p><p>Colleghiamo i tuoi strumenti e automatizziamo i passaggi manuali. Usiamo l'AI dove fa risparmiare tempo davvero.</p><ul class="al-tree"><li>Estrazione dati da documenti</li><li>Assistenti sui dati aziendali</li><li>Integrazioni tra strumenti</li></ul><div><a class="al-btn al-btn-primary" href="#">Richiedi un preventivo <span class="al-arr" aria-hidden="true">→</span></a></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Schede: scegli un mestiere, il pannello cambia</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree">
+        <li>Il filo azzurro sotto la scheda attiva si stende in 600 ms</li><li>Il pannello entra a cascata: lead, testo, elenco, bottone</li><li>Tastiera: frecce su e giù tra le schede</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Compatta e interattiva, buona se la pagina è lunga. Contro: due servizi su tre sono nascosti finché non clicchi.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('.sv-tab')];
+  const select = (t, focus) => {
+    tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; x.querySelector('.al-sq').textContent = on ? '−' : '+'; });
+    document.querySelectorAll('.sv-panel').forEach((p) => { const on = p.id === t.getAttribute('aria-controls'); p.hidden = !on; p.classList.remove('in'); if (on) { void p.offsetWidth; p.classList.add('in'); } });
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.onclick = () => select(t);
+    t.onkeydown = (e) => { const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key]; if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length], true); } };
+  });
+  tabs[0].querySelector('.al-sq').textContent = '−';
+})();
+</script>

@@ -1,0 +1,120 @@
+/* Alpwise Studio — generated from design-system/tokens.json. Edit the JSON, not this file. */
+@font-face { font-family: "Host Grotesk"; src: url("/fonts/host-grotesk-latin-300-normal.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Host Grotesk"; src: url("/fonts/host-grotesk-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Host Grotesk"; src: url("/fonts/host-grotesk-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Host Grotesk"; src: url("/fonts/host-grotesk-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("/fonts/dm-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "DM Mono"; src: url("/fonts/dm-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+
+/* Scuro (default) */
+:root, [data-theme="dark"] {
+  color-scheme: dark;
+  --black: #000000;
+  --ink-900: #0A0C10;
+  --ink-800: #12151B;
+  --ink-700: #1D2129;
+  --ink-600: #2C323C;
+  --grey-500: #58606C;
+  --grey-400: #6C7582;
+  --grey-300: #9BA4B0;
+  --grey-200: #C9D0D9;
+  --grey-100: #E4E8EE;
+  --grey-50: #F3F5F8;
+  --mist: #B7C2CF;
+  --white: #FFFFFF;
+  --sky-700: #0B5ED7;
+  --sky-600: #2C7DF6;
+  --sky-500: #4DA2FF;
+  --sky-400: #7DBBFF;
+  --sky-200: #C6E0FF;
+  --sky-100: #E6F1FF;
+  --deep-900: #04142E;
+  --bg: var(--black);
+  --surface: var(--ink-900);
+  --surface-raised: var(--ink-800);
+  --surface-sunken: #050608;
+  --line: var(--ink-700);
+  --line-grid: var(--ink-600);
+  --line-strong: var(--grey-400);
+  --text: var(--white);
+  --text-muted: var(--grey-300);
+  --text-subtle: #7D8693;
+  --primary: var(--sky-500);
+  --primary-hover: var(--sky-400);
+  --on-primary: var(--black);
+  --primary-soft: #0B1F3D;
+  --on-primary-soft: var(--sky-400);
+  --link: var(--sky-400);
+  --inverse: var(--white);
+  --on-inverse: var(--black);
+  --focus: var(--sky-400);
+  --success: #4ADE9B;
+  --warning: #F5B94E;
+  --danger: #FF7A85;
+  --scrim: rgba(0,0,0,0.72);
+  --shadow-overlay: 0 0 0 1px rgba(255,255,255,0.06), 0 24px 48px rgba(0,0,0,0.6);
+}
+
+/* Chiaro */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--white);
+  --surface: var(--white);
+  --surface-raised: var(--white);
+  --surface-sunken: var(--grey-50);
+  --line: var(--grey-100);
+  --line-grid: var(--grey-200);
+  --line-strong: var(--grey-500);
+  --text: var(--black);
+  --text-muted: #4A525E;
+  --text-subtle: var(--grey-400);
+  --primary: var(--sky-500);
+  --primary-hover: var(--sky-400);
+  --on-primary: var(--black);
+  --primary-soft: var(--sky-100);
+  --on-primary-soft: var(--sky-700);
+  --link: var(--sky-700);
+  --inverse: var(--black);
+  --on-inverse: var(--white);
+  --focus: var(--sky-700);
+  --success: #0A7A4D;
+  --warning: #8A5300;
+  --danger: #C21F35;
+  --scrim: rgba(10,12,16,0.45);
+  --shadow-overlay: 0 0 0 1px rgba(0,0,0,0.06), 0 24px 48px rgba(10,12,16,0.14);
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-32: 128px;
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --horizon: linear-gradient(180deg, #000000 0%, #04142E 34%, #0B4FC4 62%, #4DA2FF 80%, #C6E0FF 94%, #FFFFFF 100%);
+  --horizon-arc: radial-gradient(120% 70% at 50% 108%, #FFFFFF 0%, #C6E0FF 18%, #4DA2FF 34%, #0B4FC4 52%, #04142E00 74%);
+  --motion-fast: 120ms;
+  --motion-base: 560ms;
+  --motion-slow: 900ms;
+  --motion-epic: 1800ms;
+  --motion-stagger: 45ms;
+  --ease-out: cubic-bezier(.2,.7,0,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --container-max: 1360px;
+  --z-nav: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+  --font-sans: "Host Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}

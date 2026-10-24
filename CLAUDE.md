@@ -1,0 +1,39 @@
+# Alpwise Studio — portfolio
+
+Sito dello studio Alpwise Studio (Gallarate, VA): siti vetrina, software su misura, AI e automazioni per PMI.
+Stack: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 3.
+
+## Design system: regole obbligatorie
+
+Il design system è in `design-system/` (fonte di verità) e già pronto da usare in `src/`. Leggi `design-system/README.md` prima di creare o modificare UI.
+
+- **Valori**: ogni colore, font, spaziatura e gradiente viene da `src/styles/tokens.css` (generato da `design-system/tokens.json`). Mai valori esadecimali o px inventati nei componenti: usa le variabili CSS o le classi Tailwind mappate in `tailwind.config.ts` (`bg-bg`, `text-ink-muted`, `border-line`, `bg-primary text-primary-fg`, `font-mono text-mono-label`…).
+- **Componenti**: usa quelli di `src/components/alpwise` (`import { Button, Hero, Navbar } from '@/components/alpwise'`) prima di scriverne di nuovi. I nuovi componenti seguono lo stesso stile: classi `al-*` in `src/styles/alpwise.css` oppure Tailwind sui token.
+- **Import CSS** (in `src/app/layout.tsx`, in quest'ordine): `tokens.css`, `alpwise.css`, `motion.css`, `landing.css`, poi `globals.css` con le direttive Tailwind.
+- **Movimento**: usa `Scene`, `Words`, `Scramble`, `RotatingWord`, `ScrollRead` da `@/components/motion` e i token `motion-*`. Tutto visibile a riposo, `prefers-reduced-motion` rispettato. I componenti con hook hanno `'use client'`.
+- **Tema**: `data-theme="dark"` (Scuro, default) o `data-theme="light"` (Chiaro) su `<html>`. Ogni schermata va verificata in entrambi.
+- **Colore**: nero/bianco + grigi freddi. Azzurro `primary` solo per azioni e stati attivi, e sopra l'azzurro il testo è **sempre nero** (`on-primary`). In Chiaro i link usano `--link` (sky-700), mai `sky-500` come testo.
+- **Tipografia**: Host Grotesk, titoli a peso 400 (mai bold), tracking stretto. DM Mono solo per etichette (`Servizi/` con barra finale), elenchi ad albero (`└─`), date e dati.
+- **Forme**: angoli vivi (`rounded-none`); 2px solo su bottoni e campi. Niente ombre tranne modali, toast e menu.
+- **Gradiente "orizzonte"** (`al-horizon` / `bg-horizon`): solo hero, CTA finale e visual dei case study, sempre con la griglia `al-grid al-grid-on-horizon`. Testo bianco solo nella metà alta. Nessun altro motivo grafico (niente barre, blob, 3D, foto stock).
+- **Logo**: solo il wordmark (`<Logo />` o `public/brand/wordmark-*.svg`), nero su chiaro, bianco su scuro e sull'orizzonte. Mai azzurro.
+- **Accessibilità**: WCAG 2.2 AA in entrambi i temi; focus visibile (`--focus`, 2px, offset 2px); stati sempre scritti a parole. Dettagli in `design-system/accessibility.md`.
+- **Testi**: italiano, del tu, frasi brevi, maiuscola solo a inizio frase, niente punti esclamativi né emoji. Vedi `design-system/voice.md`. Clienti, numeri e citazioni devono essere reali: non inventarli.
+
+## Struttura
+
+```
+design-system/   README, tokens.json, voice, accessibility (fonte di verità)
+public/fonts/    Host Grotesk 300–600, DM Mono 400–500 (woff2, self-hosted)
+public/brand/    wordmark nero e bianco (SVG)
+src/styles/      tokens.css (generato), alpwise.css (classi al-*)
+src/components/alpwise/  componenti React + TS del design system
+src/components/motion/   motore di animazione (Scene, Words, Scramble…)
+src/components/landing/  sezioni della home
+src/content/site.ts      testi e contatti (null = da fornire)
+src/app/                 layout, home, api/contact
+design-explorations/     varianti HTML esplorate per ogni sezione
+tailwind.config.ts       mappa Tailwind → variabili CSS
+```
+
+Se cambi un token, modifica `design-system/tokens.json` e rigenera `src/styles/tokens.css` con lo stesso formato (blocco `:root,[data-theme="dark"]`, blocco `[data-theme="light"]`, blocco `:root` per spaziature, raggi, gradienti, font).

@@ -1,0 +1,100 @@
+<!-- title="Alpwise CTA finale" num="07" label="CTA finale" desc="Tre varianti animate della chiamata all'azione finale sull'orizzonte." -->
+<style>
+.cta-x{position:relative;isolation:isolate;overflow:hidden;background:var(--black);color:var(--white)}
+.cta-x>:not(.hz):not(.m-cols){position:relative;z-index:1}
+
+/* B · Notte */
+.cta-b{padding:var(--space-32) 24px var(--space-20);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;min-height:560px;align-content:start}
+.cta-b .al-mono{grid-column:1 / -1;color:rgba(255,255,255,.7)}
+.cta-b h2{grid-column:1 / span 7;font:400 72px/72px var(--font-sans);letter-spacing:-.04em;margin:0;text-wrap:balance}
+.cta-b .side{grid-column:9 / -1;display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-3)}
+.cta-b .side p{margin:0;font:300 18px/28px var(--font-sans);color:rgba(255,255,255,.86)}
+.cta-mail{display:flex;align-items:center;gap:var(--space-2);font:400 14px/20px var(--font-mono);color:var(--white);border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-xs);padding:10px 12px;align-self:flex-start}
+.cta-mail button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.78);font:400 11px/16px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;padding-left:var(--space-3);border-left:1px solid rgba(255,255,255,.3)}
+.cta-mail button:hover{color:var(--white)}
+.cta-mail button:focus-visible{outline:2px solid var(--sky-400);outline-offset:2px}
+.cta-b .hz{background:var(--horizon-arc),var(--black)}
+@media (max-width:1023px){.cta-b h2{grid-column:1 / -1;font-size:56px;line-height:58px}.cta-b .side{grid-column:1 / span 8}}
+@media (max-width:767px){.cta-b{display:block;padding:var(--space-20) 16px 140px;min-height:0}.cta-b h2{font-size:44px;line-height:46px;margin:var(--space-4) 0 var(--space-8)}}
+
+/* C · Parola che cambia */
+.cta-c .m-hl{white-space:nowrap;display:inline-block}
+.cta-c .m-hl .m-w{clip-path:inset(0)}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Alba">
+  <section class="al-cta cta-x" data-scene>
+    <div class="hz" data-m="sunrise" aria-hidden="true"></div>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <h2 data-split="words" style="--delay:300ms">Iniziamo dal tuo problema</h2>
+    <p data-m="fade-up" style="--delay:800ms">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+    <div class="al-hero-actions" data-m="fade-up" style="--delay:950ms">
+      <a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a>
+      <a class="al-btn al-btn-light al-btn-lg" href="#">Richiedi un preventivo</a>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante A/</span>
+    <div>
+      <h3>Alba: il componente CTA, con l'orizzonte che sorge</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Il cielo sale in 1,8 s mentre la sezione entra in vista</li><li>Colonne disegnate, titolo parola per parola</li><li>Sul sito vero si può legare l'alba allo scroll: sale mentre scorri</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Chiude la pagina come la apre la hero. Se la hero è la variante Alba, qui l'alba ripete il gesto e lega inizio e fine.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Notte">
+  <section class="cta-x cta-b" data-scene>
+    <div class="hz" data-m="sunrise" style="--delay:200ms" aria-hidden="true"></div>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <span class="al-mono" data-scramble>Contatti/</span>
+    <h2 data-split="words" style="--delay:200ms">Iniziamo dal tuo problema</h2>
+    <div class="side" data-m="fade-up" style="--delay:700ms">
+      <p>Scrivici due righe: cosa fai e cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+      <span class="cta-mail"><span class="ph" id="cta-addr" style="color:inherit;outline-color:rgba(255,255,255,.5)">ciao@dominio.it</span><button type="button" id="cta-copy">{{ICON:copy:12}}<span>Copia</span></button></span>
+      <div><a class="al-btn al-btn-primary" href="#">Inizia un progetto <span class="al-arr" aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante B/</span>
+    <div>
+      <h3>Notte: l'arco di luce sul nero, con l'email a portata di mano</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>L'arco di luce sale dal basso</li><li>Etichetta decodificata, titolo parola per parola</li><li>Copia: il bottone dice "Copiata" per 2 s</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Più scura e sobria, lascia la luce piena alla hero. Utile se volete dare l'email diretta oltre al modulo. L'indirizzo è un segnaposto.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Parola che cambia">
+  <section class="al-cta cta-x cta-c" data-scene>
+    <div class="hz" data-m="sunrise" aria-hidden="true"></div>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <h2 data-split="words" style="--delay:300ms;--hl-delay:850ms">Iniziamo dal tuo <span class="m-hl" aria-hidden="true"><span class="m-w"><span class="rot" data-rotate="problema|sito|gestionale|processo" data-every="2400" style="display:inline-block">problema</span></span></span><span class="sr-only">problema</span></h2>
+    <p data-m="fade-up" style="--delay:900ms">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+    <div class="al-hero-actions" data-m="fade-up" style="--delay:1050ms">
+      <a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a>
+    </div>
+  </section>
+  <div class="x-notes">
+    <span class="al-mono">Variante C/</span>
+    <div>
+      <h3>Parola che cambia: riprende la hero C</h3>
+      <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Evidenziatore azzurro che si stende, poi la parola ruota ogni 2,4 s</li><li>Si ferma con riduci movimento</li></ul></div>
+      <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Solo se scegliete la hero C: lo stesso gesto in apertura e in chiusura. Con un'altra hero sembrerebbe un effetto isolato.</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const b = document.getElementById('cta-copy'), l = b.querySelector('span');
+  b.onclick = async () => {
+    const t = document.getElementById('cta-addr').textContent;
+    try { await navigator.clipboard.writeText(t); l.textContent = 'Copiata'; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(document.getElementById('cta-addr')); getSelection().removeAllRanges(); getSelection().addRange(r); l.textContent = 'Selezionata'; }
+    setTimeout(() => (l.textContent = 'Copia'), 2000);
+  };
+})();
+</script>
