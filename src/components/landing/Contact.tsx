@@ -36,7 +36,12 @@ export function Contact() {
         <div className="al-contact-info">
           <Mono style={{ color: 'var(--text-subtle)' }}>Recapiti/</Mono>
           <dl className="al-spec">
-            {rows.map(([k, v]) => <div key={k}><dt>{k}</dt><dd className={v ? undefined : 'al-ph'}>{v ?? 'Da inserire'}</dd></div>)}
+            {rows.map(([k, v]) => (
+              <div key={k}>
+                <dt>{k}</dt>
+                <dd className={v ? undefined : 'al-ph'}>{v && k === 'Email' ? <a className="al-contact-mail" href={`mailto:${v}`}>{v}</a> : v ?? 'Da inserire'}</dd>
+              </div>
+            ))}
           </dl>
         </div>
         <div className="al-contact-form">

@@ -4,7 +4,7 @@ import type { IconName } from '@/components/alpwise';
 // Clienti, numeri e citazioni devono essere reali (CLAUDE.md): non riempirli con esempi.
 
 export const contact = {
-  email: null as string | null,
+  email: 'alpwisestudio@gmail.com' as string | null,
   phone: null as string | null,
   vat: null as string | null,
   address: 'Gallarate, VA',
