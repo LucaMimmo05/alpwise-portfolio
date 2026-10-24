@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const body = (await req.json().catch(() => null)) as Record<string, unknown> | null;
   const name = String(body?.name ?? '').trim();
   const email = String(body?.email ?? '').trim();
-  if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !body?.privacy) {
+  if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return NextResponse.json({ error: 'Dati mancanti o non validi.' }, { status: 400 });
   }
   const hook = process.env.CONTACT_WEBHOOK_URL;
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   const res = await fetch(hook, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, service: String(body.service ?? ''), message: String(body.message ?? '').slice(0, 5000) }),
+    body: JSON.stringify({ name, email, service: String(body?.service ?? ''), message: String(body?.message ?? '').slice(0, 5000) }),
   });
   return res.ok ? NextResponse.json({ ok: true }) : NextResponse.json({ error: 'Invio non riuscito.' }, { status: 502 });
 }

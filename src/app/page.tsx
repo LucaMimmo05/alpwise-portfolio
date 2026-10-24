@@ -7,6 +7,7 @@ import { SiteFooter } from '@/components/landing/SiteFooter';
 import { SiteNav } from '@/components/landing/SiteNav';
 import { Studio } from '@/components/landing/Studio';
 import { Work } from '@/components/landing/Work';
+import { features } from '@/content/site';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
         <Services />
         <Sectors />
         <Method />
-        <Work />
+        {features.work && <Work />}
         <Cta />
       </main>
       <SiteFooter />

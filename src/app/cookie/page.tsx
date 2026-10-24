@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Table } from '@/components/alpwise';
 import { LegalPage, Val, type LegalSection } from '@/components/landing/LegalPage';
-import { contact, legal } from '@/content/site';
+import { contact, features, legal } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Cookie · Alpwise Studio',
@@ -57,5 +58,6 @@ const sections: LegalSection[] = [
 ];
 
 export default function CookiePage() {
+  if (!features.legal) notFound(); // bozza: nascosta finché i dati legali non sono verificati
   return <LegalPage label="Cookie/" title="Cookie" lead="Usiamo solo quello che serve a far funzionare il sito. Niente tracciamento e niente pubblicità." sections={sections} />;
 }

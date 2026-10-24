@@ -24,13 +24,21 @@ export const legal = {
   updated: null as string | null,        // data ultimo aggiornamento, gg.mm.aaaa
 };
 
-export const nav = [
+// Parti del sito non ancora pronte per il pubblico. Rimetti `true` quando i contenuti sono reali.
+export const features = {
+  work: false,        // sezione Lavori: servono progetti veri
+  legal: false,       // pagine Privacy e Cookie: servono dati legali verificati
+  contactForm: true,  // modulo contatti (invia a /api/contact, che inoltra a CONTACT_WEBHOOK_URL)
+};
+
+const allNav = [
   { label: 'Servizi', href: '/#servizi' },
   { label: 'Per chi', href: '/#per-chi' },
   { label: 'Metodo', href: '/#metodo' },
   { label: 'Lavori', href: '/#lavori' },
   { label: 'Studio', href: '/#studio' },
 ];
+export const nav = allNav.filter((n) => features.work || n.href !== '/#lavori');
 
 export const sectorWords = ['la tua azienda', 'il tuo studio', 'la tua officina', 'il tuo negozio'];
 export const ctaWords = ['problema', 'sito', 'gestionale', 'processo'];

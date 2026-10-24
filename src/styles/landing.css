@@ -157,6 +157,13 @@ html,body{overflow-anchor:none} /* la navbar che si rimpicciolisce non deve spos
 /* ── Contatti: righe che si tracciano ── */
 .al-contact-mail{color:var(--link);text-decoration:none;overflow-wrap:anywhere}
 .al-contact-mail:hover{text-decoration:underline;text-underline-offset:3px}
+/* Contatto diretto al posto del modulo (features.contactForm spento) */
+.al-contact-direct{display:flex;flex-direction:column;gap:var(--space-6)}
+.al-contact-direct>.al-mono{color:var(--text-subtle)}
+.al-contact-direct-mail{font:400 36px/40px var(--font-sans);letter-spacing:-.025em;color:var(--text);text-decoration:none;overflow-wrap:anywhere;background:linear-gradient(var(--primary),var(--primary)) no-repeat left bottom / 0% 2px;transition:background-size 400ms var(--ease-out);justify-self:start;align-self:flex-start}
+.al-contact-direct-mail:hover{background-size:100% 2px}
+.al-contact-direct p{margin:0;color:var(--text-muted);max-width:44ch}
+@media (max-width:860px){.al-contact-direct-mail{font-size:24px;line-height:30px}}
 /* ── Apertura delle pagine interne (Contatti): orizzonte che sorge, testo bianco solo nella metà alta ── */
 .al-page-hz{background:var(--black);color:var(--white)}
 .al-page-hz .al-hz{height:160%} /* la fascia chiara resta sotto il testo bianco (≥ 6:1) */

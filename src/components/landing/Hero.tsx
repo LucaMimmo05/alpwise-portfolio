@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { Button } from '@/components/alpwise';
 import { Columns, RotatingWord, Scene, Scramble, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
-import { contact, sectorWords } from '@/content/site';
+import { contact, features, sectorWords } from '@/content/site';
 
 /** Hero editoriale: titolo sul fondo del tema con la parola che cambia, orizzonte come fascia in basso. */
 export function Hero() {
@@ -19,7 +19,9 @@ export function Hero() {
         </p>
         <div className="al-hero-ed-actions" data-m="fade-up" style={d(950)}>
           <Button size="lg" href="/contatti">Inizia un progetto</Button>
-          <Button size="lg" variant="outline" href="#lavori">Guarda i lavori</Button>
+          {features.work
+            ? <Button size="lg" variant="outline" href="#lavori">Guarda i lavori</Button>
+            : <Button size="lg" variant="outline" href="#servizi">Scopri i servizi</Button>}
         </div>
       </div>
       <div className="al-hero-ed-band al-horizon al-grid al-grid-on-horizon" data-m="band" style={d(450)}>
