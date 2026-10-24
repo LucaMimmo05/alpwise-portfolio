@@ -111,7 +111,7 @@ export function RotatingWord({ words, every = 2600 }: { words: string[]; every?:
   );
 }
 
-/** Lettura legata allo scroll: le parole passano da text-muted a text mentre il paragrafo attraversa lo schermo. */
+/** Lettura legata allo scroll: le parole passano da --read-dim (grigio spento) a text mentre il paragrafo attraversa lo schermo. */
 export function ScrollRead({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const reduced = useReducedMotion();
@@ -137,7 +137,7 @@ export function ScrollRead({ text, className }: { text: string; className?: stri
   return (
     <p ref={ref} className={className}>
       {words.map((w, i) => (
-        <span key={i} style={{ color: i < lit ? 'var(--text)' : 'var(--text-muted)', transition: 'color 200ms linear' }}>{w}{i < words.length - 1 ? ' ' : ''}</span>
+        <span key={i} style={{ color: i < lit ? 'var(--text)' : 'var(--read-dim, var(--text-subtle))', transition: 'color 200ms linear' }}>{w}{i < words.length - 1 ? ' ' : ''}</span>
       ))}
     </p>
   );

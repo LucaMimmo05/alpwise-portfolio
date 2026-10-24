@@ -55,16 +55,15 @@ export const features = {
 };
 
 const allNav = [
-  { label: 'Servizi', href: '/#servizi' },
-  { label: 'Per chi', href: '/#per-chi' },
-  { label: 'Metodo', href: '/#metodo' },
-  { label: 'Lavori', href: '/#lavori' },
-  { label: 'Studio', href: '/#studio' },
+  { label: 'Servizi', href: '/#servizi', hint: 'Web, software, AI/' },
+  { label: 'Per chi', href: '/#per-chi', hint: 'Settori/' },
+  { label: 'Metodo', href: '/#metodo', hint: '4 passi/' },
+  { label: 'Lavori', href: '/#lavori', hint: 'Progetti/' },
+  { label: 'Studio', href: '/#studio', hint: 'Chi siamo/' },
 ];
 export const nav = allNav.filter((n) => features.work || n.href !== '/#lavori');
 
 export const sectorWords = ['la tua azienda', 'il tuo studio', 'la tua officina', 'il tuo negozio'];
-export const ctaWords = ['problema', 'sito', 'gestionale', 'processo'];
 
 export const services = [
   {

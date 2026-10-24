@@ -21,30 +21,61 @@ html,body{overflow-anchor:none} /* la navbar che si rimpicciolisce non deve spos
 .al-sticky.is-compact .al-logo-nav{--logo-h:26px;width:calc(var(--logo-h) * 185 / 236)}
 .al-sticky.is-compact .al-logo-rest{opacity:0}
 .al-sticky.is-compact .al-nav{padding-block:var(--space-2);border-color:var(--line-grid)}
-.al-sticky .al-mnav{top:100%;left:var(--nav-inset);right:var(--nav-inset)}
 @media (max-width:767px){.al-sticky.is-compact{--nav-inset:var(--space-2);padding-top:var(--space-2)}}
 
-/* ── Menu mobile ── */
-.al-mnav{position:absolute;left:0;right:0;top:100%;z-index:var(--z-nav);background:var(--surface-raised);border-bottom:1px solid var(--line);padding:var(--space-4) 16px var(--space-6);box-shadow:var(--shadow-overlay)}
-.al-mnav ul{list-style:none;margin:0;padding:0;display:grid}
-.al-mnav a{display:block;padding:12px 0;border-bottom:1px solid var(--line);color:var(--text);text-decoration:none;font-size:18px}
-.al-mnav .al-btn{margin-top:var(--space-6);width:100%}
+/* ── Menu mobile a schermo intero ──
+   Copre lo schermo sotto la barra (la barra resta sopra, anche compatta). Voci a 40px che salgono da una maschera,
+   60ms l'una; in fondo email e bottone. Segue il tema. */
+.al-mnav{position:fixed;inset:0;z-index:calc(var(--z-nav) - 1);display:flex;flex-direction:column;padding:calc(var(--space-20) + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(var(--space-8) + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--bg);color:var(--text);opacity:0;visibility:hidden;transition:opacity var(--motion-base) var(--ease-out),visibility 0s var(--motion-base);overflow-y:auto}
+.al-mnav.is-open{opacity:1;visibility:visible;transition-delay:0s}
+.al-mnav-links{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.al-mnav-links li{overflow:hidden;border-bottom:1px solid var(--line)}
+.al-mnav-links a{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-4);padding:var(--space-4) 0;color:var(--text);text-decoration:none;font:400 40px/48px var(--font-sans);letter-spacing:-.035em;transform:translateY(100%);transition:transform var(--motion-slow) var(--ease-out),color var(--motion-fast);transition-delay:calc(var(--i,0) * 60ms)}
+.al-mnav-links a .al-mono{color:var(--text-subtle)}
+.al-mnav-links a:hover{color:var(--text-muted)}
+.al-mnav.is-open .al-mnav-links a{transform:none}
+.al-mnav-foot{margin-top:auto;padding-top:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4);opacity:0;transform:translateY(12px);transition:opacity var(--motion-base),transform var(--motion-base) var(--ease-out);transition-delay:300ms}
+.al-mnav.is-open .al-mnav-foot{opacity:1;transform:none}
+.al-mnav-mail{font:400 13px/20px var(--font-mono);color:var(--link);text-decoration:none;overflow-wrap:anywhere}
+.al-mnav-foot .al-btn{width:100%}
+.is-menu-open .al-nav{border-bottom-color:var(--line)}
+.al-sticky .al-nav{position:relative;z-index:var(--z-nav)} /* la barra resta sopra il menu */
 @media (min-width:768px){.al-mnav{display:none}}
+@media (prefers-reduced-motion:reduce){.al-mnav,.al-mnav-links a,.al-mnav-foot{transition:none!important}}
 
-/* ── Hero editoriale: titolo sul tema, orizzonte come fascia ── */
-.al-hero-ed{background:var(--bg);color:var(--text);display:flex;flex-direction:column}
-.al-hero-ed-body{padding:var(--space-20) var(--space-6) var(--space-16);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6)}
-.al-hero-ed-body>.al-mono{grid-column:1 / -1;color:var(--text-subtle)}
-.al-hero-ed h1{grid-column:1 / -1;font:400 104px/100px var(--font-sans);letter-spacing:-.045em;margin:0;text-wrap:balance}
-.al-hero-ed-lead{grid-column:7 / span 5;margin:var(--space-6) 0 0;font:300 20px/30px var(--font-sans);color:var(--text-muted);text-wrap:pretty}
-.al-hero-ed-actions{grid-column:7 / span 6;display:flex;gap:var(--space-2);flex-wrap:wrap}
-.al-hero-ed-band{position:relative;height:240px;display:flex;align-items:flex-end}
-.al-hero-ed-band .al-hero-foot{width:100%}
-@media (max-width:1279px){.al-hero-ed h1{font-size:72px;line-height:72px}}
-@media (max-width:1023px){.al-hero-ed-lead,.al-hero-ed-actions{grid-column:1 / span 9}}
-@media (max-width:767px){.al-hero-ed-body{padding:var(--space-12) 16px;display:block}.al-hero-ed h1{font-size:48px;line-height:50px;margin-top:var(--space-4)}.al-hero-ed-lead{margin:var(--space-6) 0}.al-hero-ed-band{height:180px}}
+/* ── Hero centrata ──
+   Sempre scura (come l'orizzonte, uguale nei due temi). Griglia a 12 colonne che sfuma verso il basso,
+   bagliore dell'orizzonte nel 30% basso: due gradienti lineari, più chiaro ai lati e più scuro al centro.
+   Alta quanto lo schermo meno la navbar (svh: niente salti con le barre del browser su telefono). */
+.al-hero-c{position:relative;min-height:max(640px,calc(100vh - 62px));min-height:max(640px,calc(100svh - 62px));display:flex;flex-direction:column;background:var(--black);color:var(--white)}
+.al-hero-c .al-cols>i{border-left-color:var(--ink-700)}
+/* Bagliore dell'orizzonte in basso (hero e CTA): due gradienti lineari, più chiaro ai lati e più scuro al centro */
+.al-glow{position:absolute;left:0;right:0;bottom:0;height:30%;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 50%,transparent 100%),
+    linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--deep-900) 60%,transparent) 16%,var(--deep-900) 34%,color-mix(in srgb,var(--sky-700) 80%,var(--deep-900)) 64%,color-mix(in srgb,var(--sky-700) 70%,var(--sky-600)) 100%)}
+@keyframes al-glow{from{opacity:0;transform:translateY(40%)}to{opacity:1;transform:none}}
+:is(.is-play,.is-armed) .al-glow[data-m="glow"]{animation:al-glow var(--motion-epic) var(--ease-out) both;animation-delay:200ms}
+.al-hero-c-body{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-20) 24px var(--space-32)}
+.al-hero-c-kicker{color:var(--grey-300)}
+.al-hero-c h1{font:400 84px/80px var(--font-sans);letter-spacing:-.045em;margin:var(--space-8) 0 0;color:var(--white)}
+.al-hero-c h1 .al-hl-x{padding:0 .1em}
+.al-hero-c-lead{margin:var(--space-8) 0 0;max-width:40em;font:300 20px/30px var(--font-sans);color:rgba(255,255,255,.86);text-wrap:pretty}
+.al-hero-c-actions{display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center;margin-top:var(--space-8)}
+.al-hero-c-actions .al-btn{min-width:180px}
+.al-btn-on-dark{color:var(--white);border-color:var(--grey-200)}
+.al-btn-on-dark:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
+.al-hero-c :focus-visible{outline-color:var(--sky-400)}
+.al-hero-c-services{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-2) var(--space-3);margin:var(--space-12) 0 0;color:var(--grey-200)}
+.al-hero-c-services>span[aria-hidden]{color:var(--grey-400);font-size:10px}
+@media (max-width:1023px){.al-hero-c h1{font-size:64px;line-height:64px}}
+@media (max-width:767px){.al-hero-c{min-height:max(560px,calc(100vh - 58px));min-height:max(560px,calc(100svh - 58px))}.al-hero-c-body{padding:var(--space-16) 16px calc(var(--space-32) + var(--space-8))}.al-hero-c>.al-glow{height:var(--space-32)}.al-hero-c h1{font-size:44px;line-height:46px;margin-top:var(--space-6)}.al-hero-c-lead{font-size:18px;line-height:28px;margin-top:var(--space-6)}.al-hero-c-actions{flex-direction:column;align-items:stretch;width:100%;max-width:320px}.al-hero-c-services{gap:var(--space-2) var(--space-4)}.al-hero-c-services>span[aria-hidden]{display:none}}
+@media (prefers-reduced-motion:reduce){.al-glow{animation:none!important}}
 
 /* ── Studio: lettura allo scroll ── */
+/* Parole non ancora lette: grigio più spento del testo secondario, così il contrasto con il letto è netto */
+:root,[data-theme="dark"]{--read-dim:var(--grey-500)}
+[data-theme="light"]{--read-dim:var(--grey-300)}
 .al-head .al-read{grid-column:4 / -1;font:400 72px/76px var(--font-sans);letter-spacing:-.04em;margin:0;max-width:24ch;text-wrap:pretty}
 @media (max-width:1279px){.al-head .al-read{font-size:52px;line-height:56px;letter-spacing:-.035em}}
 @media (max-width:1023px){.al-head .al-read{grid-column:1 / -1;max-width:none}.al-read-foot>div{grid-column:1 / -1}}
@@ -136,23 +167,28 @@ html,body{overflow-anchor:none} /* la navbar che si rimpicciolisce non deve spos
 @media (hover:none),(max-width:860px){.al-work-peek{display:none}}
 @media (max-width:860px){.al-work-row{display:flex;flex-wrap:wrap;gap:4px 16px}.al-work-c{flex-basis:100%;font-size:24px;line-height:30px}.al-work-row .al-sq{display:none}}
 
-/* ── CTA notte, staccata dai bordi laterali. Margine + padding = gutter delle sezioni, così il testo resta allineato ── */
+/* ── CTA finale: l'email in grande ──
+   Riquadro nero staccato dai bordi, con griglia e bagliore come la hero. L'email scala con la larghezza
+   dello schermo (7vw, tra 28 e 104px) così sta sempre su una riga. */
 .al-cta-wrap{padding-inline:var(--space-4);padding-block:var(--space-8)}
-.al-cta-night{padding:var(--space-32) var(--space-4);min-height:560px;background:var(--black);color:var(--white)}
-/* Orizzonte più alto del riquadro: la fascia chiara resta sotto il testo bianco (≥ 6:1) */
-.al-cta-night .al-hz{height:160%}
-.al-cta-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);align-content:start}
-.al-cta-grid>.al-mono{grid-column:1 / -1;color:rgba(255,255,255,.7)}
-.al-cta-night h2{grid-column:1 / span 7;font:400 72px/76px var(--font-sans);letter-spacing:-.04em;margin:0;text-wrap:balance}
-.al-cta-side{grid-column:9 / -1;display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-3)}
-.al-cta-side p{margin:0;font:300 18px/28px var(--font-sans);color:rgba(255,255,255,.86)}
-.al-cta-mail{display:flex;align-items:center;gap:var(--space-2);font:400 14px/20px var(--font-mono);color:var(--white);border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-xs);padding:10px 12px;align-self:flex-start;max-width:100%}
-.al-cta-mail>span{overflow-wrap:anywhere}
-.al-cta-mail button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.78);font:400 11px/16px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;padding-left:var(--space-3);border-left:1px solid rgba(255,255,255,.3)}
-.al-cta-mail button:hover{color:var(--white)}
-.al-cta-mail button:focus-visible,.al-cta-night .al-btn:focus-visible{outline:2px solid var(--sky-400);outline-offset:2px}
-@media (max-width:1023px){.al-cta-night h2{grid-column:1 / -1;font-size:56px;line-height:60px}.al-cta-side{grid-column:1 / span 8}}
-@media (max-width:767px){.al-cta-wrap{padding:var(--space-4) var(--space-2)}.al-cta-night{padding:var(--space-20) var(--space-2) 200px;min-height:0}.al-cta-grid{display:block}.al-cta-night h2{font-size:40px;line-height:46px;margin:var(--space-4) 0 var(--space-8)}}
+.al-cta-mail-box{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6);padding:var(--space-32) var(--space-6) calc(var(--space-32) + var(--space-16));background:var(--black);color:var(--white);border:1px solid var(--ink-700)} /* il bordo chiude la griglia: non compare dal nulla sul fondo nero */
+.al-cta-mail-box>.al-mono{color:var(--grey-300)}
+.al-cta-mail-box .al-cols>i{border-left-color:var(--ink-700)}
+.al-cta-mail-box h2{margin:0;font:400 clamp(28px,7vw,104px)/1.2 var(--font-sans);letter-spacing:-.045em;max-width:100%}
+/* Maschera e area del riempimento più alte del solito: "@" e "g" scendono sotto la riga */
+.al-cta-mail-box h2 .al-w{padding-block:.08em .22em;margin-block:-.08em -.22em}
+/* L'email è un bottone: hover = riempimento sky-400 da sinistra a destra (come un caricamento), clic = copia */
+.al-cta-mail-link{all:unset;display:inline-block;padding-block:.08em .2em;cursor:copy;white-space:nowrap;color:transparent;
+  background:linear-gradient(90deg,var(--sky-400) 0 50%,var(--white) 50% 100%) no-repeat right / 200% 100%;
+  -webkit-background-clip:text;background-clip:text;transition:background-position var(--motion-slow) var(--ease-in-out)}
+.al-cta-mail-link:hover,.al-cta-mail-link:focus-visible,.al-cta-mail-link.is-copied{background-position:left}
+.al-cta-mail-link.is-copied{transition-duration:var(--motion-fast)}
+.al-cta-mail-link:focus-visible{outline:2px solid var(--sky-400);outline-offset:6px}
+@media (forced-colors:active){.al-cta-mail-link{color:ButtonText;background:none}}
+.al-cta-mail-foot{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;justify-content:center}
+.al-cta-mail-foot p{margin:0;font:300 18px/28px var(--font-sans);color:rgba(255,255,255,.86)}
+.al-cta-mail-box .al-btn:focus-visible{outline-color:var(--sky-400)}
+@media (max-width:767px){.al-cta-wrap{padding:var(--space-4) var(--space-2)}.al-cta-mail-box{padding:var(--space-20) var(--space-3) calc(var(--space-32) + var(--space-8))}.al-cta-mail-box>.al-glow{height:var(--space-32)}}
 
 /* ── Contatti: righe che si tracciano ── */
 .al-contact-mail{color:var(--link);text-decoration:none;overflow-wrap:anywhere}

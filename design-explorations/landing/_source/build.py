@@ -26,6 +26,13 @@ def logo(m):
     return (f'<svg viewBox="{" ".join(f"{v:g}" for v in VB)}" {size} role="img" aria-label="Alpwise Studio" class="al-logo">'
             f'<g fill="currentColor">{paths}</g></svg>')
 
+def mark(m):
+    # Solo la A del wordmark (prima lettera), come in <Logo lockup="mark" />
+    h = float(m.group(1)); w = round(h * 184 / 175, 1)
+    x, y, d = GLYPHS[0]
+    return (f'<svg viewBox="223 642 184 175" height="{h:g}" width="{w:g}" role="img" aria-label="Alpwise Studio" class="al-logo">'
+            f'<path fill="currentColor" transform="translate({x} {y})" d="{d}"/></svg>')
+
 PATHS = {
   'arrow-right': 'M4 12h16M14 6l6 6-6 6', 'arrow-up-right': 'M7 17L17 7M8 7h9v9', 'plus': 'M12 5v14M5 12h14', 'minus': 'M5 12h14',
   'check': 'M5 12.5l4.5 4.5L19 7.5', 'x': 'M6 6l12 12M18 6L6 18', 'menu': 'M4 8h16M4 16h16',
@@ -58,6 +65,7 @@ def build(src):
     body = text.split('-->', 1)[1]
     body = re.sub(r'\{\{NAV:?(\w*)\}\}', lambda m: NAV.replace('{cls}', 'al-nav-clear' if m.group(1) == 'clear' else ''), body)
     body = re.sub(r'\{\{LOGO:(\d+)\}\}', logo, body)
+    body = re.sub(r'\{\{MARK:(\d+)\}\}', mark, body)
     body = re.sub(r'\{\{ICON:([\w-]+):?(\d*)\}\}', icon, body)
     html = f'''<meta charset="utf-8">
 <title>{meta["title"]}</title>

@@ -1,42 +1,56 @@
 'use client';
 
-import { useRef, useState, type CSSProperties } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '@/components/alpwise';
-import { Columns, RotatingWord, Scene, Scramble, Words } from '@/components/motion';
+import { Columns, Scene, Scramble, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
-import { contact, ctaWords } from '@/content/site';
+import { contact } from '@/content/site';
 
-/** CTA finale: orizzonte che sorge, staccata dai bordi, con la parola che cambia e l'email da copiare. */
+type CopyState = 'idle' | 'copied' | 'manual';
+
+/**
+ * CTA finale: l'email in grande. Al passaggio si colora da sinistra a destra; al clic si copia negli appunti
+ * e l'etichetta sopra diventa "Copiata/". Sotto, il tempo di risposta e un bottone verso Contatti.
+ */
 export function Cta() {
-  const addr = useRef<HTMLSpanElement>(null);
-  const [copied, setCopied] = useState<'Copia' | 'Copiata' | 'Selezionata'>('Copia');
+  const [state, setState] = useState<CopyState>('idle');
+  const mailRef = useRef<HTMLButtonElement>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  if (!contact.email) return null;
+  const email = contact.email;
+
   const copy = async () => {
-    if (!contact.email) return;
-    try { await navigator.clipboard.writeText(contact.email); setCopied('Copiata'); }
-    catch {
-      const r = document.createRange(); r.selectNodeContents(addr.current!);
-      getSelection()?.removeAllRanges(); getSelection()?.addRange(r); setCopied('Selezionata');
+    clearTimeout(timer.current);
+    try {
+      await navigator.clipboard.writeText(email);
+      setState('copied');
+    } catch {
+      // Appunti non disponibili: selezioniamo il testo così si copia a mano.
+      const r = document.createRange(); r.selectNodeContents(mailRef.current!);
+      getSelection()?.removeAllRanges(); getSelection()?.addRange(r);
+      setState('manual');
     }
-    setTimeout(() => setCopied('Copia'), 2000);
+    timer.current = setTimeout(() => setState('idle'), 2000);
   };
+
+  const label = state === 'copied' ? 'Copiata/' : state === 'manual' ? 'Selezionata, copiala/' : 'Scrivici/';
   return (
     <div className="al-cta-wrap">
-      <Scene as="section" className="al-cta-night al-stage" aria-labelledby="cta-t">
-        <div className="al-hz" data-m="sunrise" style={d(200)} aria-hidden="true" />
+      <Scene as="section" className="al-cta-mail-box al-stage" aria-labelledby="cta-t">
         <Columns onHorizon />
-        <div className="al-container al-cta-grid">
-          <Scramble text="Contatti/" />
-          <h2 id="cta-t" style={{ '--delay': '200ms', '--hl-delay': '800ms' } as CSSProperties}>
-            <Words>Iniziamo dal<br />tuo {<RotatingWord key="rot" words={ctaWords} every={2400} />}</Words>
-          </h2>
-          <div className="al-cta-side" data-m="fade-up" style={d(700)}>
-            <p>Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
-            <span className="al-cta-mail">
-              <span ref={addr} className={contact.email ? undefined : 'al-ph'}>{contact.email ?? 'Email da inserire'}</span>
-              {contact.email && <button type="button" onClick={copy}>{copied}</button>}
-            </span>
-            <div><Button href="/contatti" arrow>Inizia un progetto</Button></div>
-          </div>
+        <div className="al-glow" data-m="glow" aria-hidden="true" />
+        <Scramble text={label} duration={400} />
+        <h2 id="cta-t" style={d(200)}>
+          <Words>
+            {<button key="mail" ref={mailRef} type="button" onClick={copy}
+              className={state === 'idle' ? 'al-cta-mail-link' : 'al-cta-mail-link is-copied'}
+              aria-describedby="cta-hint">{email}</button>}
+          </Words>
+        </h2>
+        <span className="sr-only" aria-live="polite">{state === 'copied' ? 'Email copiata negli appunti.' : ''}</span>
+        <div className="al-cta-mail-foot" data-m="fade-up" style={d(700)}>
+          <p id="cta-hint">Clicca sull’email per copiarla. Ti rispondiamo entro un giorno lavorativo.</p>
+          <Button size="sm" href="/contatti" arrow>Contatti</Button>
         </div>
       </Scene>
     </div>

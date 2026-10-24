@@ -24,7 +24,7 @@
 /* Orizzonte che sorge: layer più alto del 25%, a riposo già in posizione */
 .al-hz{position:absolute;left:0;right:0;top:0;height:125%;background:var(--horizon);transform:translateY(-20%);z-index:-1;pointer-events:none}
 .al-stage{position:relative;isolation:isolate;overflow:hidden}
-.al-stage>:not(.al-hz):not(.al-cols){position:relative;z-index:1}
+.al-stage>:not(.al-hz):not(.al-cols):not(.al-glow){position:relative;z-index:1}
 
 /* 12 colonne hairline disegnate una per una */
 .al-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 90%);mask-image:linear-gradient(180deg,#000 0%,transparent 90%)}
