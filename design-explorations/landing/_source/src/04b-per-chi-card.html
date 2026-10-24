@@ -1,0 +1,450 @@
+<!-- title="Alpwise Card settori" num="04" label="Per chi lavoriamo · card" desc="Quattro varianti interattive delle card della sezione Per chi lavoriamo." -->
+<style>
+.pc-wrap .al-head{margin-bottom:var(--space-12)}
+.pc-link{color:inherit;text-decoration:none}
+.pc-ico{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line);color:var(--text);flex:none;transition:background-color var(--m-base) var(--m-ease),color var(--m-base) var(--m-ease),border-color var(--m-base) var(--m-ease)}
+.pc-tags{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.pc-tags .al-tag{transition:border-color var(--m-base),color var(--m-base)}
+.pc-go{width:24px;height:24px;font-size:14px;transition:background-color var(--m-fast),color var(--m-fast),transform var(--m-base) var(--m-ease)}
+:is(.pa-card,.pb-card,.pc-card,.pd-row,.pe-card,.pf-card,.pg-card,.ph-card):is(:hover,:focus-visible) .pc-ico{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+:is(.pa-card,.pb-card,.pc-card,.pd-row,.pe-card,.pf-card,.pg-card,.ph-card):is(:hover,:focus-visible) .pc-go{background:var(--primary);color:var(--on-primary);transform:translateX(4px)}
+:is(.pa-card,.pb-card,.pc-card,.pd-row,.pe-card,.pf-card,.pg-card,.ph-card):is(:hover,:focus-visible) .al-tag{border-color:var(--line-strong);color:var(--text)}
+:is(.pa-card,.pb-card,.pc-card,.pd-row,.pe-card,.pf-card,.pg-card,.ph-card):focus-visible{outline:2px solid var(--focus);outline-offset:2px;z-index:2}
+
+/* A · Bento */
+.pa{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.pa-card{position:relative;display:flex;flex-direction:column;gap:var(--space-8);padding:var(--space-8);background:var(--surface);color:var(--text-muted);min-width:0;transition:background-color var(--m-base) var(--m-ease)}
+.pa-card:nth-child(1){grid-column:span 7}.pa-card:nth-child(2){grid-column:span 5}
+.pa-card:nth-child(3){grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6)}
+.pa-card:nth-child(3) .pa-top{grid-column:1 / span 3;flex-direction:column;align-items:flex-start}
+.pa-card:nth-child(3) .pc-go{position:absolute;top:var(--space-8);right:var(--space-8)}
+.pa-card:nth-child(3) .pa-main{grid-column:4 / span 5}
+.pa-card:nth-child(3) .pa-fit{grid-column:9 / -1;margin-top:0;padding-top:0;border-top:0}
+.pa-line{position:absolute;left:-1px;right:-1px;top:-1px;height:2px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform var(--m-slow) var(--m-ease-io)}
+.pa-top{display:flex;align-items:center;gap:var(--space-3)}.pa-top .al-mono{color:var(--text-subtle)}.pa-top .pc-go{margin-left:auto}
+.pa-main{display:flex;flex-direction:column;gap:var(--space-3)}
+.pa-card h3{font:400 30px/34px var(--font-sans);letter-spacing:-.025em;color:var(--text);margin:0;transition:transform var(--m-base) var(--m-ease)}
+.pa-card p{margin:0;max-width:44ch}
+.pa-fit{margin-top:auto;padding-top:var(--space-6);border-top:1px dashed var(--line-grid);display:flex;flex-direction:column;gap:var(--space-3)}.pa-fit>.al-mono{color:var(--text-subtle)}
+.pa-card:is(:hover,:focus-visible){background:var(--surface-raised)}
+.pa-card:is(:hover,:focus-visible) .pa-line{transform:none}
+.pa-card:is(:hover,:focus-visible) h3{transform:translateX(4px)}
+@media (max-width:960px){.pa-card:nth-child(n){grid-column:1 / -1;display:flex}.pa-card:nth-child(3) .pa-top{flex-direction:row;align-items:center}.pa-card:nth-child(3) .pc-go{position:static}.pa-card:nth-child(3) .pa-fit{margin-top:auto;padding-top:var(--space-6);border-top:1px dashed var(--line-grid)}.pa-card{padding:var(--space-6)}}
+
+/* B · Espansione */
+.pb{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);height:460px}
+.pb-card{position:relative;flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:var(--space-8);background:var(--surface);color:var(--text-muted);overflow:hidden;transition:flex-grow var(--m-slow) var(--m-ease-io),background-color var(--m-base)}
+.pb:not(:hover):not(:focus-within) .pb-card:first-child,.pb-card:hover,.pb-card:focus-visible{flex-grow:2.6;background:var(--surface-raised)}
+.pb-top{display:flex;align-items:center;gap:var(--space-3)}.pb-top .al-mono{color:var(--text-subtle);white-space:nowrap}.pb-top .pc-go{margin-left:auto}
+.pb-card h3{font:400 30px/34px var(--font-sans);letter-spacing:-.025em;color:var(--text);margin:0 0 var(--space-4);max-width:16ch}
+.pb-more{display:flex;flex-direction:column;gap:var(--space-4);width:min(460px,100%);opacity:0;transform:translateY(16px);transition:opacity var(--m-base) var(--m-ease),transform var(--m-base) var(--m-ease)}
+.pb-more p{margin:0}
+.pb:not(:hover):not(:focus-within) .pb-card:first-child .pb-more,.pb-card:is(:hover,:focus-visible) .pb-more{opacity:1;transform:none;transition-delay:250ms}
+@media (max-width:860px){.pb{flex-direction:column;height:auto}.pb-card{flex:none;gap:var(--space-8)}.pb-more{opacity:1;transform:none}}
+
+/* C · Problema e soluzione */
+.pcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);align-items:start}
+.pc-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);background:var(--surface);min-height:420px;overflow:hidden;transition:border-color var(--m-base)}
+.pc-card:nth-child(2){margin-top:var(--space-16)}.pc-card:nth-child(3){margin-top:var(--space-32)}
+.pc-head{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-6);border-bottom:1px solid var(--line)}.pc-head .al-mono{color:var(--text-subtle)}.pc-head .pc-go{margin-left:auto}
+.pc-q{padding:var(--space-6);font:400 26px/32px var(--font-sans);letter-spacing:-.02em;color:var(--text);margin:0;transition:color var(--m-base),transform var(--m-slow) var(--m-ease-io)}
+.pc-q::before{content:"Il problema/";display:block;font:400 11px/16px var(--font-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:var(--space-3)}
+.pc-sol{margin-top:auto;padding:var(--space-6);background:var(--surface-raised);border-top:2px solid var(--primary);display:flex;flex-direction:column;gap:var(--space-3);transform:translateY(calc(100% - 64px));transition:transform var(--m-slow) var(--m-ease-io)}
+.pc-sol h3{font:400 22px/28px var(--font-sans);letter-spacing:-.015em;color:var(--text);margin:0}
+.pc-sol .al-mono{color:var(--text-subtle)}
+.pc-sol-body{opacity:0;transition:opacity var(--m-base)}
+.pc-card:is(:hover,:focus-visible){border-color:var(--line-strong)}
+.pc-card:is(:hover,:focus-visible) .pc-q{color:var(--text-subtle);transform:translateY(-8px)}
+.pc-card:is(:hover,:focus-visible) .pc-sol{transform:none}
+.pc-card:is(:hover,:focus-visible) .pc-sol-body{opacity:1;transition-delay:200ms}
+@media (hover:none),(max-width:960px){.pcs{grid-template-columns:1fr}.pc-card:nth-child(n){margin-top:0;min-height:0}.pc-sol{transform:none}.pc-sol-body{opacity:1}}
+
+/* D · Righe */
+.pd{border-top:1px solid var(--line)}
+.pd-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-2) var(--space-6);padding:var(--space-8) var(--space-4);margin-inline:calc(var(--space-4) * -1);border-bottom:1px solid var(--line);color:var(--text-muted);transition:background-color var(--m-base)}
+.pd-row>.al-mono{grid-column:1 / span 3;color:var(--text-subtle);padding-top:14px}
+.pd-row h3{grid-column:4 / span 7;font:400 44px/48px var(--font-sans);letter-spacing:-.03em;color:var(--text-subtle);margin:0;transition:color var(--m-base)}
+.pd-end{grid-column:11 / -1;justify-self:end;display:flex;gap:var(--space-3);align-items:center}
+.pd-more{grid-column:4 / -1;display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--m-slow) var(--m-ease-io)}
+.pd-more>div{overflow:hidden;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:var(--space-6)}
+.pd-more p{grid-column:1 / span 5;margin:var(--space-4) 0 0;font:300 18px/28px var(--font-sans)}
+.pd-more .pc-tags{grid-column:6 / -1;margin-top:var(--space-4);align-content:start}
+.pd:not(:hover):not(:focus-within) .pd-row:first-child,.pd-row:is(:hover,:focus-visible){background:var(--surface)}
+.pd:not(:hover):not(:focus-within) .pd-row:first-child h3,.pd-row:is(:hover,:focus-visible) h3{color:var(--text)}
+.pd:not(:hover):not(:focus-within) .pd-row:first-child .pd-more,.pd-row:is(:hover,:focus-visible) .pd-more{grid-template-rows:1fr}
+@media (max-width:860px){.pd-row{display:block}.pd-row h3{font-size:30px;line-height:34px;margin:var(--space-2) 0;color:var(--text)}.pd-end{display:none}.pd-more{grid-template-rows:1fr}.pd-more>div{display:block}}
+@media (prefers-reduced-motion:reduce){.pb-card,.pb-more,.pc-q,.pc-sol,.pd-more{transition:none!important}}
+
+/* E · Pila */
+.pe{position:relative;max-width:880px;margin-left:auto;padding-bottom:240px;transition:padding var(--m-slow) var(--m-ease-io)}
+.pe-card{position:relative;display:flex;flex-direction:column;gap:var(--space-6);height:340px;padding:var(--space-6) var(--space-8);background:var(--surface);border:1px solid var(--line);color:var(--text-muted);transition:transform var(--m-slow) var(--m-ease-io),background-color var(--m-base),border-color var(--m-base)}
+.pe-card+.pe-card{margin-top:-268px}
+.pe-top{display:flex;align-items:center;gap:var(--space-3);height:24px}.pe-top .al-mono{color:var(--text-subtle)}.pe-top .pc-go{margin-left:auto}
+.pe-card h3{font:400 36px/40px var(--font-sans);letter-spacing:-.03em;color:var(--text);margin:var(--space-6) 0 0}
+.pe-card p{margin:0;max-width:52ch}
+.pe-card:hover~.pe-card,.pe-card:focus-visible~.pe-card{transform:translateY(240px)}
+.pe-card:is(:hover,:focus-visible){background:var(--surface-raised);border-color:var(--line-strong)}
+.pe-card .pc-tags{margin-top:auto}
+@media (max-width:860px){.pe{padding-bottom:0}.pe-card{height:auto}.pe-card+.pe-card{margin-top:-1px}.pe-card:hover~.pe-card{transform:none}}
+
+/* F · Contorno */
+.pf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6)}
+.pf-card{position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-8) var(--space-6);min-height:380px;color:var(--text-muted);border:1px solid var(--line)}
+.pf-card i{position:absolute;background:var(--primary);pointer-events:none;transition:transform 260ms linear}
+.pf-card i:nth-of-type(1){left:-1px;right:-1px;top:-1px;height:2px;transform:scaleX(0);transform-origin:left;transition-delay:0ms}
+.pf-card i:nth-of-type(2){top:-1px;bottom:-1px;right:-1px;width:2px;transform:scaleY(0);transform-origin:top;transition-delay:260ms}
+.pf-card i:nth-of-type(3){left:-1px;right:-1px;bottom:-1px;height:2px;transform:scaleX(0);transform-origin:right;transition-delay:520ms}
+.pf-card i:nth-of-type(4){top:-1px;bottom:-1px;left:-1px;width:2px;transform:scaleY(0);transform-origin:bottom;transition-delay:780ms}
+.pf-card:is(:hover,:focus-visible) i{transform:none}
+.pf-card .pc-ico{margin-bottom:var(--space-12)}
+.pf-card .al-mono{color:var(--text-subtle)}
+.pf-card h3{font:400 28px/32px var(--font-sans);letter-spacing:-.02em;color:var(--text);margin:0}
+.pf-card p{margin:0}
+.pf-cta{margin-top:auto;display:flex;align-items:center;gap:var(--space-2);font:400 13px/20px var(--font-mono);color:var(--link);opacity:0;transform:translateX(-8px);transition:opacity var(--m-base),transform var(--m-base) var(--m-ease)}
+.pf-card:is(:hover,:focus-visible) .pf-cta{opacity:1;transform:none;transition-delay:300ms}
+@media (hover:none),(max-width:960px){.pf{grid-template-columns:1fr}.pf-card{min-height:0}.pf-cta{opacity:1;transform:none}.pf-card .pc-ico{margin-bottom:var(--space-4)}}
+
+/* G · Inverso */
+.pg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto;gap:1px;background:var(--line);border:1px solid var(--line)}
+.pg-card{display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-8);background:var(--bg);color:var(--text-muted);min-height:260px;transition:background-color var(--m-base) var(--m-ease),color var(--m-base) var(--m-ease)}
+.pg-card:nth-child(1){grid-column:1 / span 6;grid-row:1 / span 2}
+.pg-card:nth-child(2),.pg-card:nth-child(3){grid-column:7 / -1}
+.pg-card .al-mono{color:var(--text-subtle);transition:color var(--m-base)}
+.pg-card h3{font:400 44px/48px var(--font-sans);letter-spacing:-.035em;color:var(--text);margin:0;transition:color var(--m-base)}
+.pg-card:nth-child(1) h3{font-size:64px;line-height:68px;letter-spacing:-.04em;margin-top:auto}
+.pg-card p{margin:0;max-width:44ch}
+.pg-card:is(:hover,:focus-visible){background:var(--inverse);color:var(--on-inverse)}
+.pg-card:is(:hover,:focus-visible) :is(h3,.al-mono,p){color:var(--on-inverse)}
+.pg-card:is(:hover,:focus-visible) .al-tag{border-color:var(--on-inverse);color:var(--on-inverse)}
+.pg-card:is(:hover,:focus-visible) .pc-ico{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.pg-head{display:flex;align-items:center;gap:var(--space-3)}.pg-head .pc-go{margin-left:auto}
+@media (max-width:960px){.pg-card:nth-child(n){grid-column:1 / -1;grid-row:auto;min-height:0}.pg-card h3,.pg-card:nth-child(1) h3{font-size:32px;line-height:36px}}
+
+/* H · Checklist */
+.ph-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ph-card{display:flex;flex-direction:column;gap:var(--space-6);padding:var(--space-8) var(--space-6);background:var(--surface);color:var(--text-muted);transition:background-color var(--m-base)}
+.ph-card .al-mono{color:var(--text-subtle)}
+.ph-card h3{font:400 26px/30px var(--font-sans);letter-spacing:-.02em;color:var(--text);margin:0}
+.ph-list{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-3)}
+.ph-list li{display:flex;gap:var(--space-3);align-items:flex-start;font-size:15px;line-height:22px}
+.ph-box{flex:none;width:18px;height:18px;margin-top:2px;border:1px solid var(--line-strong);border-radius:var(--radius-xs);display:grid;place-items:center;color:var(--on-primary);transition:background-color 200ms,border-color 200ms}
+.ph-box svg{width:12px;height:12px;opacity:0;transition:opacity 200ms}
+.ph-card:is(:hover,:focus-visible) .ph-box{background:var(--primary);border-color:var(--primary)}
+.ph-card:is(:hover,:focus-visible) .ph-box svg{opacity:1}
+.ph-card:is(:hover,:focus-visible) li:nth-child(2) :is(.ph-box,.ph-box svg){transition-delay:180ms}
+.ph-card:is(:hover,:focus-visible) li:nth-child(3) :is(.ph-box,.ph-box svg){transition-delay:360ms}
+.ph-card:is(:hover,:focus-visible){background:var(--surface-raised)}
+.ph-foot{margin-top:auto;padding-top:var(--space-4);border-top:1px dashed var(--line-grid);display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);color:var(--text)}
+.ph-foot span:first-child{font-size:14px;line-height:20px}
+.ph-card:is(:hover,:focus-visible) .pc-go{background:var(--primary);color:var(--on-primary);transform:translateX(4px)}
+@media (max-width:960px){.ph-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.pe-card,.pf-card i,.pf-cta,.pg-card,.ph-box,.ph-box svg{transition:none!important}}
+
+/* I · Scorrimento */
+.pi{position:relative;overflow:hidden;border-block:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pi-track{display:flex;width:max-content;animation:pi-move 45s linear infinite}
+.pi:hover .pi-track,.pi:focus-within .pi-track,.pi.is-paused .pi-track{animation-play-state:paused}
+@keyframes pi-move{to{transform:translateX(-50%)}}
+.pi-card{width:420px;flex:none;display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-8) var(--space-6);border-right:1px solid var(--line);color:var(--text-muted);transition:background-color var(--m-base),opacity var(--m-base)}
+.pi:hover .pi-card:not(:hover){opacity:.45}
+.pi-card:is(:hover,:focus-visible){background:var(--surface)}
+.pi-card .pi-top{display:flex;align-items:center;gap:var(--space-3)}.pi-card .pi-top .al-mono{color:var(--text-subtle)}.pi-card .pi-top .pc-go{margin-left:auto}
+.pi-card h3{font:400 28px/32px var(--font-sans);letter-spacing:-.02em;color:var(--text);margin:var(--space-4) 0 0}
+.pi-card p{margin:0}
+.pi-ctl{display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-4);color:var(--text-subtle)}
+@media (prefers-reduced-motion:reduce){.pi{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.pi-track{animation:none}.pi-track>[aria-hidden]{display:none}}
+
+/* J · Focus */
+.pj-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.pj-card{display:flex;flex-direction:column;gap:var(--space-6);padding:var(--space-8) var(--space-6);background:var(--surface);color:var(--text-muted);transition:opacity var(--m-base) var(--m-ease),background-color var(--m-base)}
+.pj-card .pj-top{display:flex;align-items:center;gap:var(--space-3)}.pj-card .pj-top .al-mono{color:var(--text-subtle)}
+.pj-card h3{font:400 30px/34px var(--font-sans);letter-spacing:-.025em;color:var(--text);margin:0}
+.pj-grid[data-active] .pj-card{opacity:.4}
+.pj-grid[data-active="0"] .pj-card:nth-child(1),.pj-grid[data-active="1"] .pj-card:nth-child(2),.pj-grid[data-active="2"] .pj-card:nth-child(3){opacity:1;background:var(--surface-raised)}
+.pj-grid[data-active="0"] .pj-card:nth-child(1) .pc-ico,.pj-grid[data-active="1"] .pj-card:nth-child(2) .pc-ico,.pj-grid[data-active="2"] .pj-card:nth-child(3) .pc-ico{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.pj-drawer{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding:var(--space-8) var(--space-6);border:1px solid var(--line);border-top:2px solid var(--primary);margin-top:-1px;background:var(--surface-raised)}
+.pj-drawer>.al-mono{grid-column:1 / span 3;color:var(--text-subtle);padding-top:6px}
+.pj-drawer p{grid-column:4 / span 5;margin:0;font:300 20px/30px var(--font-sans);color:var(--text)}
+.pj-drawer-side{grid-column:9 / -1;display:flex;flex-direction:column;gap:var(--space-4);align-items:flex-start}
+.pj-drawer.in>*{animation:m-fade-up var(--m-base) var(--m-ease) both}.pj-drawer.in>:nth-child(2){animation-delay:60ms}.pj-drawer.in>:nth-child(3){animation-delay:120ms}
+@media (max-width:960px){.pj-grid{grid-template-columns:1fr}.pj-drawer{display:block}.pj-drawer p{margin:var(--space-3) 0 var(--space-4)}}
+
+/* K · Scroll */
+.pk{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6)}
+.pk-left{grid-column:1 / span 5;position:sticky;top:140px;align-self:start;display:flex;flex-direction:column;gap:var(--space-6)}
+.pk-index{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-2);font:400 12px/18px var(--font-mono);color:var(--text-subtle)}
+.pk-index li{display:flex;align-items:center;gap:var(--space-3);transition:color var(--m-base)}
+.pk-index li::before{content:"";width:16px;height:1px;background:currentColor;transition:width var(--m-base) var(--m-ease)}
+.pk-index li.on{color:var(--text)}.pk-index li.on::before{width:40px;background:var(--primary)}
+.pk-active h3{font:400 52px/56px var(--font-sans);letter-spacing:-.035em;color:var(--text);margin:0 0 var(--space-4)}
+.pk-active.in>*{animation:m-fade-up var(--m-base) var(--m-ease) both}.pk-active.in>:nth-child(2){animation-delay:80ms}
+.pk-right{grid-column:7 / -1;display:flex;flex-direction:column}
+.pk-block{min-height:62vh;display:flex;flex-direction:column;justify-content:center;gap:var(--space-4);border-top:1px solid var(--line);padding-block:var(--space-12);color:var(--text-muted);opacity:.35;transition:opacity var(--m-base)}
+.pk-block.on{opacity:1}
+.pk-block blockquote{margin:0;font:400 32px/40px var(--font-sans);letter-spacing:-.025em;color:var(--text)}
+.pk-block p{margin:0;max-width:44ch}
+@media (max-width:960px){.pk{display:block}.pk-left{position:static;margin-bottom:var(--space-8)}.pk-active{display:none}.pk-block{min-height:0;opacity:1}}
+
+/* L · Anteprima */
+.pl{border-top:1px solid var(--line)}
+.pl-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);align-items:baseline;padding:28px 0;border-bottom:1px solid var(--line);color:var(--text-subtle)}
+.pl-row>.al-mono{grid-column:1 / span 3}
+.pl-row h3{grid-column:4 / span 8;font:400 48px/52px var(--font-sans);letter-spacing:-.035em;color:var(--text);margin:0;transition:transform var(--m-base) var(--m-ease),color var(--m-base)}
+.pl-row .pc-go{grid-column:12;justify-self:end}
+.pl:hover .pl-row:not(:hover) h3{color:var(--text-subtle)}
+.pl-row:is(:hover,:focus-visible) h3{transform:translateX(16px)}
+.pl-inline{display:none}
+.pl-peek{position:fixed;left:0;top:0;width:340px;pointer-events:none;z-index:var(--z-nav);background:var(--surface-raised);border:1px solid var(--line-strong);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3);opacity:0;transform:scale(.94);transition:opacity 200ms,transform 300ms var(--m-ease);box-shadow:var(--shadow-overlay)}
+.pl-peek.on{opacity:1;transform:none}
+.pl-peek .al-mono{color:var(--text-subtle)}
+.pl-peek blockquote{margin:0;font:400 20px/26px var(--font-sans);color:var(--text)}
+@media (hover:none),(max-width:860px){.pl-peek{display:none}.pl-row{display:block}.pl-row h3{font-size:30px;line-height:34px;margin:var(--space-2) 0}.pl-inline{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-3);color:var(--text-muted)}}
+@media (prefers-reduced-motion:reduce){.pj-card,.pk-block,.pl-row h3{transition:none!important}.pj-drawer.in>*,.pk-active.in>*{animation:none}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Bento">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pa" data-m="stagger" style="--delay:450ms">
+        <a class="pa-card pc-link" href="#"><span class="pa-line"></span><div class="pa-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><div class="pa-main"><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p></div><div class="pa-fit"><span class="al-mono">Di solito serve/</span><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></div></a>
+        <a class="pa-card pc-link" href="#"><span class="pa-line"></span><div class="pa-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><div class="pa-main"><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p></div><div class="pa-fit"><span class="al-mono">Di solito serve/</span><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></div></a>
+        <a class="pa-card pc-link" href="#"><span class="pa-line"></span><div class="pa-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><div class="pa-main"><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p></div><div class="pa-fit"><span class="al-mono">Di solito serve/</span><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante A/</span><div>
+    <h3>Bento: misure diverse, ora nel sito</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Fondo che si alza di un tono</li><li>Filo azzurro che si stende in alto</li><li>Icona e freccia azzurre, tag accesi</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Tutto è visibile subito, senza dover passare col mouse. La più sobria e la più adatta al telefono.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Espansione">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pb" data-m="fade-up" style="--delay:450ms">
+        <a class="pb-card pc-link" href="#"><div class="pb-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><div><h3>Negozi, ristoranti, artigiani</h3><div class="pb-more"><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></div></div></a>
+        <a class="pb-card pc-link" href="#"><div class="pb-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><div><h3>Commercialisti, tecnici, consulenti</h3><div class="pb-more"><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></div></div></a>
+        <a class="pb-card pc-link" href="#"><div class="pb-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><div><h3>Aziende con processi propri</h3><div class="pb-more"><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></div></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante B/</span><div>
+    <h3>Espansione: la card sotto il mouse si allarga</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>La card puntata passa da 1 a 2,6 parti di larghezza in 900 ms</li><li>Testo e tag salgono dopo 250 ms</li><li>Senza mouse è aperta la prima; su telefono sono tutte aperte</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più dinamica e "da studio". Contro: due card su tre mostrano solo il titolo finché non le esplori.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Problema e soluzione">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pcs" data-m="stagger" style="--delay:450ms">
+        <a class="pc-card pc-link" href="#"><div class="pc-head"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><p class="pc-q">"Chi mi cerca su Google non trova orari e contatti."</p><div class="pc-sol"><span class="al-mono">Di solito serve/</span><h3>Sito vetrina e SEO locale</h3><div class="pc-sol-body pc-tags"><span class="al-tag">Negozi</span><span class="al-tag">Ristoranti</span><span class="al-tag">Artigiani</span></div></div></a>
+        <a class="pc-card pc-link" href="#"><div class="pc-head"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><p class="pc-q">"I clienti chiedono sempre le stesse cose e i documenti arrivano da ogni parte."</p><div class="pc-sol"><span class="al-mono">Di solito serve/</span><h3>Area clienti ed estrazione dati</h3><div class="pc-sol-body pc-tags"><span class="al-tag">Commercialisti</span><span class="al-tag">Tecnici</span><span class="al-tag">Consulenti</span></div></div></a>
+        <a class="pc-card pc-link" href="#"><div class="pc-head"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><p class="pc-q">"Il gestionale non si adatta e il lavoro vero vive su Excel ed email."</p><div class="pc-sol"><span class="al-mono">Di solito serve/</span><h3>Gestionale su misura e automazioni</h3><div class="pc-sol-body pc-tags"><span class="al-tag">Produzione</span><span class="al-tag">Servizi B2B</span><span class="al-tag">Distribuzione</span></div></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante C/</span><div>
+    <h3>Problema e soluzione: parla con le parole del cliente</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Colonne sfalsate in altezza, a gradini</li><li>Al passaggio del mouse il problema si spegne e la soluzione sale dal basso in 900 ms</li><li>Su telefono e touch è già tutto aperto</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più persuasiva: il visitatore si riconosce nel problema. Le frasi tra virgolette sono problemi tipici, non citazioni. I tag di settore (Produzione, Distribuzione…) sono da confermare.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── D ─────────── -->
+<div class="x-variant" id="d" data-name="Righe">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pd" data-m="stagger" style="--delay:450ms">
+        <a class="pd-row pc-link" href="#"><span class="al-mono">Attività locali/</span><h3>Negozi, ristoranti, artigiani</h3><span class="pd-end"><span class="pc-ico">{{ICON:pin}}</span><span class="al-sq pc-go">→</span></span><div class="pd-more"><div><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></div></div></a>
+        <a class="pd-row pc-link" href="#"><span class="al-mono">Studi professionali/</span><h3>Commercialisti, tecnici, consulenti</h3><span class="pd-end"><span class="pc-ico">{{ICON:layers}}</span><span class="al-sq pc-go">→</span></span><div class="pd-more"><div><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></div></div></a>
+        <a class="pd-row pc-link" href="#"><span class="al-mono">PMI e B2B/</span><h3>Aziende con processi propri</h3><span class="pd-end"><span class="pc-ico">{{ICON:chart}}</span><span class="al-sq pc-go">→</span></span><div class="pd-more"><div><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></div></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante D/</span><div>
+    <h3>Righe: un indice grande che si apre</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>La riga puntata si accende e si apre in altezza in 900 ms</li><li>Senza mouse è aperta la prima riga</li><li>Su telefono sono tutte aperte</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Tipografica ed editoriale, si lega bene a Servizi e Lavori, che sono già righe. Niente card a scatola.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── E ─────────── -->
+<div class="x-variant" id="e" data-name="Pila">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pe" data-m="fade-up" style="--delay:450ms">
+        <a class="pe-card pc-link" href="#"><div class="pe-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></a>
+        <a class="pe-card pc-link" href="#"><div class="pe-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></a>
+        <a class="pe-card pc-link" href="#"><div class="pe-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante E/</span><div>
+    <h3>Pila: le card come un mazzo, sfogliabile</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Si vedono le testate di tutte e tre, l'ultima è aperta</li><li>Passando su una card, quelle sopra scendono di 240 px in 900 ms e la scoprono</li><li>Su telefono diventano un elenco normale</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Molto riconoscibile e compatta in altezza. Sta nelle colonne 4–12, sotto il titolo, così rispetta la griglia.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── F ─────────── -->
+<div class="x-variant" id="f" data-name="Contorno">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pf" data-m="stagger" style="--delay:450ms">
+        <a class="pf-card pc-link" href="#"><i></i><i></i><i></i><i></i><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><span class="pf-cta">└─ Parliamone →</span></a>
+        <a class="pf-card pc-link" href="#"><i></i><i></i><i></i><i></i><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><span class="pf-cta">└─ Parliamone →</span></a>
+        <a class="pf-card pc-link" href="#"><i></i><i></i><i></i><i></i><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><span class="pf-cta">└─ Parliamone →</span></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante F/</span><div>
+    <h3>Contorno: il bordo azzurro si traccia attorno alla card</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>I quattro lati si disegnano in sequenza, 260 ms l'uno</li><li>Poi compare "Parliamone →" in mono</li><li>Card staccate, non a bordo condiviso: più aria</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più leggera e minimale, con un gesto preciso. Non risolve "troppo uguali": le tre card hanno la stessa forma.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── G ─────────── -->
+<div class="x-variant" id="g" data-name="Inverso">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pg" data-m="stagger" style="--delay:450ms">
+        <a class="pg-card pc-link" href="#"><div class="pg-head"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></a>
+        <a class="pg-card pc-link" href="#"><div class="pg-head"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p></a>
+        <a class="pg-card pc-link" href="#"><div class="pg-head"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante G/</span><div>
+    <h3>Inverso: una card alta e due basse, si capovolgono al passaggio</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>La card puntata passa a inverse: bianca in Scuro, nera in Chiaro</li><li>L'icona diventa azzurra, il resto resta in bianco e nero</li><li>Prima card su due righe, titolo a 64 px</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Massimo contrasto, molto grafica, senza aggiungere colore. Il passaggio da nero a bianco è forte: va bene se le altre sezioni restano calme.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── H ─────────── -->
+<div class="x-variant" id="h" data-name="Checklist">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Ti riconosci in una di queste?</h2></div>
+      <div class="ph-grid" data-m="stagger" style="--delay:450ms">
+        <a class="ph-card pc-link" href="#"><span class="al-mono">Attività locali/</span><h3>Negozi, ristoranti, artigiani</h3><ul class="ph-list"><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Il sito non c'è o è fermo da anni</li><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Su Google mancano orari e foto</li><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Le richieste arrivano solo per telefono</li></ul><div class="ph-foot"><span>Sito vetrina e SEO locale</span><span class="al-sq pc-go">→</span></div></a>
+        <a class="ph-card pc-link" href="#"><span class="al-mono">Studi professionali/</span><h3>Commercialisti, tecnici, consulenti</h3><ul class="ph-list"><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>I documenti arrivano per email, chat e carta</li><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>I clienti chiedono lo stato della pratica</li><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Ricopi a mano i dati dai PDF</li></ul><div class="ph-foot"><span>Area clienti ed estrazione dati</span><span class="al-sq pc-go">→</span></div></a>
+        <a class="ph-card pc-link" href="#"><span class="al-mono">PMI e B2B/</span><h3>Aziende con processi propri</h3><ul class="ph-list"><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Il gestionale non segue il tuo processo</li><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Fogli Excel condivisi in più versioni</li><li><span class="ph-box" aria-hidden="true">{{ICON:check}}</span>Passaggi manuali tra un software e l'altro</li></ul><div class="ph-foot"><span>Gestionale su misura e automazioni</span><span class="al-sq pc-go">→</span></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante H/</span><div>
+    <h3>Checklist: tre segnali per settore, si spuntano al passaggio</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Le caselle si riempiono di azzurro una dopo l'altra, 180 ms di distanza</li><li>In fondo la soluzione e la freccia verso i contatti</li><li>Il titolo diventa una domanda</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più concreta: il visitatore si riconosce nei sintomi prima di leggere la soluzione. I nove segnali sono una proposta da rivedere con voi.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── I ─────────── -->
+<div class="x-variant" id="i" data-name="Scorrimento">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container"><div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div></div>
+    <div class="pi" id="pi" data-m="fade" style="--delay:400ms"><div class="pi-track"><a class="pi-card pc-link" href="#"><div class="pi-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></a><a class="pi-card pc-link" href="#"><div class="pi-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></a><a class="pi-card pc-link" href="#"><div class="pi-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span><span class="al-sq pc-go">→</span></div><h3>Negozi, ristoranti, artigiani</h3><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span><span class="al-sq pc-go">→</span></div><h3>Commercialisti, tecnici, consulenti</h3><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></a><a class="pi-card pc-link" href="#" aria-hidden="true" tabindex="-1"><div class="pi-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span><span class="al-sq pc-go">→</span></div><h3>Aziende con processi propri</h3><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></a></div></div>
+    <div class="al-container"><div class="pi-ctl"><span class="al-mono" id="pi-state">Scorre da solo/ si ferma al passaggio</span><button class="al-btn al-btn-ghost al-btn-sm" type="button" id="pi-btn">Metti in pausa</button></div></div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante I/</span><div>
+    <h3>Scorrimento: un nastro di card che scorre piano</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Scorre a velocità costante, un giro ogni 45 s</li><li>Si ferma al passaggio del mouse; le altre card si spengono</li><li>Bottone di pausa (WCAG 2.2.2); con riduci movimento diventa una fila scorrevole a mano</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Dà movimento continuo alla pagina, come un tabellone. Contro: con tre soli settori il nastro li ripete, e qualcuno può non accorgersi che sono solo tre.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── J ─────────── -->
+<div class="x-variant" id="j" data-name="Focus">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container"><div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div data-m="fade-up" style="--delay:450ms">
+        <div class="pj-grid" id="pj" data-active="0"><a class="pj-card pc-link" href="#" data-k="0"><div class="pj-top"><span class="pc-ico">{{ICON:pin}}</span><span class="al-mono">Attività locali/</span></div><h3>Negozi, ristoranti, artigiani</h3></a><a class="pj-card pc-link" href="#" data-k="1"><div class="pj-top"><span class="pc-ico">{{ICON:layers}}</span><span class="al-mono">Studi professionali/</span></div><h3>Commercialisti, tecnici, consulenti</h3></a><a class="pj-card pc-link" href="#" data-k="2"><div class="pj-top"><span class="pc-ico">{{ICON:chart}}</span><span class="al-mono">PMI e B2B/</span></div><h3>Aziende con processi propri</h3></a></div>
+        <div class="pj-drawer in" id="pj-d" aria-live="polite"><span class="al-mono">Di solito serve/</span><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pj-drawer-side"><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div><a class="al-btn al-btn-primary al-btn-sm" href="#">Parliamone <span class="al-arr" aria-hidden="true">→</span></a></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante J/</span><div>
+    <h3>Focus: una card accesa, le altre in secondo piano</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>La card puntata resta piena, le altre scendono al 40%</li><li>Il cassetto sotto si riscrive a cascata: testo, tag, bottone</li><li>Senza mouse è attiva la prima; funziona anche con il tasto Tab</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Card compatte e leggibili, dettagli in un posto solo. Il cassetto a tutta larghezza dà una gerarchia chiara.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── K ─────────── -->
+<div class="x-variant" id="k" data-name="Scroll">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container"><div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pk" id="pk">
+        <div class="pk-left">
+          <ul class="pk-index"><li class="on">Attività locali/</li><li class="">Studi professionali/</li><li class="">PMI e B2B/</li></ul>
+          <div class="pk-active in" id="pk-a" aria-hidden="true"><h3>Negozi, ristoranti, artigiani</h3><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></div>
+        </div>
+        <div class="pk-right"><article class="pk-block on" data-k="0"><span class="al-mono">Attività locali/</span><blockquote>"Chi mi cerca su Google non trova orari e contatti."</blockquote><p>Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><a class="al-link" href="#">└─ Parliamone</a></article><article class="pk-block" data-k="1"><span class="al-mono">Studi professionali/</span><blockquote>"I clienti chiedono sempre le stesse cose."</blockquote><p>Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><a class="al-link" href="#">└─ Parliamone</a></article><article class="pk-block" data-k="2"><span class="al-mono">PMI e B2B/</span><blockquote>"Il lavoro vero vive su Excel ed email."</blockquote><p>Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><a class="al-link" href="#">└─ Parliamone</a></article></div>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante K/</span><div>
+    <h3>Scroll: la colonna a sinistra segue quello che leggi</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>La colonna sinistra resta ferma mentre scorri</li><li>Quando un blocco arriva a metà schermo diventa attivo: indice, titolo e tag a sinistra cambiano</li><li>Su telefono è un elenco normale</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Racconto lento e curato, molto da sito di studio. Occupa più altezza: circa due schermate.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── L ─────────── -->
+<div class="x-variant" id="l" data-name="Anteprima">
+  <section class="al-section pc-wrap" data-scene>
+    <div class="al-container"><div class="al-head"><span class="al-mono" data-scramble>Per chi/</span><h2 data-split="words" style="--delay:150ms">Lavoriamo con chi ha un'attività da far crescere</h2></div>
+      <div class="pl" id="pl" data-m="stagger" style="--delay:450ms"><a class="pl-row pc-link" href="#" data-k="0"><span class="al-mono">Attività locali/</span><h3>Negozi, ristoranti, artigiani</h3><span class="al-sq pc-go">→</span><div class="pl-inline"><p style="margin:0">Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.</p><div class="pc-tags"><span class="al-tag">Sito vetrina</span><span class="al-tag">Scheda Google e SEO locale</span></div></div></a><a class="pl-row pc-link" href="#" data-k="1"><span class="al-mono">Studi professionali/</span><h3>Commercialisti, tecnici, consulenti</h3><span class="al-sq pc-go">→</span><div class="pl-inline"><p style="margin:0">Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.</p><div class="pc-tags"><span class="al-tag">Area clienti</span><span class="al-tag">Estrazione dati da documenti</span></div></div></a><a class="pl-row pc-link" href="#" data-k="2"><span class="al-mono">PMI e B2B/</span><h3>Aziende con processi propri</h3><span class="al-sq pc-go">→</span><div class="pl-inline"><p style="margin:0">Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.</p><div class="pc-tags"><span class="al-tag">Gestionale su misura</span><span class="al-tag">Integrazioni e automazioni</span></div></div></a></div>
+    </div>
+  </section>
+  <div class="pl-peek" id="pl-peek" aria-hidden="true"><span class="al-mono" id="pl-l">Il problema/</span><blockquote id="pl-q"></blockquote><div id="pl-t"></div></div>
+  <div class="x-notes"><span class="al-mono">Variante L/</span><div>
+    <h3>Anteprima: righe grandi, i dettagli seguono il cursore</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Le altre righe si spengono, il titolo scorre di 16 px</li><li>Un pannello con problema e tag segue il mouse con un leggero ritardo</li><li>Su touch i dettagli sono già sotto ogni riga</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Lega la sezione a Lavori (stessa meccanica) e lascia la pagina pulita. Senza mouse si legge solo il titolo, quindi i dettagli restano anche nel testo della riga su mobile.</p></div>
+  </div></div>
+</div>
+
+<script>
+(() => {
+  const S = [{"title": "Negozi, ristoranti, artigiani", "text": "Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.", "q": "\"Chi mi cerca su Google non trova orari e contatti.\"", "tags": ["Sito vetrina", "Scheda Google e SEO locale"]}, {"title": "Commercialisti, tecnici, consulenti", "text": "Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.", "q": "\"I clienti chiedono sempre le stesse cose.\"", "tags": ["Area clienti", "Estrazione dati da documenti"]}, {"title": "Aziende con processi propri", "text": "Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.", "q": "\"Il lavoro vero vive su Excel ed email.\"", "tags": ["Gestionale su misura", "Integrazioni e automazioni"]}];
+  const tagsHtml = (t) => '<div class="pc-tags">' + t.map((x) => '<span class="al-tag">' + x + '</span>').join('') + '</div>';
+  // I: pausa
+  const pi = document.getElementById('pi'), pb = document.getElementById('pi-btn'), ps = document.getElementById('pi-state');
+  pb.onclick = () => { const p = pi.classList.toggle('is-paused'); pb.textContent = p ? 'Riprendi' : 'Metti in pausa'; ps.textContent = p ? 'In pausa/' : 'Scorre da solo/ si ferma al passaggio'; };
+  if (M.reduced()) { pb.hidden = true; ps.textContent = 'Scorri a lato/'; }
+  // J: focus + cassetto
+  const pj = document.getElementById('pj'), pd = document.getElementById('pj-d');
+  const setJ = (k) => { if (pj.dataset.active === String(k)) return; pj.dataset.active = k; pd.querySelector('p').textContent = S[k].text; pd.querySelector('.pc-tags').outerHTML = tagsHtml(S[k].tags); pd.classList.remove('in'); void pd.offsetWidth; pd.classList.add('in'); };
+  pj.querySelectorAll('.pj-card').forEach((c) => { c.addEventListener('mouseenter', () => setJ(+c.dataset.k)); c.addEventListener('focus', () => setJ(+c.dataset.k)); });
+  // K: blocco attivo a metà schermo
+  const blocks = [...document.querySelectorAll('.pk-block')], idx = [...document.querySelectorAll('.pk-index li')], pa = document.getElementById('pk-a');
+  let cur = 0;
+  const setK = (k) => { if (k === cur) return; cur = k; blocks.forEach((b, i) => b.classList.toggle('on', i === k)); idx.forEach((l, i) => l.classList.toggle('on', i === k)); pa.innerHTML = '<h3>' + S[k].title + '</h3>' + tagsHtml(S[k].tags); pa.classList.remove('in'); void pa.offsetWidth; pa.classList.add('in'); };
+  const kio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setK(+e.target.dataset.k); }), { rootMargin: '-45% 0px -45% 0px' });
+  blocks.forEach((b) => kio.observe(b));
+  // L: anteprima che segue il cursore
+  const peek = document.getElementById('pl-peek'); let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+  const loop = () => { const k = M.reduced() ? 1 : 0.18; x += (tx - x) * k; y += (ty - y) * k; peek.style.translate = (x + 28) + 'px ' + (y - 60) + 'px'; raf = requestAnimationFrame(loop); };
+  document.querySelectorAll('.pl-row').forEach((r) => {
+    r.addEventListener('mouseenter', (e) => { const s = S[+r.dataset.k]; document.getElementById('pl-q').textContent = s.q; document.getElementById('pl-t').innerHTML = tagsHtml(s.tags); if (!peek.classList.contains('on')) { x = tx = e.clientX; y = ty = e.clientY; } peek.classList.add('on'); cancelAnimationFrame(raf); loop(); });
+    r.addEventListener('mousemove', (e) => { tx = e.clientX; ty = e.clientY; });
+    r.addEventListener('mouseleave', () => { peek.classList.remove('on'); cancelAnimationFrame(raf); });
+  });
+})();
+</script>

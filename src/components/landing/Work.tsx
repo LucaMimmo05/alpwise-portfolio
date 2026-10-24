@@ -11,7 +11,7 @@ import { SectionHead } from './SectionHead';
 export function Work() {
   const rows = projects.length
     ? projects.map((p) => ({ ...p, placeholder: false }))
-    : projectPlaceholders.map((s, i) => ({ client: `Cliente ${i + 1}`, service: s, year: 'aaaa', href: '#contatti', placeholder: true }));
+    : projectPlaceholders.map((s, i) => ({ client: `Cliente ${i + 1}`, service: s, year: 'aaaa', href: '/contatti', placeholder: true }));
   const peek = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
   const [hover, setHover] = useState<string | null>(null);

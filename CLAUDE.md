@@ -16,7 +16,7 @@ Il design system è in `design-system/` (fonte di verità) e già pronto da usar
 - **Tipografia**: Host Grotesk, titoli a peso 400 (mai bold), tracking stretto. DM Mono solo per etichette (`Servizi/` con barra finale), elenchi ad albero (`└─`), date e dati.
 - **Forme**: angoli vivi (`rounded-none`); 2px solo su bottoni e campi. Niente ombre tranne modali, toast e menu.
 - **Gradiente "orizzonte"** (`al-horizon` / `bg-horizon`): solo hero, CTA finale e visual dei case study, sempre con la griglia `al-grid al-grid-on-horizon`. Testo bianco solo nella metà alta. Nessun altro motivo grafico (niente barre, blob, 3D, foto stock).
-- **Logo**: solo il wordmark (`<Logo />` o `public/brand/wordmark-*.svg`), nero su chiaro, bianco su scuro e sull'orizzonte. Mai azzurro.
+- **Logo**: il wordmark (`<Logo />` o `public/brand/wordmark-*.svg`); in navbar "Alpwise" senza "STUDIO" che, quando la barra si compatta, si riduce alla sola A (`<Logo lockup="nav" />`); nei formati piccoli solo la A (`<Logo lockup="mark" />`, come la favicon). Nero su chiaro, bianco su scuro e sull'orizzonte. Mai azzurro.
 - **Accessibilità**: WCAG 2.2 AA in entrambi i temi; focus visibile (`--focus`, 2px, offset 2px); stati sempre scritti a parole. Dettagli in `design-system/accessibility.md`.
 - **Testi**: italiano, del tu, frasi brevi, maiuscola solo a inizio frase, niente punti esclamativi né emoji. Vedi `design-system/voice.md`. Clienti, numeri e citazioni devono essere reali: non inventarli.
 
@@ -31,7 +31,7 @@ src/components/alpwise/  componenti React + TS del design system
 src/components/motion/   motore di animazione (Scene, Words, Scramble…)
 src/components/landing/  sezioni della home
 src/content/site.ts      testi e contatti (null = da fornire)
-src/app/                 layout, home, api/contact
+src/app/                 layout, home, contatti, privacy, cookie, api/contact
 design-explorations/     varianti HTML esplorate per ogni sezione
 tailwind.config.ts       mappa Tailwind → variabili CSS
 ```

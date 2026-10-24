@@ -1,4 +1,3 @@
-import { Contact } from '@/components/landing/Contact';
 import { Cta } from '@/components/landing/Cta';
 import { Hero } from '@/components/landing/Hero';
 import { Method } from '@/components/landing/Method';
@@ -21,7 +20,6 @@ export default function Home() {
         <Method />
         <Work />
         <Cta />
-        <Contact />
       </main>
       <SiteFooter />
     </>

@@ -12,7 +12,7 @@ Parliamo come tre sviluppatori seduti al tavolo con il titolare di una PMI: comp
 ## Scrittura
 
 - Maiuscola solo a inizio frase. Titoli senza punto finale.
-- Nel testo: **Alpwise Studio**. Il wordmark è minuscolo, il testo no.
+- Nel testo: **Alpwise Studio**, con le iniziali maiuscole. Il wordmark ha "Alpwise" grande e "STUDIO" piccolo in maiuscolo.
 - Etichette mono con barra finale: `Servizi/`, `Contatti/`, `Azione irreversibile/`.
 - Elenchi tecnici ad albero: `└─ React`, `└─ Spring Boot`.
 - Niente punti esclamativi, niente emoji. Numeri in cifre, migliaia col punto, € dopo la cifra.

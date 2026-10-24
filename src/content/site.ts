@@ -1,3 +1,5 @@
+import type { IconName } from '@/components/alpwise';
+
 // Contenuti della landing. I valori `null` sono ancora da fornire: la pagina li mostra come segnaposto tratteggiati.
 // Clienti, numeri e citazioni devono essere reali (CLAUDE.md): non riempirli con esempi.
 
@@ -55,10 +57,11 @@ export const services = [
 ];
 
 // Proposta da confermare con lo studio.
-export const sectors = [
-  { label: 'Attività locali/', title: 'Negozi, ristoranti, artigiani', text: 'Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.', fit: ['Sito vetrina', 'Scheda Google e SEO locale'] },
-  { label: 'Studi professionali/', title: 'Commercialisti, tecnici, consulenti', text: 'Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.', fit: ['Area clienti', 'Estrazione dati da documenti'] },
-  { label: 'PMI e B2B/', title: 'Aziende con processi propri', text: 'Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.', fit: ['Gestionale su misura', 'Integrazioni e automazioni'] },
+// `problem`: problemi tipici detti come li direbbe il cliente, non citazioni reali.
+export const sectors: { icon: IconName; label: string; title: string; problem: string; text: string; fit: string[] }[] = [
+  { icon: 'pin', label: 'Attività locali/', title: 'Negozi, ristoranti, artigiani', problem: 'Chi mi cerca su Google non trova orari e contatti.', text: 'Chi ti cerca su Google deve trovare subito orari, servizi e come contattarti.', fit: ['Sito vetrina', 'Scheda Google e SEO locale'] },
+  { icon: 'layers', label: 'Studi professionali/', title: 'Commercialisti, tecnici, consulenti', problem: 'I clienti chiedono sempre le stesse cose.', text: 'Documenti che arrivano da ogni parte e clienti che chiedono sempre le stesse cose.', fit: ['Area clienti', 'Estrazione dati da documenti'] },
+  { icon: 'chart', label: 'PMI e B2B/', title: 'Aziende con processi propri', problem: 'Il lavoro vero vive su Excel ed email.', text: 'Il gestionale standard non si adatta e il lavoro vero vive su Excel ed email.', fit: ['Gestionale su misura', 'Integrazioni e automazioni'] },
 ];
 
 export const steps = [

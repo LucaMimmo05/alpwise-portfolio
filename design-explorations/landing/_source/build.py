@@ -17,14 +17,14 @@ alpwise = (PROJ / 'src/styles/alpwise.css').read_text()
 shared = {n: (HERE / 'shared' / n).read_text() for n in ['motion.css', 'chrome.css', 'motion.js', 'boot.js']}
 
 wm = (PROJ / 'src/components/alpwise/wordmark-paths.ts').read_text()
-W = int(re.search(r'WORDMARK_WIDTH = (\d+)', wm).group(1))
-PA = re.search(r'WORDMARK_ALPWISE = "([^"]+)"', wm).group(1)
-PS = re.search(r'WORDMARK_STUDIO = "([^"]+)"', wm).group(1)
+VB = [float(v) for v in re.search(r'WORDMARK_VIEWBOX = \[([^\]]+)\]', wm).group(1).split(',')]
+GLYPHS = re.findall(r'\[([-\d.]+), ([-\d.]+), "([^"]+)"\]', wm)
 def logo(m):
-    h = float(m.group(1)); w = round(h * W / 46, 1)
+    h = float(m.group(1)); w = round(h * VB[2] / VB[3], 1)
     size = 'width="100%" style="height:auto;display:block"' if m.group(1) == '0' else f'height="{h:g}" width="{w:g}"'
-    return (f'<svg viewBox="0 4 {W} 46" {size} role="img" aria-label="Alpwise Studio" class="al-logo">'
-            f'<path fill="currentColor" d="{PA}"/><path fill="currentColor" d="{PS}"/></svg>')
+    paths = ''.join(f'<path transform="translate({x} {y})" d="{d}"/>' for x, y, d in GLYPHS)
+    return (f'<svg viewBox="{" ".join(f"{v:g}" for v in VB)}" {size} role="img" aria-label="Alpwise Studio" class="al-logo">'
+            f'<g fill="currentColor">{paths}</g></svg>')
 
 PATHS = {
   'arrow-right': 'M4 12h16M14 6l6 6-6 6', 'arrow-up-right': 'M7 17L17 7M8 7h9v9', 'plus': 'M12 5v14M5 12h14', 'minus': 'M5 12h14',

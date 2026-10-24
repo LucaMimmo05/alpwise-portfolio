@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode, CSSProperties } from 'react';
-import { WORDMARK_ALPWISE, WORDMARK_STUDIO, WORDMARK_WIDTH } from './wordmark-paths';
+import { WORDMARK_GLYPHS, WORDMARK_VIEWBOX } from './wordmark-paths';
 
 export const cx = (...c: Array<string | false | null | undefined>) => c.filter(Boolean).join(' ');
 
@@ -34,12 +34,28 @@ export function Icon({ name, size = 20, label, className }: { name: IconName; si
 }
 
 /* ---------- Wordmark ---------- */
-export function Logo({ size = 24, color, className }: { size?: number; color?: string; className?: string }) {
+// La "A" (prima lettera del wordmark) da sola: marchio per i formati piccoli, come la favicon.
+const MARK_VIEWBOX = [223, 642, 184, 175] as const;
+// "Alpwise" senza "STUDIO" (7 lettere), alto quanto il wordmark: così la A ha la stessa scala nei due stati della navbar.
+const WORD_VIEWBOX = [222, 631, 880, 236] as const;
+const WORD_GLYPHS = 7;
+
+/**
+ * Wordmark completo, `lockup="mark"` per la sola A, `lockup="nav"` per "Alpwise" senza "STUDIO".
+ * In "nav" le lettere dopo la A hanno la classe al-logo-rest: la navbar compatta le nasconde e restringe il logo alla A.
+ */
+export function Logo({ size = 24, color, className, lockup = 'full' }: { size?: number; color?: string; className?: string; lockup?: 'full' | 'mark' | 'nav' }) {
+  const [x0, y0, w, h] = lockup === 'mark' ? MARK_VIEWBOX : lockup === 'nav' ? WORD_VIEWBOX : WORDMARK_VIEWBOX;
+  const glyphs = lockup === 'mark' ? WORDMARK_GLYPHS.slice(0, 1) : lockup === 'nav' ? WORDMARK_GLYPHS.slice(0, WORD_GLYPHS) : WORDMARK_GLYPHS;
   return (
-    <svg viewBox={`0 4 ${WORDMARK_WIDTH} 46`} height={size} width={(size * WORDMARK_WIDTH) / 46} role="img" aria-label="Alpwise Studio"
-      className={cx('al-logo', className)} style={color ? { color } : undefined}>
-      <path fill="currentColor" d={WORDMARK_ALPWISE} />
-      <path fill="currentColor" d={WORDMARK_STUDIO} />
+    <svg viewBox={`${x0} ${y0} ${w} ${h}`} height={size} width={(size * w) / h} role="img" aria-label="Alpwise Studio"
+      preserveAspectRatio={lockup === 'nav' ? 'xMinYMid slice' : undefined}
+      className={cx('al-logo', lockup === 'nav' && 'al-logo-nav', className)} style={color ? { color } : undefined}>
+      <g fill="currentColor">
+        {glyphs.map(([x, y, d], i) => (
+          <path key={i} transform={`translate(${x} ${y})`} d={d} className={lockup === 'nav' && i > 0 ? 'al-logo-rest' : undefined} />
+        ))}
+      </g>
     </svg>
   );
 }

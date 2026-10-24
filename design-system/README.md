@@ -1,4 +1,4 @@
-Alpwise Studio è uno studio digitale di tre sviluppatori a Gallarate, ai piedi delle Prealpi varesine: siti vetrina per attività locali, software B2B su misura, AI e automazioni per PMI. Il sistema è essenziale e tecnico: nero, bianco, un azzurro di marca, grottesco a peso regolare e dettagli in monospaziato. L'unico momento di colore pieno è **l'orizzonte**, la luce dell'alba in quota. Tema principale **Scuro**; **Chiaro** è curato allo stesso livello.
+Alpwise Studio è uno studio digitale di tre sviluppatori a Gallarate, ai piedi delle Prealpi varesine: siti vetrina per attività locali, software B2B su misura, AI e automazioni per PMI. Il sistema è essenziale e tecnico: nero, bianco, un azzurro di marca, grottesco a peso regolare e dettagli in monospaziato. L'unico momento di colore pieno è **l'orizzonte**, la luce dell'alba in quota: un gradiente lineare, senza arco né bagliore. Tema principale **Scuro**; **Chiaro** è curato allo stesso livello.
 
 ## Principi
 
@@ -28,12 +28,11 @@ Alpwise Studio è uno studio digitale di tre sviluppatori a Gallarate, ai piedi 
 ## L'orizzonte
 
 ```css
-.al-horizon       { background: var(--horizon-arc), var(--horizon); }   /* hero */
-.al-horizon-night { background: var(--horizon-arc), var(--black); }     /* CTA, case study */
+.al-horizon       { background: var(--horizon); }   /* hero, CTA, case study */
 .al-grid::before  { /* 12 colonne hairline, sfumano verso il basso */ }
 ```
 
-- `horizon` sale dal nero al blu notte, all'azzurro, al bianco. `horizon-arc` aggiunge l'arco di luce sopra la linea dell'orizzonte.
+- `horizon` sale dal nero al blu notte, all'azzurro, al bianco. Solo il gradiente lineare: niente arco, cerchi o bagliori radiali sopra.
 - È identico in Scuro e in Chiaro: è la firma del marchio, non un colore d'interfaccia.
 - Il testo bianco sta solo nella metà alta (≥ 6:1 misurato sotto il lead della hero). Nella fascia chiara in basso solo etichette mono nere.
 - Si usa in tre posti: hero, CTA finale, visual dei case study. Mai su card, bottoni o fondi di sezione interi.
@@ -98,8 +97,7 @@ export default {
       borderRadius: { none: '0', xs: '2px', sm: '4px' },
       maxWidth: { container: '1360px' },
       backgroundImage: {
-        horizon: 'var(--horizon-arc), var(--horizon)',
-        'horizon-night': 'var(--horizon-arc), #000',
+        horizon: 'var(--horizon)',
       },
     },
   },
