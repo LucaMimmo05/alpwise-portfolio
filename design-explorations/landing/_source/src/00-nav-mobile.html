@@ -1,0 +1,214 @@
+<!-- title="Alpwise Navbar mobile" num="00" label="Navbar mobile" desc="Sei varianti interattive della navbar su telefono, da provare in un telefono da 375 px." -->
+<style>
+.nm-stage{display:grid;grid-template-columns:375px minmax(0,1fr);gap:var(--space-12);align-items:start}
+.nm-phone{position:relative;width:375px;max-width:100%;height:720px;overflow:hidden;background:var(--black);color:var(--white);border:1px solid var(--line-strong)}
+.nm-phone :focus-visible{outline:2px solid var(--sky-400);outline-offset:2px}
+.nm-help{display:flex;flex-direction:column;gap:var(--space-4);color:var(--text-muted);max-width:44ch}
+.nm-help .al-mono{color:var(--text-subtle)}
+.nm-help p{margin:0}
+@media (max-width:860px){.nm-stage{grid-template-columns:minmax(0,1fr)}.nm-phone{margin-inline:auto}}
+
+/* Barra comune */
+.nm-bar{position:absolute;left:0;right:0;top:0;z-index:5;height:56px;display:flex;align-items:center;gap:var(--space-3);padding:0 16px;background:var(--black);border-bottom:1px solid var(--ink-700)}
+.nm-bar .nm-logo{display:inline-flex;color:var(--white)}
+.nm-bar .nm-right{margin-left:auto;display:flex;align-items:center;gap:var(--space-2)}
+.nm-burger{all:unset;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--ink-600);border-radius:var(--radius-xs)}
+.nm-burger i{display:block;width:16px;height:1.5px;background:var(--white);transition:transform var(--m-base) var(--m-ease),opacity var(--m-fast)}
+.nm-burger span{display:grid;gap:5px}
+.is-open .nm-burger i:first-child{transform:translateY(3.25px) rotate(45deg)}
+.is-open .nm-burger i:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.nm-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Pagina finta dietro al menu */
+.nm-page{position:absolute;inset:56px 0 0;padding:48px 16px 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;overflow:hidden}
+.nm-page::before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,var(--ink-700) 1px,transparent 1px);background-size:calc(100% / 6) 100%;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%);pointer-events:none}
+.nm-page::after{content:"";position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.55) 50%,transparent),linear-gradient(180deg,transparent,var(--deep-900) 35%,color-mix(in srgb,var(--sky-700) 80%,var(--deep-900)) 70%,color-mix(in srgb,var(--sky-700) 70%,var(--sky-600)));pointer-events:none}
+.nm-page>*{position:relative}
+.nm-page .al-mono{color:var(--grey-300)}
+.nm-page h1{font:400 40px/44px var(--font-sans);letter-spacing:-.04em;margin:0}
+.nm-page h1 span{background:var(--primary);color:var(--on-primary);padding:0 .1em;white-space:nowrap}
+.nm-page p{margin:0;color:rgba(255,255,255,.86);font:300 16px/24px var(--font-sans)}
+.nm-page .al-btn{width:100%;max-width:280px}
+
+/* Voci di menu comuni */
+.nm-links{list-style:none;margin:0;padding:0}
+.nm-links a{display:flex;align-items:center;justify-content:space-between;color:var(--white);text-decoration:none}
+.nm-mail{font:400 12px/18px var(--font-mono);color:var(--grey-300);text-decoration:none}
+
+/* A · Tendina */
+.na .nm-menu{position:absolute;left:0;right:0;top:56px;z-index:4;background:var(--ink-900);border-bottom:1px solid var(--ink-700);padding:8px 16px 24px;box-shadow:var(--shadow-overlay);opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity var(--m-base) var(--m-ease),transform var(--m-base) var(--m-ease),visibility 0s var(--m-base)}
+.na.is-open .nm-menu{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.na .nm-links a{padding:14px 0;border-bottom:1px solid var(--ink-700);font-size:18px}
+.na .al-btn{width:100%;margin-top:20px}
+
+/* B · Schermo intero */
+.nb .nm-menu{position:absolute;inset:56px 0 0;z-index:4;background:var(--black);padding:24px 16px;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity var(--m-base),visibility 0s var(--m-base)}
+.nb.is-open .nm-menu{opacity:1;visibility:visible;transition-delay:0s}
+.nb .nm-links li{overflow:hidden;border-bottom:1px solid var(--ink-700)}
+.nb .nm-links a{padding:14px 0;font:400 40px/48px var(--font-sans);letter-spacing:-.035em;transform:translateY(100%);transition:transform var(--m-slow) var(--m-ease);transition-delay:calc(var(--i,0) * 60ms)}
+.nb .nm-links a .al-mono{color:var(--grey-400)}
+.nb.is-open .nm-links a{transform:none}
+.nb .nm-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(12px);transition:opacity var(--m-base),transform var(--m-base) var(--m-ease);transition-delay:300ms}
+.nb.is-open .nm-foot{opacity:1;transform:none}
+
+/* C · Barra in basso */
+.nc .nm-page{bottom:64px}
+.nc .nm-tabs{position:absolute;left:0;right:0;bottom:0;z-index:5;height:64px;display:grid;grid-template-columns:repeat(4,1fr);background:var(--black);border-top:1px solid var(--ink-700)}
+.nc .nm-tab{all:unset;cursor:pointer;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--grey-400);font:400 10px/14px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;transition:color var(--m-fast)}
+.nc .nm-tab svg{width:20px;height:20px}
+.nc .nm-tab::before{content:"";position:absolute;left:25%;right:25%;top:-1px;height:2px;background:var(--primary);transform:scaleX(0);transition:transform var(--m-base) var(--m-ease)}
+.nc .nm-tab[aria-current="true"]{color:var(--white)}
+.nc .nm-tab[aria-current="true"]::before{transform:none}
+
+/* D · Barra flottante + foglio dal basso */
+.nd .nm-bar{left:8px;right:8px;top:8px;height:52px;border:1px solid var(--ink-600);padding:0 8px 0 14px}
+.nd .nm-page{top:68px}
+.nd .nm-menubtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font:400 11px/16px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;padding:8px 10px;border:1px solid var(--ink-600);border-radius:var(--radius-xs)}
+.nd .nm-menubtn .al-sq{transition:transform var(--m-base) var(--m-ease)}
+.nd.is-open .nm-menubtn .al-sq{background:var(--primary);color:var(--on-primary);transform:rotate(45deg)}
+.nd .nm-scrim{position:absolute;inset:0;z-index:6;background:var(--scrim);opacity:0;visibility:hidden;transition:opacity var(--m-base),visibility 0s var(--m-base)}
+.nd.is-open .nm-scrim{opacity:1;visibility:visible;transition-delay:0s}
+.nd .nm-menu{position:absolute;left:0;right:0;bottom:0;z-index:7;background:var(--ink-800);border-top:1px solid var(--ink-600);padding:10px 16px 24px;box-shadow:var(--shadow-overlay);transform:translateY(100%);transition:transform var(--m-slow) var(--m-ease)}
+.nd.is-open .nm-menu{transform:none}
+.nd .nm-handle{width:40px;height:4px;background:var(--ink-600);margin:0 auto 12px}
+.nd .nm-links a{padding:14px 0;border-bottom:1px solid var(--ink-700);font-size:20px}
+.nd .al-btn{width:100%;margin-top:20px}
+
+/* E · Contatti sempre in vista + menu laterale */
+.ne .nm-scrim{position:absolute;inset:56px 0 0;z-index:3;background:var(--scrim);opacity:0;visibility:hidden;transition:opacity var(--m-base),visibility 0s var(--m-base)}
+.ne.is-open .nm-scrim{opacity:1;visibility:visible;transition-delay:0s}
+.ne .nm-menu{position:absolute;top:56px;right:0;bottom:0;width:84%;z-index:4;background:var(--ink-900);border-left:1px solid var(--ink-700);padding:20px;display:flex;flex-direction:column;gap:24px;transform:translateX(100%);transition:transform var(--m-slow) var(--m-ease)}
+.ne.is-open .nm-menu{transform:none}
+.ne .nm-links a{padding:12px 0;font:400 28px/34px var(--font-sans);letter-spacing:-.025em}
+.ne .nm-links a .al-sq{transition:background-color var(--m-fast),color var(--m-fast)}
+.ne .nm-links a:hover .al-sq{background:var(--primary);color:var(--on-primary)}
+.ne .al-tree{color:var(--grey-300)}
+.ne .nm-menu .nm-mail{margin-top:auto}
+
+/* F · Griglia */
+.nf .nm-menu{position:absolute;inset:56px 0 0;z-index:4;background:var(--black);padding:16px;display:flex;flex-direction:column;gap:16px;opacity:0;visibility:hidden;transition:opacity var(--m-base),visibility 0s var(--m-base)}
+.nf.is-open .nm-menu{opacity:1;visibility:visible;transition-delay:0s}
+.nf .nm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-700);border:1px solid var(--ink-700)}
+.nf .nm-cell{display:flex;flex-direction:column;gap:28px;padding:16px;background:var(--black);color:var(--white);text-decoration:none;min-height:150px;opacity:0;transform:scale(.96);transition:opacity var(--m-base),transform var(--m-base) var(--m-ease),background-color var(--m-fast);transition-delay:calc(var(--i,0) * 60ms)}
+.nf.is-open .nm-cell{opacity:1;transform:none}
+.nf .nm-cell .ico{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--ink-600);transition:background-color var(--m-fast),border-color var(--m-fast)}
+.nf .nm-cell b{font:400 22px/26px var(--font-sans);letter-spacing:-.015em;margin-top:auto}
+.nf .nm-cell .al-mono{color:var(--grey-400);font-size:10px}
+.nf .nm-cell:hover .ico,.nf .nm-cell:focus-visible .ico{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.nf .al-btn{width:100%}
+.nf .nm-mail{text-align:center}
+
+@media (prefers-reduced-motion:reduce){.nm-phone *{transition:none!important}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Tendina">
+  <section class="al-section" data-scene><div class="al-container nm-stage">
+    <div class="nm-phone na" data-nav>
+      <header class="nm-bar"><a class="nm-logo" href="#">{{MARK:24}}</a><div class="nm-right"><button class="nm-burger" type="button" data-toggle aria-expanded="false" aria-controls="na-menu"><span aria-hidden="true"><i></i><i></i></span><span class="nm-sr">Apri menu</span></button></div></header>
+      <div class="nm-page"><span class="al-mono">45.66°N 8.79°E/ Gallarate</span><h1>Software su misura per <span>la tua azienda</span></h1><p>Siti vetrina, software su misura, AI e automazioni.</p><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></div>
+      <nav class="nm-menu" id="na-menu" aria-label="Menu"><ul class="nm-links"><li><a href="#">Servizi</a></li><li><a href="#">Per chi</a></li><li><a href="#">Metodo</a></li><li><a href="#">Studio</a></li></ul><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></nav>
+    </div>
+    <div class="nm-help"><span class="al-mono">Variante A/</span><h3 style="margin:0;font:400 28px/32px var(--font-sans);color:var(--text)">Tendina: quella attuale</h3><p>Il pannello scende sotto la barra e si sovrappone alla pagina. Il menu si trasforma in una X. Semplice e già nel sito.</p><p><strong style="color:var(--text);font-weight:500">Prova/</strong> tocca il menu in alto a destra.</p></div>
+  </div></section>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Schermo intero">
+  <section class="al-section" data-scene><div class="al-container nm-stage">
+    <div class="nm-phone nb" data-nav>
+      <header class="nm-bar"><a class="nm-logo" href="#">{{MARK:24}}</a><div class="nm-right"><button class="nm-burger" type="button" data-toggle aria-expanded="false" aria-controls="nb-menu"><span aria-hidden="true"><i></i><i></i></span><span class="nm-sr">Apri menu</span></button></div></header>
+      <div class="nm-page"><span class="al-mono">45.66°N 8.79°E/ Gallarate</span><h1>Software su misura per <span>la tua azienda</span></h1><p>Siti vetrina, software su misura, AI e automazioni.</p><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></div>
+      <nav class="nm-menu" id="nb-menu" aria-label="Menu">
+        <ul class="nm-links"><li><a href="#" style="--i:0">Servizi <span class="al-mono">Web, software, AI/</span></a></li><li><a href="#" style="--i:1">Per chi <span class="al-mono">Settori/</span></a></li><li><a href="#" style="--i:2">Metodo <span class="al-mono">4 passi/</span></a></li><li><a href="#" style="--i:3">Studio <span class="al-mono">Chi siamo/</span></a></li></ul>
+        <div class="nm-foot"><a class="nm-mail" href="#">alpwisestudio@gmail.com</a><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a></div>
+      </nav>
+    </div>
+    <div class="nm-help"><span class="al-mono">Variante B/</span><h3 style="margin:0;font:400 28px/32px var(--font-sans);color:var(--text)">Schermo intero: voci grandi che salgono</h3><p>Il menu copre la pagina. Le voci a 40 px salgono da una maschera una dopo l'altra, come i titoli del sito. In fondo email e bottone.</p><p><strong style="color:var(--text);font-weight:500">Prova/</strong> tocca il menu in alto a destra.</p></div>
+  </div></section>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Barra in basso">
+  <section class="al-section" data-scene><div class="al-container nm-stage">
+    <div class="nm-phone nc" data-nav>
+      <header class="nm-bar"><a class="nm-logo" href="#">{{MARK:24}}</a><div class="nm-right"><a class="al-btn al-btn-primary al-btn-sm" href="#">Contatti</a></div></header>
+      <div class="nm-page"><span class="al-mono">45.66°N 8.79°E/ Gallarate</span><h1>Software su misura per <span>la tua azienda</span></h1><p>Siti vetrina, software su misura, AI e automazioni.</p><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></div>
+      <nav class="nm-tabs" aria-label="Sezioni">
+        <button class="nm-tab" type="button" aria-current="true">{{ICON:layers}}Servizi</button>
+        <button class="nm-tab" type="button" aria-current="false">{{ICON:user}}Per chi</button>
+        <button class="nm-tab" type="button" aria-current="false">{{ICON:chart}}Metodo</button>
+        <button class="nm-tab" type="button" aria-current="false">{{ICON:pin}}Studio</button>
+      </nav>
+    </div>
+    <div class="nm-help"><span class="al-mono">Variante C/</span><h3 style="margin:0;font:400 28px/32px var(--font-sans);color:var(--text)">Barra in basso: tutto sotto il pollice</h3><p>Niente menu da aprire: quattro sezioni sempre visibili in basso, con un filo azzurro sulla sezione in cui sei. In alto resta solo "Contatti".</p><p>Contro: toglie 64 px di schermo a ogni pagina e sembra più un'app che un sito.</p></div>
+  </div></section>
+</div>
+
+<!-- ─────────── D ─────────── -->
+<div class="x-variant" id="d" data-name="Barra flottante">
+  <section class="al-section" data-scene><div class="al-container nm-stage">
+    <div class="nm-phone nd" data-nav>
+      <header class="nm-bar"><a class="nm-logo" href="#">{{MARK:22}}</a><div class="nm-right"><button class="nm-menubtn" type="button" data-toggle aria-expanded="false" aria-controls="nd-menu">Menu <span class="al-sq" aria-hidden="true">+</span></button></div></header>
+      <div class="nm-page"><span class="al-mono">45.66°N 8.79°E/ Gallarate</span><h1>Software su misura per <span>la tua azienda</span></h1><p>Siti vetrina, software su misura, AI e automazioni.</p><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></div>
+      <div class="nm-scrim" data-close></div>
+      <nav class="nm-menu" id="nd-menu" aria-label="Menu"><div class="nm-handle" aria-hidden="true"></div><ul class="nm-links"><li><a href="#">Servizi</a></li><li><a href="#">Per chi</a></li><li><a href="#">Metodo</a></li><li><a href="#">Studio</a></li></ul><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a></nav>
+    </div>
+    <div class="nm-help"><span class="al-mono">Variante D/</span><h3 style="margin:0;font:400 28px/32px var(--font-sans);color:var(--text)">Barra flottante e foglio dal basso</h3><p>Stessa barra staccata dai bordi della versione desktop compatta. "Menu +" apre un foglio che sale dal basso, a portata di pollice; tocca fuori per chiudere.</p><p><strong style="color:var(--text);font-weight:500">Prova/</strong> tocca "Menu".</p></div>
+  </div></section>
+</div>
+
+<!-- ─────────── E ─────────── -->
+<div class="x-variant" id="e" data-name="Contatti in vista">
+  <section class="al-section" data-scene><div class="al-container nm-stage">
+    <div class="nm-phone ne" data-nav>
+      <header class="nm-bar"><a class="nm-logo" href="#">{{MARK:24}}</a><div class="nm-right"><a class="al-btn al-btn-primary al-btn-sm" href="#">Contatti</a><button class="nm-burger" type="button" data-toggle aria-expanded="false" aria-controls="ne-menu"><span aria-hidden="true"><i></i><i></i></span><span class="nm-sr">Apri menu</span></button></div></header>
+      <div class="nm-page"><span class="al-mono">45.66°N 8.79°E/ Gallarate</span><h1>Software su misura per <span>la tua azienda</span></h1><p>Siti vetrina, software su misura, AI e automazioni.</p><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></div>
+      <div class="nm-scrim" data-close></div>
+      <nav class="nm-menu" id="ne-menu" aria-label="Menu">
+        <ul class="nm-links"><li><a href="#">Servizi <span class="al-sq">→</span></a></li><li><a href="#">Per chi <span class="al-sq">→</span></a></li><li><a href="#">Metodo <span class="al-sq">→</span></a></li><li><a href="#">Studio <span class="al-sq">→</span></a></li></ul>
+        <div><div class="al-mono al-tree-title" style="color:var(--grey-400)">Servizi/</div><ul class="al-tree"><li>Siti vetrina</li><li>Software su misura</li><li>AI e automazioni</li></ul></div>
+        <a class="nm-mail" href="#">alpwisestudio@gmail.com</a>
+      </nav>
+    </div>
+    <div class="nm-help"><span class="al-mono">Variante E/</span><h3 style="margin:0;font:400 28px/32px var(--font-sans);color:var(--text)">Contatti sempre in vista, menu da destra</h3><p>Il bottone "Contatti" resta nella barra in ogni momento. Il menu entra da destra, copre l'84% dello schermo e mostra anche i tre servizi ad albero.</p><p><strong style="color:var(--text);font-weight:500">Prova/</strong> tocca il menu; tocca fuori per chiudere.</p></div>
+  </div></section>
+</div>
+
+<!-- ─────────── F ─────────── -->
+<div class="x-variant" id="f" data-name="Griglia">
+  <section class="al-section" data-scene><div class="al-container nm-stage">
+    <div class="nm-phone nf" data-nav>
+      <header class="nm-bar"><a class="nm-logo" href="#">{{MARK:24}}</a><div class="nm-right"><button class="nm-burger" type="button" data-toggle aria-expanded="false" aria-controls="nf-menu"><span aria-hidden="true"><i></i><i></i></span><span class="nm-sr">Apri menu</span></button></div></header>
+      <div class="nm-page"><span class="al-mono">45.66°N 8.79°E/ Gallarate</span><h1>Software su misura per <span>la tua azienda</span></h1><p>Siti vetrina, software su misura, AI e automazioni.</p><a class="al-btn al-btn-primary" href="#">Inizia un progetto</a></div>
+      <nav class="nm-menu" id="nf-menu" aria-label="Menu">
+        <div class="nm-grid">
+          <a class="nm-cell" href="#" style="--i:0"><span class="ico">{{ICON:layers:18}}</span><b>Servizi</b><span class="al-mono">Web, software, AI/</span></a>
+          <a class="nm-cell" href="#" style="--i:1"><span class="ico">{{ICON:user:18}}</span><b>Per chi</b><span class="al-mono">Settori/</span></a>
+          <a class="nm-cell" href="#" style="--i:2"><span class="ico">{{ICON:chart:18}}</span><b>Metodo</b><span class="al-mono">4 passi/</span></a>
+          <a class="nm-cell" href="#" style="--i:3"><span class="ico">{{ICON:pin:18}}</span><b>Studio</b><span class="al-mono">Gallarate/</span></a>
+        </div>
+        <a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a>
+        <a class="nm-mail" href="#">alpwisestudio@gmail.com</a>
+      </nav>
+    </div>
+    <div class="nm-help"><span class="al-mono">Variante F/</span><h3 style="margin:0;font:400 28px/32px var(--font-sans);color:var(--text)">Griglia: le sezioni come celle</h3><p>Quattro celle grandi a bordo condiviso, ognuna con icona e una riga mono. Entrano con un piccolo scatto, 60 ms l'una. Facili da toccare.</p><p><strong style="color:var(--text);font-weight:500">Prova/</strong> tocca il menu in alto a destra.</p></div>
+  </div></section>
+</div>
+
+<script>
+(() => {
+  document.querySelectorAll('[data-nav]').forEach((ph) => {
+    const t = ph.querySelector('[data-toggle]');
+    const set = (open) => {
+      ph.classList.toggle('is-open', open);
+      if (t) { t.setAttribute('aria-expanded', String(open)); const sr = t.querySelector('.nm-sr'); if (sr) sr.textContent = open ? 'Chiudi menu' : 'Apri menu'; }
+    };
+    t?.addEventListener('click', () => set(!ph.classList.contains('is-open')));
+    ph.querySelectorAll('[data-close], .nm-menu a').forEach((el) => el.addEventListener('click', (e) => { if (el.tagName === 'A') e.preventDefault(); set(false); }));
+    ph.addEventListener('keydown', (e) => { if (e.key === 'Escape') { set(false); t?.focus(); } });
+    // C: sezione attiva
+    ph.querySelectorAll('.nm-tab').forEach((b, i, all) => b.addEventListener('click', () => all.forEach((x) => x.setAttribute('aria-current', String(x === b)))));
+  });
+})();
+</script>

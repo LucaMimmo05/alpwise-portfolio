@@ -6,8 +6,10 @@ import { Tree, type TreeItem } from './data';
 
 export type NavItem = { label: string; href?: string; menu?: { title: string; items: TreeItem[] }[] };
 
-export function Navbar({ items, cta, clear, openMenu, homeHref = '/', onMenu, className }: {
-  items: NavItem[]; cta?: { href: string; label: string }; clear?: boolean; openMenu?: string; homeHref?: string; onMenu?: () => void; className?: string;
+export function Navbar({ items, cta, clear, openMenu, homeHref = '/', onMenu, menuOpen, menuId, className }: {
+  items: NavItem[]; cta?: { href: string; label: string }; clear?: boolean; openMenu?: string; homeHref?: string; onMenu?: () => void;
+  /** Stato del menu mobile, per il bottone (aria-expanded, etichetta, icona). */
+  menuOpen?: boolean; menuId?: string; className?: string;
 }) {
   const [open, setOpen] = useState<string | null>(openMenu ?? null);
   const active = items.find((i) => i.label === open && i.menu);
@@ -31,7 +33,8 @@ export function Navbar({ items, cta, clear, openMenu, homeHref = '/', onMenu, cl
       </nav>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         {cta && <Button href={cta.href} size="sm" className="al-nav-cta">{cta.label}</Button>}
-        <button className="al-icon-btn al-nav-menu" aria-label="Apri menu" onClick={onMenu}><Icon name="menu" /></button>
+        <button type="button" className="al-icon-btn al-nav-menu" aria-label={menuOpen ? 'Chiudi menu' : 'Apri menu'}
+          aria-expanded={menuOpen ?? undefined} aria-controls={menuId} onClick={onMenu}><Icon name={menuOpen ? 'x' : 'menu'} /></button>
       </div>
       {active?.menu && <div className="al-mega">{active.menu.map((c) => <Tree key={c.title} title={c.title} items={c.items} />)}</div>}
     </header>

@@ -22,6 +22,7 @@
   --grey-50: #F3F5F8;
   --mist: #B7C2CF;
   --white: #FFFFFF;
+  --sky-800: #0A4CB0;
   --sky-700: #0B5ED7;
   --sky-600: #2C7DF6;
   --sky-500: #4DA2FF;
@@ -39,9 +40,9 @@
   --text: var(--white);
   --text-muted: var(--grey-300);
   --text-subtle: #7D8693;
-  --primary: var(--sky-500);
-  --primary-hover: var(--sky-400);
-  --on-primary: var(--black);
+  --primary: var(--sky-700);
+  --primary-hover: var(--sky-800);
+  --on-primary: var(--white);
   --primary-soft: #0B1F3D;
   --on-primary-soft: var(--sky-400);
   --link: var(--sky-400);
@@ -68,9 +69,9 @@
   --text: var(--black);
   --text-muted: #4A525E;
   --text-subtle: var(--grey-400);
-  --primary: var(--sky-500);
-  --primary-hover: var(--sky-400);
-  --on-primary: var(--black);
+  --primary: var(--sky-700);
+  --primary-hover: var(--sky-800);
+  --on-primary: var(--white);
   --primary-soft: var(--sky-100);
   --on-primary-soft: var(--sky-700);
   --link: var(--sky-700);

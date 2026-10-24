@@ -12,7 +12,7 @@ Il design system è in `design-system/` (fonte di verità) e già pronto da usar
 - **Import CSS** (in `src/app/layout.tsx`, in quest'ordine): `tokens.css`, `alpwise.css`, `motion.css`, `landing.css`, poi `globals.css` con le direttive Tailwind.
 - **Movimento**: usa `Scene`, `Words`, `Scramble`, `RotatingWord`, `ScrollRead` da `@/components/motion` e i token `motion-*`. Tutto visibile a riposo, `prefers-reduced-motion` rispettato. I componenti con hook hanno `'use client'`.
 - **Tema**: `data-theme="dark"` (Scuro, default) o `data-theme="light"` (Chiaro) su `<html>`. Ogni schermata va verificata in entrambi.
-- **Colore**: nero/bianco + grigi freddi. Azzurro `primary` solo per azioni e stati attivi, e sopra l'azzurro il testo è **sempre nero** (`on-primary`). In Chiaro i link usano `--link` (sky-700), mai `sky-500` come testo.
+- **Colore**: nero/bianco + grigi freddi. Azzurro `primary` (`sky-700`) solo per azioni e stati attivi, e sopra l'azzurro il testo è **sempre bianco** (`on-primary`). In Chiaro i link usano `--link` (sky-700), mai `sky-500` come testo.
 - **Tipografia**: Host Grotesk, titoli a peso 400 (mai bold), tracking stretto. DM Mono solo per etichette (`Servizi/` con barra finale), elenchi ad albero (`└─`), date e dati.
 - **Forme**: angoli vivi (`rounded-none`); 2px solo su bottoni e campi. Niente ombre tranne modali, toast e menu.
 - **Gradiente "orizzonte"** (`al-horizon` / `bg-horizon`): solo hero, CTA finale e visual dei case study, sempre con la griglia `al-grid al-grid-on-horizon`. Testo bianco solo nella metà alta. Nessun altro motivo grafico (niente barre, blob, 3D, foto stock).

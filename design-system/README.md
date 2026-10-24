@@ -2,7 +2,7 @@ Alpwise Studio è uno studio digitale di tre sviluppatori a Gallarate, ai piedi 
 
 ## Principi
 
-- **Nero, bianco, azzurro.** Tutta l'interfaccia vive in nero e bianco con grigi freddi. L'azzurro `sky-500` segna soltanto ciò che si può cliccare o ciò che è attivo.
+- **Nero, bianco, azzurro.** Tutta l'interfaccia vive in nero e bianco con grigi freddi. L'azzurro `sky-700` segna soltanto ciò che si può cliccare o ciò che è attivo.
 - **Peso regolare.** I titoli sono grandi ma mai in grassetto: la gerarchia la fanno dimensione e spazio.
 - **Mono per i dettagli.** Etichette di sezione con barra finale (`Servizi/`), elenchi ad albero (`└─`), date, stack, metadati: tutto in DM Mono.
 - **Griglia a vista.** Hairline, linee tratteggiate e la griglia a 12 colonne della hero mostrano la struttura invece di nasconderla.
@@ -16,11 +16,11 @@ Alpwise Studio è uno studio digitale di tre sviluppatori a Gallarate, ai piedi 
 | Superfici | `surface` / `surface-raised` / `surface-sunken` | `ink-900` / `ink-800` / #050608 | bianco / bianco / `grey-50` |
 | Linee | `line` / `line-grid` / `line-strong` | `ink-700` / `ink-600` / `grey-400` | `grey-100` / `grey-200` / `grey-500` |
 | Testo | `text` / `text-muted` / `text-subtle` | bianco / `grey-300` / #7D8693 | nero / #4A525E / `grey-400` |
-| Azione | `primary` + `on-primary` | `sky-500` + nero | uguale |
+| Azione | `primary` + `on-primary` | `sky-700` + bianco (hover `sky-800`) | uguale |
 | Contrasto | `inverse` + `on-inverse` | bianco + nero | nero + bianco |
 | Link e focus | `link`, `focus` | `sky-400` | `sky-700` |
 
-- Sull'azzurro il testo è **sempre nero** (`on-primary`, 7.9:1). Il bianco sull'azzurro non passa.
+- Sull'azzurro il testo è **sempre bianco** (`on-primary`: 5.8:1 su `sky-700`, 7.9:1 su `sky-800`). Il nero su `sky-700` non passa (3.6:1).
 - In Chiaro l'azzurro non si usa come testo: per link e accenti c'è `sky-700`.
 - `mist` (#B7C2CF) è il grigio-azzurro di presentazione: fondi dietro mockup e screenshot.
 - Stati (`success`, `warning`, `danger`) sempre con la parola scritta.

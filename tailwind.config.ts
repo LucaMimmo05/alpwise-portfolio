@@ -13,7 +13,7 @@ export default {
         ink: { DEFAULT: 'var(--text)', muted: 'var(--text-muted)', subtle: 'var(--text-subtle)' },
         primary: { DEFAULT: 'var(--primary)', hover: 'var(--primary-hover)', soft: 'var(--primary-soft)', fg: 'var(--on-primary)' },
         inverse: { DEFAULT: 'var(--inverse)', fg: 'var(--on-inverse)' },
-        sky: { 100: 'var(--sky-100)', 200: 'var(--sky-200)', 400: 'var(--sky-400)', 500: 'var(--sky-500)', 600: 'var(--sky-600)', 700: 'var(--sky-700)' },
+        sky: { 100: 'var(--sky-100)', 200: 'var(--sky-200)', 400: 'var(--sky-400)', 500: 'var(--sky-500)', 600: 'var(--sky-600)', 700: 'var(--sky-700)', 800: 'var(--sky-800)' },
         mist: 'var(--mist)',
         link: 'var(--link)',
         focus: 'var(--focus)',

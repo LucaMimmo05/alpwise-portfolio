@@ -1,0 +1,457 @@
+<!-- title="Alpwise CTA varianti" num="07" label="CTA finale" desc="Sei varianti animate della chiamata all'azione finale, con il nuovo azzurro sky-700." -->
+<style>
+.cx-wrap{padding:var(--space-8) var(--space-4)}
+.cx-box{position:relative;isolation:isolate;overflow:hidden;background:var(--black);color:var(--white)}
+.cx-box>:not(.cx-glow):not(.m-cols):not(.hz):not(.cl-cols){position:relative;z-index:1}
+.cx-box .m-cols>i{border-left-color:var(--ink-700)}
+.cx-box :focus-visible{outline-color:var(--sky-400)}
+.cx-glow{position:absolute;left:0;right:0;bottom:0;height:45%;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 50%,transparent 100%),
+  linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--deep-900) 60%,transparent) 16%,var(--deep-900) 34%,color-mix(in srgb,var(--sky-700) 80%,var(--deep-900)) 64%,color-mix(in srgb,var(--sky-700) 70%,var(--sky-600)) 100%)}
+@keyframes cx-glow{from{opacity:0;transform:translateY(40%)}to{opacity:1;transform:none}}
+:is(.play,.armed) .cx-glow{animation:cx-glow var(--m-epic) var(--m-ease) both;animation-delay:200ms}
+.cx-title{font:400 72px/76px var(--font-sans);letter-spacing:-.04em;margin:0;text-wrap:balance}
+.cx-title .m-hl{white-space:nowrap;display:inline-block}
+.cx-title .m-hl .m-w{clip-path:inset(0)}
+.cx-lead{margin:0;font:300 18px/28px var(--font-sans);color:rgba(255,255,255,.86);max-width:46ch}
+.cx-actions{display:flex;gap:var(--space-3);flex-wrap:wrap}
+.cx-ghost{background:transparent;color:var(--white);border:1px solid var(--grey-200)}
+.cx-ghost:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
+.cx-mail{display:inline-flex;align-items:center;gap:var(--space-2);font:400 14px/20px var(--font-mono);color:var(--white);border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-xs);padding:10px 12px}
+.cx-mail button{all:unset;cursor:pointer;color:rgba(255,255,255,.78);font:400 11px/16px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;padding-left:var(--space-3);border-left:1px solid rgba(255,255,255,.3)}
+.cx-mail button:hover{color:var(--white)}
+@media (max-width:767px){.cx-wrap{padding:var(--space-4) var(--space-2)}.cx-title{font-size:40px;line-height:46px}}
+
+/* A · Bagliore */
+.ca{padding:var(--space-32) 24px calc(var(--space-32) + var(--space-16));display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6)}
+.ca .al-mono{color:var(--grey-300)}
+.ca .cx-actions{justify-content:center;margin-top:var(--space-2)}
+.ca .cx-svc{display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center;color:var(--grey-200);margin-top:var(--space-6)}
+.ca .cx-svc span[aria-hidden]{color:var(--grey-400)}
+
+/* B · Orizzonte (attuale) */
+.cb{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding:var(--space-32) var(--space-8);min-height:560px;align-content:start}
+.cb .hz{height:160%}
+.cb>.al-mono{grid-column:1 / -1;color:rgba(255,255,255,.7)}
+.cb .cx-title{grid-column:1 / span 7}
+.cb .cb-side{grid-column:9 / -1;display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-3);align-items:flex-start}
+@media (max-width:960px){.cb{display:block;padding:var(--space-20) 20px 200px}.cb .cx-title{margin:var(--space-4) 0 var(--space-8)}}
+
+/* C · Riga grande */
+.cc{background:var(--bg);color:var(--text);border-block:1px solid var(--line)}
+.cc-in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding-block:var(--space-20)}
+.cc-in>.al-mono{grid-column:1 / span 3;color:var(--text-subtle);padding-top:14px}
+.cc-in .cx-title{grid-column:4 / -1;color:var(--text)}
+.cc-link{grid-column:4 / -1;display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);margin-top:var(--space-12);padding-block:var(--space-6);border-top:1px solid var(--line);text-decoration:none;color:var(--text);position:relative}
+.cc-link .t{font:400 44px/48px var(--font-sans);letter-spacing:-.03em;transition:transform var(--m-base) var(--m-ease)}
+.cc-link .arr{display:grid;place-items:center;width:64px;height:64px;border:1px solid var(--line-strong);border-radius:var(--radius-xs);font:400 24px/1 var(--font-mono);transition:background-color var(--m-base),color var(--m-base),border-color var(--m-base),transform var(--m-base) var(--m-ease)}
+.cc-link::after{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform var(--m-slow) var(--m-ease-io)}
+.cc-link:hover::after{transform:none}
+.cc-link:hover .t{transform:translateX(12px)}
+.cc-link:hover .arr{background:var(--primary);border-color:var(--primary);color:var(--on-primary);transform:translateX(4px)}
+.cc-link+.cc-link{margin-top:0}
+.cc-link .s{font:400 12px/18px var(--font-mono);color:var(--text-subtle);text-transform:uppercase;letter-spacing:.04em}
+@media (max-width:860px){.cc-in{display:block}.cc-in .cx-title{color:var(--text);margin-top:var(--space-4)}.cc-link .t{font-size:26px;line-height:32px}.cc-link .arr{width:48px;height:48px}}
+
+/* D · Tre passi */
+.cd{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding:var(--space-32) var(--space-8) calc(var(--space-32) + var(--space-8))}
+.cd-l{grid-column:1 / span 6;display:flex;flex-direction:column;gap:var(--space-6);align-items:flex-start}
+.cd-l .al-mono{color:var(--grey-300)}
+.cd-steps{grid-column:8 / -1;list-style:none;margin:0;padding:0;display:grid;align-content:start;border-top:1px solid rgba(255,255,255,.14)}
+.cd-steps li{display:grid;grid-template-columns:48px 1fr;gap:var(--space-4);padding:var(--space-6) 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.cd-steps .n{font:400 12px/24px var(--font-mono);color:var(--sky-400)}
+.cd-steps b{display:block;font:400 22px/28px var(--font-sans);letter-spacing:-.015em;color:var(--white)}
+.cd-steps span{color:var(--grey-300);font-size:15px;line-height:24px}
+@media (max-width:960px){.cd{display:block;padding:var(--space-20) 20px var(--space-32)}.cd-steps{margin-top:var(--space-12)}}
+
+/* E · Nastro */
+.ce{padding:var(--space-20) 0 calc(var(--space-32) + var(--space-8));display:flex;flex-direction:column;align-items:center;gap:var(--space-8)}
+.ce-tape{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ce-track{display:flex;width:max-content;animation:ce-move 30s linear infinite}
+.ce-track span{font:400 120px/1 var(--font-sans);letter-spacing:-.045em;white-space:nowrap;padding-right:.6em;color:var(--white)}
+.ce-track span i{font-style:normal;color:var(--sky-400)}
+.ce.is-paused .ce-track{animation-play-state:paused}
+@keyframes ce-move{to{transform:translateX(-50%)}}
+.ce .cx-lead{text-align:center}
+.ce .cx-actions{justify-content:center}
+@media (max-width:767px){.ce-track span{font-size:64px}}
+@media (prefers-reduced-motion:reduce){.ce-track{animation:none}.ce-tape{-webkit-mask-image:none;mask-image:none;overflow-x:auto}}
+
+/* F · Due strade */
+.cf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cf-opt{position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-12) var(--space-8);min-height:340px;text-decoration:none;color:var(--text-muted);background:var(--surface);overflow:hidden;transition:background-color var(--m-base),color var(--m-base)}
+.cf-opt .al-mono{color:var(--text-subtle)}
+.cf-opt h3{font:400 44px/48px var(--font-sans);letter-spacing:-.03em;color:var(--text);margin:0;text-wrap:balance}
+.cf-opt p{margin:0;max-width:40ch}
+.cf-go{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:var(--space-6);border-top:1px dashed var(--line-grid);color:var(--text)}
+.cf-go .al-sq{width:32px;height:32px;font-size:16px;transition:transform var(--m-base) var(--m-ease),background-color var(--m-base),color var(--m-base)}
+.cf-main{background:var(--black);color:rgba(255,255,255,.86)}
+.cf-main .al-mono{color:var(--grey-300)}.cf-main h3{color:var(--white)}.cf-main .cf-go{color:var(--white);border-top-color:rgba(255,255,255,.2)}
+.cf-main .cx-glow{height:60%}
+.cf-main>:not(.cx-glow){position:relative;z-index:1}
+.cf-opt:hover .al-sq{background:var(--primary);color:var(--on-primary);transform:translateX(6px)}
+.cf-opt:not(.cf-main):hover{background:var(--surface-raised)}
+@media (max-width:860px){.cf{grid-template-columns:1fr}.cf-opt{min-height:0;padding:var(--space-8) var(--space-6)}.cf-opt h3{font-size:30px;line-height:34px}}
+
+/* G · Terminale */
+.cg{padding:var(--space-32) var(--space-8) calc(var(--space-32) + var(--space-8));display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6)}
+.cg-term{grid-column:2 / span 10;border:1px solid rgba(255,255,255,.16);background:rgba(10,12,16,.7)}
+.cg-bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.12);color:var(--grey-400)}
+.cg-body{padding:var(--space-8) var(--space-6);font:400 15px/26px var(--font-mono);color:var(--grey-300)}
+.cg-prompt{color:var(--sky-400)}
+.cg-cmd{font:400 52px/58px var(--font-sans);letter-spacing:-.035em;color:var(--white);margin:var(--space-4) 0 var(--space-8);min-height:116px}
+.cg-opts{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-2)}
+.cg-opts a{display:inline-flex;gap:var(--space-3);align-items:center;color:var(--white);text-decoration:none;padding:6px 8px;margin-left:-8px;border-radius:var(--radius-xs);transition:background-color var(--m-fast),color var(--m-fast)}
+.cg-opts a::before{content:"└─";color:var(--grey-400)}
+.cg-opts a:hover,.cg-opts a:focus-visible{background:var(--primary);color:var(--on-primary)}
+.cg-opts a:hover::before,.cg-opts a:hover .k{color:var(--on-primary)}
+.cg-opts .k{color:var(--grey-400);font-size:12px}
+@media (max-width:860px){.cg{display:block;padding:var(--space-16) 12px var(--space-32)}.cg-cmd{font-size:30px;line-height:36px;min-height:72px}}
+
+/* H · Scelta rapida */
+.chs{padding:var(--space-32) var(--space-8) calc(var(--space-32) + var(--space-8));display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-8)}
+.chs>.al-mono{color:var(--grey-300)}
+.ch-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);width:min(960px,100%)}
+.ch-opt{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-8);padding:var(--space-6);background:var(--black);color:var(--white);text-decoration:none;text-align:left;transition:background-color var(--m-base)}
+.ch-opt .al-mono{color:var(--grey-400)}
+.ch-opt b{font:400 22px/28px var(--font-sans);letter-spacing:-.015em}
+.ch-opt .al-sq{margin-top:auto;width:24px;height:24px;transition:transform var(--m-base) var(--m-ease)}
+.ch-opt:hover,.ch-opt:focus-visible{background:var(--primary)}
+.ch-opt:hover .al-mono{color:rgba(255,255,255,.8)}
+.ch-opt:hover .al-sq{background:var(--white);color:var(--primary);transform:translateX(6px)}
+.chs .cx-lead{text-align:center}
+@media (max-width:860px){.ch-opts{grid-template-columns:1fr 1fr}.chs{padding:var(--space-16) 12px var(--space-32)}}
+
+/* I · Modulo rapido */
+.ci{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding:var(--space-32) var(--space-8) calc(var(--space-32) + var(--space-8));align-items:end}
+.ci-l{grid-column:1 / span 6;display:flex;flex-direction:column;gap:var(--space-6)}
+.ci-l .al-mono{color:var(--grey-300)}
+.ci-form{grid-column:8 / -1;display:grid;gap:var(--space-4)}
+.ci-form label{font:500 14px/20px var(--font-sans);color:var(--white)}
+.ci-form .al-input{background:rgba(255,255,255,.04);color:var(--white);border-color:rgba(255,255,255,.3)}
+.ci-form .al-input::placeholder{color:var(--grey-400)}
+.ci-row{display:flex;gap:var(--space-2)}
+.ci-row .al-input{flex:1;min-width:0}
+.ci-ok{grid-column:8 / -1;border:1px solid rgba(255,255,255,.2);padding:var(--space-4);color:var(--white);animation:m-fade-up var(--m-base) var(--m-ease) both}
+.ci-ok b{display:block;font-weight:500}
+@media (max-width:960px){.ci{display:block;padding:var(--space-16) 16px var(--space-32)}.ci-form,.ci-ok{margin-top:var(--space-8)}}
+
+/* J · Blocco unico */
+.cj-link{display:block;text-decoration:none;color:var(--white)}
+.cj{padding:var(--space-20) var(--space-8);min-height:520px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);align-content:space-between}
+.cj>.al-mono{grid-column:1 / -1;color:var(--grey-300)}
+.cj .cx-title{grid-column:1 / span 9;font-size:96px;line-height:96px}
+.cj-foot{grid-column:1 / -1;display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-6)}
+.cj-arrow{display:grid;place-items:center;flex:none;width:96px;height:96px;border:1px solid rgba(255,255,255,.4);border-radius:var(--radius-xs);font:400 40px/1 var(--font-mono);transition:background-color var(--m-base),border-color var(--m-base),transform var(--m-slow) var(--m-ease)}
+.cj .cx-glow{transition:height var(--m-slow) var(--m-ease-io)}
+.cj-link:hover .cx-glow,.cj-link:focus-visible .cx-glow{height:80%}
+.cj-link:hover .cj-arrow,.cj-link:focus-visible .cj-arrow{background:var(--primary);border-color:var(--primary);transform:translateX(12px) rotate(-45deg)}
+.cj-link:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (max-width:860px){.cj{display:flex;flex-direction:column;min-height:440px;padding:var(--space-12) 20px}.cj .cx-title{font-size:48px;line-height:52px}.cj-arrow{width:64px;height:64px;font-size:28px}}
+
+/* K · In studio adesso */
+.ck{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--space-6);padding:var(--space-32) var(--space-8) calc(var(--space-32) + var(--space-8))}
+.ck-l{grid-column:1 / span 7;display:flex;flex-direction:column;gap:var(--space-6);align-items:flex-start}
+.ck-l .al-mono{color:var(--grey-300)}
+.ck-panel{grid-column:9 / -1;border:1px solid rgba(255,255,255,.16);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4);align-self:start;background:rgba(10,12,16,.6)}
+.ck-clock{font:400 64px/64px var(--font-mono);letter-spacing:-.02em;color:var(--white);font-variant-numeric:tabular-nums}
+.ck-state{display:inline-flex;align-items:center;gap:var(--space-2);font:400 11px/16px var(--font-mono);text-transform:uppercase;letter-spacing:.04em;color:var(--white)}
+.ck-state::before{content:"";width:8px;height:8px;background:var(--success)}
+.ck-state.off::before{background:var(--grey-400)}
+.ck-panel p{margin:0;color:var(--grey-300);font-size:15px;line-height:24px}
+@media (max-width:960px){.ck{display:block;padding:var(--space-16) 16px var(--space-32)}.ck-panel{margin-top:var(--space-8)}}
+
+/* L · Griglia viva */
+.cl{padding:var(--space-32) 24px calc(var(--space-32) + var(--space-16));display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-6)}
+.cl>.al-mono{color:var(--grey-300)}
+.cx-box>.cl-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);z-index:0;pointer-events:none}
+.cl-cols i{border-left:1px solid var(--ink-700);position:relative}
+.cl-cols i::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--sky-700) 24%,transparent));opacity:0;transition:opacity 500ms var(--m-ease)}
+.cl-cols i.on::after{opacity:1;transition-duration:120ms}
+.cl-cols i.near::after{opacity:.4}
+.cl .cx-actions{justify-content:center}
+@media (hover:none){.cl-cols i::after{display:none}}
+@media (prefers-reduced-motion:reduce){.cl-cols i::after{transition:none}}
+</style>
+
+<!-- ─────────── A ─────────── -->
+<div class="x-variant" id="a" data-name="Bagliore">
+  <div class="cx-wrap"><section class="cx-box ca" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <span class="al-mono" data-scramble>Contatti/</span>
+    <h2 class="cx-title" data-split="words" style="--delay:250ms;--hl-delay:850ms">Iniziamo dal<br>tuo <span class="m-hl" aria-hidden="true"><span class="m-w"><span class="rot" data-rotate="problema|sito|gestionale|processo" data-every="2400" style="display:inline-block">problema</span></span></span><span class="sr-only">problema</span></h2>
+    <p class="cx-lead" data-m="fade-up" style="--delay:800ms">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+    <div class="cx-actions" data-m="fade-up" style="--delay:950ms"><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a><a class="al-btn al-btn-lg cx-ghost" href="#">alpwisestudio@gmail.com</a></div>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante A/</span><div>
+    <h3>Bagliore: la chiusura specchio della hero</h3>
+    <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Colonne che si disegnano, titolo parola per parola</li><li>Il bagliore sale dal basso in 1,8 s</li><li>Parola che cambia ogni 2,4 s nell'evidenziatore sky-700</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Lega inizio e fine della pagina con lo stesso gesto della nuova hero. Testo centrato, due strade: progetto o email.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── B ─────────── -->
+<div class="x-variant" id="b" data-name="Orizzonte (attuale)">
+  <div class="cx-wrap"><section class="cx-box cb" data-scene>
+    <div class="hz" data-m="sunrise" style="--delay:200ms" aria-hidden="true"></div>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <span class="al-mono" data-scramble>Contatti/</span>
+    <h2 class="cx-title" data-split="words" style="--delay:200ms;--hl-delay:800ms">Iniziamo dal<br>tuo <span class="m-hl" aria-hidden="true"><span class="m-w"><span class="rot" data-rotate="problema|sito|gestionale|processo" data-every="2400" style="display:inline-block">problema</span></span></span><span class="sr-only">problema</span></h2>
+    <div class="cb-side" data-m="fade-up" style="--delay:700ms">
+      <p class="cx-lead">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+      <span class="cx-mail"><span>alpwisestudio@gmail.com</span><button type="button" class="cx-copy">Copia</button></span>
+      <a class="al-btn al-btn-primary" href="#">Inizia un progetto <span class="al-arr" aria-hidden="true">→</span></a>
+    </div>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante B/</span><div>
+    <h3>Orizzonte: quella che c'è ora nel sito</h3>
+    <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>L'orizzonte lineare sorge in tutto il riquadro</li><li>Titolo a sinistra, email da copiare e bottone a destra</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Per confronto. È più "colorata" della hero nuova: in fondo alla pagina diventa il momento più luminoso.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── C ─────────── -->
+<div class="x-variant" id="c" data-name="Riga grande">
+  <section class="al-section cc" data-scene>
+    <div class="al-container cc-in">
+      <span class="al-mono" data-scramble>Contatti/</span>
+      <h2 class="cx-title" data-split="words" style="--delay:150ms">Iniziamo dal tuo problema</h2>
+      <a class="cc-link" href="#" data-m="fade-up" style="--delay:600ms"><span><span class="s">Hai un progetto/</span><br><span class="t">Raccontacelo in due righe</span></span><span class="arr" aria-hidden="true">→</span></a>
+      <a class="cc-link" href="#" data-m="fade-up" style="--delay:720ms"><span><span class="s">Preferisci scrivere/</span><br><span class="t">alpwisestudio@gmail.com</span></span><span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante C/</span><div>
+    <h3>Riga grande: niente riquadro, solo tipografia</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Due righe enormi, tutta la riga è cliccabile</li><li>Hover: filo azzurro che si stende, testo che scorre, freccia che si riempie</li><li>Segue il tema (Scuro o Chiaro)</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più sobria e "da studio". Lascia la luce dell'orizzonte solo alla hero.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── D ─────────── -->
+<div class="x-variant" id="d" data-name="Tre passi">
+  <div class="cx-wrap"><section class="cx-box cd" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <div class="cd-l">
+      <span class="al-mono" data-scramble>Contatti/</span>
+      <h2 class="cx-title" data-split="words" style="--delay:200ms">Iniziamo dal tuo problema</h2>
+      <p class="cx-lead" data-m="fade-up" style="--delay:700ms">Nessun impegno: prima capiamo cosa ti serve, poi decidi tu.</p>
+      <div class="cx-actions" data-m="fade-up" style="--delay:850ms"><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a></div>
+    </div>
+    <ol class="cd-steps" data-m="stagger" style="--delay:500ms">
+      <li><span class="n">01</span><div><b>Ci scrivi</b><span>Due righe su cosa fai e cosa ti rallenta.</span></div></li>
+      <li><span class="n">02</span><div><b>Ti rispondiamo</b><span>Entro un giorno lavorativo, per email o con una chiamata.</span></div></li>
+      <li><span class="n">03</span><div><b>Preventivo scritto</b><span>Cosa facciamo, con quali tecnologie, in che tempi.</span></div></li>
+    </ol>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante D/</span><div>
+    <h3>Tre passi: cosa succede dopo il clic</h3>
+    <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>I tre passi salgono in sequenza</li><li>Bagliore in basso come nella hero</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Toglie l'ansia del primo contatto: chi legge sa esattamente cosa aspettarsi. La numerazione qui è una sequenza vera.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── E ─────────── -->
+<div class="x-variant" id="e" data-name="Nastro">
+  <div class="cx-wrap"><section class="cx-box ce" data-scene id="ce">
+    <div class="cx-glow" aria-hidden="true"></div>
+    <span class="al-mono" style="color:var(--grey-300)" data-scramble>Contatti/</span>
+    <h2 class="sr-only">Iniziamo dal tuo problema</h2>
+    <div class="ce-tape" aria-hidden="true" data-m="fade" style="--delay:200ms"><div class="ce-track"><span>Iniziamo dal tuo <i>problema</i> —</span><span>Iniziamo dal tuo <i>sito</i> —</span><span>Iniziamo dal tuo <i>gestionale</i> —</span><span>Iniziamo dal tuo <i>problema</i> —</span><span>Iniziamo dal tuo <i>sito</i> —</span><span>Iniziamo dal tuo <i>gestionale</i> —</span></div></div>
+    <p class="cx-lead" data-m="fade-up" style="--delay:600ms">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+    <div class="cx-actions" data-m="fade-up" style="--delay:750ms"><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a><button class="al-btn al-btn-lg cx-ghost" type="button" id="ce-pause">Ferma il testo</button></div>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante E/</span><div>
+    <h3>Nastro: il titolo scorre enorme da lato a lato</h3>
+    <div><div class="al-mono al-tree-title">Animazione/</div><ul class="al-tree"><li>Testo a 120 px che scorre in 30 s, parola chiave in sky-400</li><li>Bottone per fermarlo; con riduci movimento resta fermo</li><li>Ai lettori di schermo arriva solo il titolo statico</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La più d'impatto, quasi da poster. Contro: movimento continuo in fondo alla pagina, va bilanciato con il resto.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── F ─────────── -->
+<div class="x-variant" id="f" data-name="Due strade">
+  <section class="al-section" data-scene>
+    <div class="al-container">
+      <div class="al-head"><span class="al-mono" data-scramble>Contatti/</span><h2 data-split="words" style="--delay:150ms">Iniziamo dal tuo problema</h2></div>
+      <div class="cf" data-m="stagger" style="--delay:450ms">
+        <a class="cf-opt cf-main" href="#"><div class="cx-glow" aria-hidden="true"></div><span class="al-mono">Hai un progetto/</span><h3>Raccontacelo in due righe</h3><p>Compila il modulo: ti rispondiamo entro un giorno lavorativo con le prime domande.</p><div class="cf-go"><span>Inizia un progetto</span><span class="al-sq">→</span></div></a>
+        <a class="cf-opt" href="#"><span class="al-mono">Vuoi solo parlarne/</span><h3>Scrivici una email</h3><p>Anche solo per capire se possiamo aiutarti. Nessun impegno.</p><div class="cf-go"><span>alpwisestudio@gmail.com</span><span class="al-sq">→</span></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="x-notes"><span class="al-mono">Variante F/</span><div>
+    <h3>Due strade: progetto o semplice domanda</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Due card a bordo condiviso, la principale nera con bagliore</li><li>Hover: freccia che si riempie di azzurro e scorre</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Abbassa la soglia: chi non è pronto per un progetto ha comunque una porta. Segue il tema per la card secondaria.</p></div>
+  </div></div>
+</div>
+<script>
+(() => {
+  document.querySelectorAll('.cx-copy').forEach((b) => b.onclick = async () => { try { await navigator.clipboard.writeText('alpwisestudio@gmail.com'); b.textContent = 'Copiata'; } catch (e) { b.textContent = 'Selezionala'; } setTimeout(() => (b.textContent = 'Copia'), 2000); });
+  const ce = document.getElementById('ce'), pb = document.getElementById('ce-pause');
+  pb.onclick = () => { const p = ce.classList.toggle('is-paused'); pb.textContent = p ? 'Fai scorrere' : 'Ferma il testo'; };
+  if (M.reduced()) pb.hidden = true;
+})();
+</script>
+
+<!-- ─────────── G ─────────── -->
+<div class="x-variant" id="g" data-name="Terminale">
+  <div class="cx-wrap"><section class="cx-box cg" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <div class="cg-term" data-m="fade-up" style="--delay:150ms">
+      <div class="cg-bar"><span class="al-mono">alpwise ~ contatti</span><span class="al-mono">Gallarate, VA</span></div>
+      <div class="cg-body">
+        <span class="cg-prompt">$</span> <span data-split="chars" style="--delay:500ms;--char:40ms">nuovo-progetto --cliente tu</span>
+        <h2 class="cg-cmd"><span data-split="chars" style="--delay:1700ms;--char:35ms">Iniziamo dal tuo problema.</span><span class="m-caret" aria-hidden="true"></span></h2>
+        <ul class="cg-opts" data-m="stagger" style="--delay:2800ms">
+          <li><a href="#">Inizia un progetto <span class="k">↵ invio</span></a></li>
+          <li><a href="#">Scrivi a alpwisestudio@gmail.com <span class="k">@</span></a></li>
+          <li><a href="#">Prima guarda i servizi <span class="k">↑</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante G/</span><div>
+    <h3>Terminale: la CTA come un comando</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Il comando e il titolo si digitano carattere per carattere</li><li>Le tre scelte salgono ad albero, quella puntata si riempie di azzurro</li><li>Cursore lampeggiante, fermo con riduci movimento</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Molto riconoscibile per uno studio di sviluppatori, ironica senza essere un gioco. Il titolo resta testo vero per i lettori di schermo.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── H ─────────── -->
+<div class="x-variant" id="h" data-name="Scelta rapida">
+  <div class="cx-wrap"><section class="cx-box chs" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <span class="al-mono" data-scramble>Contatti/</span>
+    <h2 class="cx-title" data-split="words" style="--delay:200ms">Di cosa hai bisogno?</h2>
+    <div class="ch-opts" data-m="stagger" style="--delay:600ms">
+      <a class="ch-opt" href="#"><span class="al-mono">Web/</span><b>Un sito vetrina</b><span class="al-sq">→</span></a>
+      <a class="ch-opt" href="#"><span class="al-mono">Software/</span><b>Un gestionale su misura</b><span class="al-sq">→</span></a>
+      <a class="ch-opt" href="#"><span class="al-mono">AI/</span><b>Automatizzare il lavoro</b><span class="al-sq">→</span></a>
+      <a class="ch-opt" href="#"><span class="al-mono">Boh/</span><b>Non lo so ancora</b><span class="al-sq">→</span></a>
+    </div>
+    <p class="cx-lead" data-m="fade-up" style="--delay:1000ms">Scegli e ti portiamo al modulo già compilato. Rispondiamo entro un giorno lavorativo.</p>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante H/</span><div>
+    <h3>Scelta rapida: il primo passo è un clic</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Quattro scelte a bordo condiviso, salgono in sequenza</li><li>Hover: la cella si riempie di azzurro e la freccia scorre</li><li>Ogni scelta apre /contatti con “Di cosa hai bisogno?” già selezionato</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Abbassa la fatica del primo contatto e qualifica la richiesta. Nel sito va passata la scelta al modulo con un parametro nell’indirizzo.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── I ─────────── -->
+<div class="x-variant" id="i" data-name="Modulo rapido">
+  <div class="cx-wrap"><section class="cx-box ci" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <div class="ci-l">
+      <span class="al-mono" data-scramble>Contatti/</span>
+      <h2 class="cx-title" data-split="words" style="--delay:200ms">Iniziamo dal tuo problema</h2>
+      <p class="cx-lead" data-m="fade-up" style="--delay:700ms">Lasciaci la tua email e una riga. Ti scriviamo noi entro un giorno lavorativo.</p>
+    </div>
+    <form class="ci-form" id="ci-form" data-m="fade-up" style="--delay:850ms" novalidate>
+      <label for="ci-msg">Cosa ti rallenta?</label>
+      <input class="al-input" id="ci-msg" placeholder="Es. il sito non c’è, i preventivi li faccio a mano">
+      <label for="ci-mail">La tua email</label>
+      <div class="ci-row"><input class="al-input" id="ci-mail" type="email" placeholder="mario@azienda.it"><button class="al-btn al-btn-primary" type="submit">Invia <span class="al-arr" aria-hidden="true">→</span></button></div>
+    </form>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante I/</span><div>
+    <h3>Modulo rapido: due campi, direttamente nella CTA</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Solo una riga e l’email, invio senza cambiare pagina</li><li>La conferma sale al posto del modulo</li><li>Nell’esplorazione l’invio è simulato</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>La strada più corta dal “mi interessa” al messaggio. Nel sito userebbe lo stesso invio del modulo Contatti, quindi serve CONTACT_WEBHOOK_URL.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── J ─────────── -->
+<div class="x-variant" id="j" data-name="Blocco unico">
+  <div class="cx-wrap"><a class="cj-link" href="#"><section class="cx-box cj" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <span class="al-mono" data-scramble>Contatti/</span>
+    <h2 class="cx-title" data-split="words" style="--delay:200ms">Iniziamo dal tuo problema</h2>
+    <div class="cj-foot" data-m="fade-up" style="--delay:700ms"><p class="cx-lead">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p><span class="cj-arrow" aria-hidden="true">→</span></div>
+  </section></a></div>
+  <div class="x-notes"><span class="al-mono">Variante J/</span><div>
+    <h3>Blocco unico: tutta la CTA è un bottone</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Titolo a 96 px, freccia quadrata in basso a destra</li><li>Hover: il bagliore sale fino all’80% e la freccia si inclina verso l’alto</li><li>Un solo link, un solo gesto</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Gesto forte e facile da capire, ottimo su telefono. Contro: una sola strada, niente email visibile.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── K ─────────── -->
+<div class="x-variant" id="k" data-name="In studio adesso">
+  <div class="cx-wrap"><section class="cx-box ck" data-scene>
+    <div class="m-cols m-cols-hz" aria-hidden="true"></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <div class="ck-l">
+      <span class="al-mono" data-scramble>Contatti/</span>
+      <h2 class="cx-title" data-split="words" style="--delay:200ms">Iniziamo dal tuo problema</h2>
+      <p class="cx-lead" data-m="fade-up" style="--delay:700ms">Scrivici adesso: tre persone, nessun call center.</p>
+      <div class="cx-actions" data-m="fade-up" style="--delay:850ms"><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a><a class="al-btn al-btn-lg cx-ghost" href="#">Scrivi una email</a></div>
+    </div>
+    <div class="ck-panel" data-m="fade-up" style="--delay:500ms">
+      <span class="al-mono" style="color:var(--grey-400)">Gallarate, VA/</span>
+      <span class="ck-clock" id="ck-clock">--:--</span>
+      <span class="ck-state" id="ck-state">In studio adesso</span>
+      <p id="ck-note">Ti rispondiamo entro un giorno lavorativo.</p>
+    </div>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante K/</span><div>
+    <h3>In studio adesso: l’ora di Gallarate e lo stato</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>Orologio dal vivo sul fuso di Roma, aggiornato ogni 30 s</li><li>Stato scritto a parole: “In studio adesso” o “Studio chiuso”</li><li>Il testo sotto cambia: risposta in giornata o al rientro</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Dà un volto umano e un dettaglio vero. L’orario 9–18 dal lunedì al venerdì è un’ipotesi da confermare.</p></div>
+  </div></div>
+</div>
+
+<!-- ─────────── L ─────────── -->
+<div class="x-variant" id="l" data-name="Griglia viva">
+  <div class="cx-wrap"><section class="cx-box cl" data-scene id="cl">
+    <div class="cl-cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="cx-glow" aria-hidden="true"></div>
+    <span class="al-mono" data-scramble>Contatti/</span>
+    <h2 class="cx-title" data-split="words" style="--delay:250ms;--hl-delay:850ms">Iniziamo dal<br>tuo <span class="m-hl" aria-hidden="true"><span class="m-w"><span class="rot" data-rotate="problema|sito|gestionale|processo" data-every="2400" style="display:inline-block">problema</span></span></span><span class="sr-only">problema</span></h2>
+    <p class="cx-lead" data-m="fade-up" style="--delay:800ms">Raccontaci cosa ti rallenta. Ti rispondiamo entro un giorno lavorativo.</p>
+    <div class="cx-actions" data-m="fade-up" style="--delay:950ms"><a class="al-btn al-btn-primary al-btn-lg" href="#">Inizia un progetto</a><a class="al-btn al-btn-lg cx-ghost" href="#">alpwisestudio@gmail.com</a></div>
+  </section></div>
+  <div class="x-notes"><span class="al-mono">Variante L/</span><div>
+    <h3>Griglia viva: le colonne si accendono sotto il cursore</h3>
+    <div><div class="al-mono al-tree-title">Interazione/</div><ul class="al-tree"><li>La colonna sotto il mouse si riempie di luce azzurra dal basso; le vicine al 40%</li><li>Si spegne in 500 ms quando esci</li><li>Su touch la griglia resta ferma</li></ul></div>
+    <div><div class="al-mono al-tree-title">Quando sceglierla/</div><p>Usa la griglia del marchio come elemento interattivo, senza aggiungere motivi grafici. Gesto discreto, solo col mouse.</p></div>
+  </div></div>
+</div>
+
+<script>
+(() => {
+  // I: invio simulato
+  const fi = document.getElementById('ci-form');
+  fi.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const m = fi.querySelector('#ci-mail');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.value)) { m.setAttribute('aria-invalid', 'true'); m.focus(); return; }
+    fi.outerHTML = '<div class="ci-ok" role="status"><b>Messaggio inviato</b>Ti scriviamo entro un giorno lavorativo.</div>';
+  });
+  // K: orologio di Gallarate
+  const clock = document.getElementById('ck-clock'), state = document.getElementById('ck-state'), note = document.getElementById('ck-note');
+  const tick = () => {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit', weekday: 'short', hourCycle: 'h23' }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const open = !['sab', 'dom'].includes(p.weekday.replace('.', '')) && +p.hour >= 9 && +p.hour < 18;
+    clock.textContent = p.hour + ':' + p.minute;
+    state.textContent = open ? 'In studio adesso' : 'Studio chiuso';
+    state.classList.toggle('off', !open);
+    note.textContent = open ? 'Se scrivi ora, di solito rispondiamo in giornata.' : 'Scrivici comunque: ti rispondiamo al rientro, entro un giorno lavorativo.';
+  };
+  tick(); setInterval(tick, 30000);
+  // L: colonne che si accendono sotto il cursore
+  const cl = document.getElementById('cl'), cols = [...cl.querySelectorAll('.cl-cols i')];
+  cl.addEventListener('mousemove', (e) => {
+    const r = cl.getBoundingClientRect();
+    const k = Math.min(11, Math.max(0, Math.floor((e.clientX - r.left) / r.width * 12)));
+    cols.forEach((c, i) => { c.classList.toggle('on', i === k); c.classList.toggle('near', Math.abs(i - k) === 1); });
+  });
+  cl.addEventListener('mouseleave', () => cols.forEach((c) => c.classList.remove('on', 'near')));
+})();
+</script>
