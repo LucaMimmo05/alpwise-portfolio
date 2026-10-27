@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Button, Field, Input, Mono, Toast } from '@/components/alpwise';
 import { Scene } from '@/components/motion';
 import { contact, features } from '@/content/site';
 
 type Errors = Partial<Record<'name' | 'email', string>>;
-type Status = 'idle' | 'sending' | 'sent' | 'error' | 'off';
+type Status = 'idle' | 'sending' | 'sent' | 'error' | 'off' | 'limit';
 
 /**
  * Pagina Contatti, sotto l'apertura: recapiti a sinistra, a destra il modulo (invia a /api/contact)
@@ -15,6 +15,9 @@ type Status = 'idle' | 'sending' | 'sent' | 'error' | 'off';
 export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>('idle');
+  // Quando il modulo è comparso: il server scarta gli invii troppo rapidi per essere di una persona.
+  const startedAt = useRef(0);
+  useEffect(() => { startedAt.current = Date.now(); }, []);
   // Solo i recapiti che abbiamo davvero: niente segnaposto sul sito pubblicato.
   const all: [string, string | null][] = [['Email', contact.email], ['Telefono', contact.phone], ['Sede', contact.address], ['Risposta', contact.reply]];
   const rows = all.filter((r): r is [string, string] => !!r[1]);
@@ -29,8 +32,8 @@ export function Contact() {
     if (Object.keys(next).length) { e.currentTarget.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(); return; }
     setStatus('sending');
     try {
-      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(data)) });
-      setStatus(res.ok ? 'sent' : res.status === 503 ? 'off' : 'error');
+      const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(data), startedAt: startedAt.current }) });
+      setStatus(res.ok ? 'sent' : res.status === 503 ? 'off' : res.status === 429 ? 'limit' : 'error');
     } catch { setStatus('error'); }
   }
 
@@ -43,7 +46,8 @@ export function Contact() {
             {rows.map(([k, v]) => (
               <div key={k}>
                 <dt>{k}</dt>
-                <dd>{k === 'Email' ? <a className="al-contact-mail" href={`mailto:${v}`}>{v}</a> : v}</dd>
+                <dd>{k === 'Email' ? <a className="al-contact-mail" href={`mailto:${v}`}>{v}</a>
+                  : k === 'Telefono' ? <a className="al-contact-mail" href={`tel:${v.replace(/\s/g, '')}`}>{v}</a> : v}</dd>
               </div>
             ))}
           </dl>
@@ -60,6 +64,8 @@ export function Contact() {
             <Toast tone="success" title="Messaggio inviato">Ti rispondiamo entro un giorno lavorativo.</Toast>
           ) : (
             <form className="al-form" onSubmit={submit} noValidate>
+              {/* Trappola per i bot: invisibile e fuori dal tab, le persone la lasciano vuota. */}
+              <div className="sr-only" aria-hidden="true"><label>Azienda<input name="company" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="al-form-row">
                 <Field label="Nome" required error={errors.name}><Input name="name" autoComplete="name" placeholder="Mario Rossi" /></Field>
                 <Field label="Email" required error={errors.email}><Input name="email" type="email" autoComplete="email" placeholder="mario@azienda.it" /></Field>
@@ -67,6 +73,7 @@ export function Contact() {
               <Field label="Di cosa hai bisogno?"><Input as="select" name="service" options={['Sito vetrina', 'Software o SaaS su misura', 'AI e automazioni', 'Non lo so ancora']} /></Field>
               <Field label="Il progetto in due righe" hint="Obiettivo e tempi bastano."><Input as="textarea" name="message" /></Field>
               {status === 'error' && <Toast tone="danger" title="Invio non riuscito">Controlla la connessione e riprova.</Toast>}
+              {status === 'limit' && <Toast tone="warning" title="Troppe richieste">Hai inviato diversi messaggi di seguito. Riprova tra qualche minuto o scrivici per email.</Toast>}
               {status === 'off' && <Toast tone="warning" title="Invio non ancora attivo">Il modulo non è ancora collegato. Riprova più tardi.</Toast>}
               <div><Button type="submit" arrow loading={status === 'sending'}>{status === 'sending' ? 'Invio in corso' : 'Invia richiesta'}</Button></div>
             </form>
