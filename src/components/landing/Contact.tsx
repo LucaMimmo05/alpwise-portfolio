@@ -43,7 +43,8 @@ export function Contact() {
             {rows.map(([k, v]) => (
               <div key={k}>
                 <dt>{k}</dt>
-                <dd>{k === 'Email' ? <a className="al-contact-mail" href={`mailto:${v}`}>{v}</a> : v}</dd>
+                <dd>{k === 'Email' ? <a className="al-contact-mail" href={`mailto:${v}`}>{v}</a>
+                  : k === 'Telefono' ? <a className="al-contact-mail" href={`tel:${v.replace(/\s/g, '')}`}>{v}</a> : v}</dd>
               </div>
             ))}
           </dl>
@@ -60,6 +61,8 @@ export function Contact() {
             <Toast tone="success" title="Messaggio inviato">Ti rispondiamo entro un giorno lavorativo.</Toast>
           ) : (
             <form className="al-form" onSubmit={submit} noValidate>
+              {/* Trappola per i bot: invisibile e fuori dal tab, le persone la lasciano vuota. */}
+              <div className="sr-only" aria-hidden="true"><label>Azienda<input name="company" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="al-form-row">
                 <Field label="Nome" required error={errors.name}><Input name="name" autoComplete="name" placeholder="Mario Rossi" /></Field>
                 <Field label="Email" required error={errors.email}><Input name="email" type="email" autoComplete="email" placeholder="mario@azienda.it" /></Field>

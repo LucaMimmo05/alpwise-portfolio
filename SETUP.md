@@ -9,7 +9,13 @@ npm run dev
 
 La home è in `src/app/page.tsx`, le sezioni in `src/components/landing/`, testi e contatti in `src/content/site.ts`.
 
-Il modulo contatti invia a `/api/contact`, che inoltra a `CONTACT_WEBHOOK_URL` (in `.env.local`). Finché la variabile manca, il modulo dice "Invio non ancora attivo" invece di fingere un invio.
+Il modulo contatti invia a `/api/contact`, che inoltra la richiesta per email con [Resend](https://resend.com). Variabili (in `.env.local` e su Vercel):
+
+- `RESEND_API_KEY`: chiave API di Resend (obbligatoria per l'invio email).
+- `CONTACT_TO`: indirizzo che riceve le richieste. Se manca, si usa l'email in `src/content/site.ts`.
+- `CONTACT_FROM`: mittente, es. `Alpwise Studio <sito@alpwise.it>`, su un dominio verificato in Resend. Se manca, si usa `onboarding@resend.dev`, che consegna solo all'email dell'account Resend.
+
+In alternativa a Resend si può impostare `CONTACT_WEBHOOK_URL` (riceve un POST JSON con `name`, `email`, `service`, `message`). Se non c'è né l'una né l'altra, il modulo dice "Invio non ancora attivo" invece di fingere un invio. La risposta all'email ricevuta va direttamente a chi ha scritto (`reply_to`).
 
 ## SEO e GEO
 
