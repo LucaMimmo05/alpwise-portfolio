@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server';
 import { contact } from '@/content/site';
+import { checkSpam } from './spam';
 
 // Riceve il modulo contatti e lo inoltra:
 // - via email con Resend se è impostata RESEND_API_KEY (destinatario CONTACT_TO, altrimenti l'email dello studio);
 // - altrimenti a CONTACT_WEBHOOK_URL, se impostata.
 // Senza nessuna delle due risponde 503 e la pagina dice che l'invio non è ancora attivo, invece di fingere un invio riuscito.
 export async function POST(req: Request) {
+  if (Number(req.headers.get('content-length') ?? 0) > 20_000) {
+    return NextResponse.json({ error: 'Richiesta troppo grande.' }, { status: 413 });
+  }
   const body = (await req.json().catch(() => null)) as Record<string, unknown> | null;
-  // Campo trappola compilato: è un bot. Rispondiamo ok senza inoltrare nulla.
-  if (String(body?.company ?? '').trim()) return NextResponse.json({ ok: true });
   const name = String(body?.name ?? '').trim().slice(0, 200);
   const email = String(body?.email ?? '').trim().slice(0, 320);
   if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -16,6 +18,12 @@ export async function POST(req: Request) {
   }
   const service = String(body?.service ?? '').trim().slice(0, 200);
   const message = String(body?.message ?? '').trim().slice(0, 5000);
+
+  const verdict = checkSpam(req, { company: String(body?.company ?? '').trim(), startedAt: Number(body?.startedAt), name, message });
+  if (verdict === 'origin') return NextResponse.json({ error: 'Origine non ammessa.' }, { status: 403 });
+  if (verdict === 'limit') return NextResponse.json({ error: 'Troppe richieste.' }, { status: 429 });
+  // Bot: rispondiamo ok senza inoltrare nulla, così non capisce quale controllo l'ha fermato.
+  if (verdict === 'bot') return NextResponse.json({ ok: true });
 
   try {
     const ok = process.env.RESEND_API_KEY ? await sendEmail({ name, email, service, message })
