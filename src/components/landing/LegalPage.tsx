@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Tag, Tree } from '@/components/alpwise';
+import { Tag, Tree } from '@alpwisestudio/ui';
 import { Scene, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 import { legal } from '@/content/site';

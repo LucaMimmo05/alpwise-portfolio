@@ -4,7 +4,7 @@ import {
   Children, cloneElement, createContext, isValidElement, useContext, useEffect, useLayoutEffect, useRef, useState,
   type CSSProperties, type ElementType, type ReactNode,
 } from 'react';
-import { cx } from '@/components/alpwise';
+import { cx } from '@alpwisestudio/ui';
 
 const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 const ScenePlaying = createContext(true);

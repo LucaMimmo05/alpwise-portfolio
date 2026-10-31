@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Button } from '@/components/alpwise';
+import { Button } from '@alpwisestudio/ui';
 import { Columns, Scene, Scramble, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 import { contact } from '@/content/site';

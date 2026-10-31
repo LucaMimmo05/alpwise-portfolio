@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { JsonLd, pageLd } from '@/components/seo/JsonLd';
 import { pageMetadata } from '@/components/seo/meta';
-import { Table } from '@/components/alpwise';
+import { Table } from '@alpwisestudio/ui';
 import { LegalPage, Val, type LegalSection } from '@/components/landing/LegalPage';
 import { contact, features, legal } from '@/content/site';
 

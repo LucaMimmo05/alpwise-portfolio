@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { Mono } from '@/components/alpwise';
+import { Mono } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
 import { steps } from '@/content/site';
 import { SectionHead } from './SectionHead';

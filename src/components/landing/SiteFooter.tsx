@@ -1,4 +1,4 @@
-import { Footer } from '@/components/alpwise';
+import { Footer } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
 import { contact, features } from '@/content/site';
 
