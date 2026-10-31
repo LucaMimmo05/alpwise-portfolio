@@ -28,7 +28,7 @@ export const site = {
 
 export const contact = {
   email: 'alpwisestudio@gmail.com' as string | null,
-  phone: null as string | null,
+  phone: '+39 377 318 3236' as string | null,
   vat: null as string | null,
   address: 'Gallarate, VA',
   reply: 'Entro un giorno lavorativo',
@@ -51,7 +51,7 @@ export const legal = {
 export const features = {
   work: false,        // sezione Lavori: servono progetti veri
   legal: false,       // pagine Privacy e Cookie: servono dati legali verificati
-  contactForm: true,  // modulo contatti (invia a /api/contact, che inoltra a CONTACT_WEBHOOK_URL)
+  contactForm: true,  // modulo contatti (invia a /api/contact: email via Resend, oppure CONTACT_WEBHOOK_URL)
 };
 
 const allNav = [
