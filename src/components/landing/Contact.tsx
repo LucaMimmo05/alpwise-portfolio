@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { Button, Field, Input, Mono, Toast } from '@/components/alpwise';
+import { Button, Field, Input, Mono, Toast } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
 import { contact, features } from '@/content/site';
 

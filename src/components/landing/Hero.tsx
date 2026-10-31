@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { Fragment } from 'react';
-import { Button } from '@/components/alpwise';
+import { Button } from '@alpwisestudio/ui';
 import { Columns, RotatingWord, Scene, Scramble, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 import { contact, features, sectorWords } from '@/content/site';

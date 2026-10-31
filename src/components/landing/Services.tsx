@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, type KeyboardEvent } from 'react';
-import { Button, Mono, Sq, Tree } from '@/components/alpwise';
+import { Button, Mono, Sq, Tree } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 import { services } from '@/content/site';

@@ -5,11 +5,11 @@ Stack: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 3.
 
 ## Design system: regole obbligatorie
 
-Il design system è in `design-system/` (fonte di verità) e già pronto da usare in `src/`. Leggi `design-system/README.md` prima di creare o modificare UI.
+Le regole del design system sono in `design-system/`; token, classi `al-*`, componenti e preset Tailwind arrivano dal pacchetto `@alpwisestudio/ui` (repo `alpwisestudio/ui`, GitHub Packages). Leggi `design-system/README.md` prima di creare o modificare UI.
 
-- **Valori**: ogni colore, font, spaziatura e gradiente viene da `src/styles/tokens.css` (generato da `design-system/tokens.json`). Mai valori esadecimali o px inventati nei componenti: usa le variabili CSS o le classi Tailwind mappate in `tailwind.config.ts` (`bg-bg`, `text-ink-muted`, `border-line`, `bg-primary text-primary-fg`, `font-mono text-mono-label`…).
-- **Componenti**: usa quelli di `src/components/alpwise` (`import { Button, Hero, Navbar } from '@/components/alpwise'`) prima di scriverne di nuovi. I nuovi componenti seguono lo stesso stile: classi `al-*` in `src/styles/alpwise.css` oppure Tailwind sui token.
-- **Import CSS** (in `src/app/layout.tsx`, in quest'ordine): `tokens.css`, `alpwise.css`, `motion.css`, `landing.css`, poi `globals.css` con le direttive Tailwind.
+- **Valori**: ogni colore, font, spaziatura e gradiente viene dalle variabili CSS di `@alpwisestudio/ui/tokens.css`. Mai valori esadecimali o px inventati nei componenti: usa le variabili CSS o le classi Tailwind del preset (`bg-bg`, `text-ink-muted`, `border-line`, `bg-primary text-primary-fg`, `font-mono text-mono-label`…).
+- **Componenti**: usa quelli di `@alpwisestudio/ui` (`import { Button, Hero, Navbar } from '@alpwisestudio/ui'`) prima di scriverne di nuovi. I componenti riusabili vanno aggiunti nel pacchetto; quelli solo del sito restano in `src/components/landing` con classi in `src/styles/landing.css` oppure Tailwind sui token.
+- **Import CSS** (in `src/app/layout.tsx`, in quest'ordine): `@alpwisestudio/ui/styles.css` (font, token, componenti, movimento), `landing.css`, poi `globals.css` con le direttive Tailwind.
 - **Movimento**: usa `Scene`, `Words`, `Scramble`, `RotatingWord`, `ScrollRead` da `@/components/motion` e i token `motion-*`. Tutto visibile a riposo, `prefers-reduced-motion` rispettato. I componenti con hook hanno `'use client'`.
 - **Tema**: `data-theme="dark"` (Scuro, default) o `data-theme="light"` (Chiaro) su `<html>`. Ogni schermata va verificata in entrambi.
 - **Colore**: nero/bianco + grigi freddi. Azzurro `primary` (`sky-700`) solo per azioni e stati attivi, e sopra l'azzurro il testo è **sempre bianco** (`on-primary`). In Chiaro i link usano `--link` (sky-700), mai `sky-500` come testo.
@@ -24,16 +24,15 @@ Il design system è in `design-system/` (fonte di verità) e già pronto da usar
 
 ```
 design-system/   README, tokens.json, voice, accessibility (fonte di verità)
-public/fonts/    Host Grotesk 300–600, DM Mono 400–500 (woff2, self-hosted)
 public/brand/    wordmark nero e bianco (SVG)
-src/styles/      tokens.css (generato), alpwise.css (classi al-*)
-src/components/alpwise/  componenti React + TS del design system
+src/styles/      landing.css (classi delle sezioni del sito)
 src/components/motion/   motore di animazione (Scene, Words, Scramble…)
 src/components/landing/  sezioni della home
 src/content/site.ts      testi e contatti (null = da fornire)
 src/app/                 layout, home, contatti, privacy, cookie, api/contact
 design-explorations/     varianti HTML esplorate per ogni sezione
-tailwind.config.ts       mappa Tailwind → variabili CSS
+tailwind.config.ts       preset di @alpwisestudio/ui
+.npmrc                   registry GitHub Packages per @alpwisestudio (token in GITHUB_TOKEN)
 ```
 
-Se cambi un token, modifica `design-system/tokens.json` e rigenera `src/styles/tokens.css` con lo stesso formato (blocco `:root,[data-theme="dark"]`, blocco `[data-theme="light"]`, blocco `:root` per spaziature, raggi, gradienti, font).
+Token, classi `al-*`, componenti e font si cambiano nella repo `alpwisestudio/ui` (aggiorna anche `design-system/tokens.json`), si pubblica una nuova versione con Changesets e qui si aggiorna la dipendenza. Per l'installazione serve `GITHUB_TOKEN` con `read:packages`, anche su Vercel/CI.

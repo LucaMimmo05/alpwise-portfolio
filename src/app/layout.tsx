@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { JsonLd, organizationLd, websiteLd } from '@/components/seo/JsonLd';
 import { site, siteUrl } from '@/content/site';
-import '../styles/tokens.css';
-import '../styles/alpwise.css';
-import '../styles/motion.css';
+import '@alpwisestudio/ui/styles.css';
 import '../styles/landing.css';
 import './globals.css';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Button, cx, Mono, Navbar } from '@/components/alpwise';
+import { Button, cx, Mono, Navbar } from '@alpwisestudio/ui';
 import { contact, nav } from '@/content/site';
 
 const COMPACT = 80;    // oltre questa soglia la navbar diventa compatta

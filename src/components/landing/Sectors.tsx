@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { cx, Mono, Tag } from '@/components/alpwise';
+import { cx, Mono, Tag } from '@alpwisestudio/ui';
 import { Scene } from '@/components/motion';
 import { sectors } from '@/content/site';
 import { SectionHead } from './SectionHead';

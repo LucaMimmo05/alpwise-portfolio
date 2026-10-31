@@ -1,4 +1,4 @@
-import type { IconName } from '@/components/alpwise';
+import type { IconName } from '@alpwisestudio/ui';
 
 // Contenuti della landing. I valori `null` sono ancora da fornire: la pagina li mostra come segnaposto tratteggiati.
 // Clienti, numeri e citazioni devono essere reali (CLAUDE.md): non riempirli con esempi.

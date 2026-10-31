@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Mono, Sq } from '@/components/alpwise';
+import { Mono, Sq } from '@alpwisestudio/ui';
 import { Scene, useReducedMotion } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 import { projectPlaceholders, projects } from '@/content/site';

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { cx } from '@/components/alpwise';
+import { cx } from '@alpwisestudio/ui';
 import { Scramble, Words } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 

@@ -1,4 +1,4 @@
-import { Button } from '@/components/alpwise';
+import { Button } from '@alpwisestudio/ui';
 import { Scene, Scramble, ScrollRead } from '@/components/motion';
 import { d } from '@/components/motion/delay';
 
